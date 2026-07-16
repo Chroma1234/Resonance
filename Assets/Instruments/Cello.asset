@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ea01cdcdead0142b5fa02c6ca34a19, type: 3}
+  m_Name: Cello
+  m_EditorClassIdentifier: Assembly-CSharp::InstrumentData
+  eventReference:
+    Guid:
+      Data1: 996391209
+      Data2: 1308685073
+      Data3: -1458192710
+      Data4: -1313708965
+    Path: event:/Bass
+  instrumentName: Cello
+  maxDistance: 15
+  intenseDistance: 1.5
+  duetRadius: 5
+  smoothing: 3

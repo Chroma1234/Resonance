@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{729c32ed-80d4-45b1-990e-d8be83cc8d5a}">
+		<property name="assetPath">
+			<value>Drums.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>50.460000000000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e24508e3-46a4-41a7-903b-dfb4c6534fd0}</destination>
+		</relationship>
+	</object>
+</objects>

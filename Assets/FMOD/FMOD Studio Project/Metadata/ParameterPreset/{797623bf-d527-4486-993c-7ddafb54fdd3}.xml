@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{797623bf-d527-4486-993c-7ddafb54fdd3}">
+		<property name="name">
+			<value>Duet</value>
+		</property>
+		<relationship name="folder">
+			<destination>{2c0d7c98-b459-4945-afe6-0529e65deed2}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{a1c49935-6f6d-404a-969f-d6c562e76d00}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{a1c49935-6f6d-404a-969f-d6c562e76d00}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
