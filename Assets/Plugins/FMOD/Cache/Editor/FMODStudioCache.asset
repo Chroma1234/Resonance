@@ -39,25 +39,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639195763579343725
-  FileSizes: []
-  Exists: 1
---- !u!114 &-6541595220837353457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Desktop/Master.bank
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: Assets/FMOD/Desktop/Desktop/Master.bank
-  Name: Desktop/Master
-  StudioPath: bank:/Master
-  lastModified: 639197940594385875
+  lastModified: 639198997932985574
   FileSizes: []
   Exists: 1
 --- !u!114 &-6457012457913319829
@@ -80,7 +62,6 @@ MonoBehaviour:
     Data4: -1015308424
   Banks:
   - {fileID: 2569857857911990858}
-  - {fileID: -5727203717309704465}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -90,24 +71,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 48000
---- !u!114 &-5727203717309704465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Desktop/Instruments.bank
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: Assets/FMOD/Desktop/Desktop/Instruments.bank
-  Name: Desktop/Instruments
-  StudioPath: bank:/Instruments
-  lastModified: 639197951465721420
-  FileSizes: []
-  Exists: 1
 --- !u!114 &-4782706084566694934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,13 +157,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
   Path: event:/Bass
   Guid:
-    Data1: 996391209
-    Data2: 1308685073
-    Data3: -1458192710
-    Data4: -1313708965
+    Data1: 1892253589
+    Data2: 1164996803
+    Data3: -1064318586
+    Data4: 738166796
   Banks:
   - {fileID: 2569857857911990858}
-  - {fileID: -5727203717309704465}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -250,8 +212,6 @@ MonoBehaviour:
   - {fileID: 2158720451946601445}
   - {fileID: 2569857857911990858}
   - {fileID: -7989304777529580640}
-  - {fileID: -5727203717309704465}
-  - {fileID: -6541595220837353457}
   EditorEvents:
   - {fileID: -6457012457913319829}
   - {fileID: -166638960419516425}
@@ -260,11 +220,10 @@ MonoBehaviour:
   EditorParameters: []
   MasterBanks:
   - {fileID: -7989304777529580640}
-  - {fileID: -6541595220837353457}
   StringsBanks:
   - {fileID: 2158720451946601445}
   cacheVersion: 131860
-  cacheTime: 639197951465721420
+  cacheTime: 639198997933034183
   SerializableEventsDict:
   - key: event:/Piano
     index: 0
@@ -289,7 +248,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639195763579371181
+  lastModified: 639198997933034183
   FileSizes:
   - Name: 
     Value: 1052
@@ -309,7 +268,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Instruments.bank
   Name: Instruments
   StudioPath: bank:/Instruments
-  lastModified: 639195763579259896
+  lastModified: 639198997932908226
   FileSizes: []
   Exists: 1
 --- !u!114 &3968369828755463105
@@ -404,7 +363,6 @@ MonoBehaviour:
     Data4: 39164181
   Banks:
   - {fileID: 2569857857911990858}
-  - {fileID: -5727203717309704465}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -434,7 +392,6 @@ MonoBehaviour:
     Data4: 868627061
   Banks:
   - {fileID: 2569857857911990858}
-  - {fileID: -5727203717309704465}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0

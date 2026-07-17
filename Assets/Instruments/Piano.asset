@@ -21,6 +21,6 @@ MonoBehaviour:
     Path: event:/Piano
   instrumentName: Piano
   maxDistance: 15
-  intenseDistance: 1.5
-  duetRadius: 5
+  intenseDistance: 5
+  duetRadius: 3
   smoothing: 3

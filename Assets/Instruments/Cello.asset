@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InstrumentData
   eventReference:
     Guid:
-      Data1: 996391209
-      Data2: 1308685073
-      Data3: -1458192710
-      Data4: -1313708965
+      Data1: 1892253589
+      Data2: 1164996803
+      Data3: -1064318586
+      Data4: 738166796
     Path: event:/Bass
   instrumentName: Cello
   maxDistance: 15
-  intenseDistance: 1.5
-  duetRadius: 5
+  intenseDistance: 5
+  duetRadius: 3
   smoothing: 3

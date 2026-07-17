@@ -22,6 +22,10 @@ public class DuetManager : MonoBehaviour
             {
                 nearby.Add(landmark);
             }
+            else
+            {
+                nearby.Remove(landmark);
+            }
         }
 
         if (nearby.Count == 2)

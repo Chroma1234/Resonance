@@ -10,7 +10,8 @@ public class MusicLandmark : MonoBehaviour
     private Transform player;
 
     private float currentIntensity;
-    private float duetIntensity;
+    private float currentDuet;
+
     private bool duetEnabled;
 
     public float DistanceToPlayer { get; private set; }
@@ -28,25 +29,20 @@ public class MusicLandmark : MonoBehaviour
         RuntimeManager.AttachInstanceToGameObject(instance, gameObject);
 
         instance.start();
-        instance.setParameterByName("Duet", 1);
     }
 
     private void Update()
     {
         DistanceToPlayer = Vector3.Distance(player.position, transform.position);
 
-        float target = Mathf.InverseLerp(instrumentData.maxDistance, instrumentData.intenseDistance, DistanceToPlayer);
+        float targetIntensity = DistanceToPlayer <= instrumentData.intenseDistance ? 1f : 0f;
+        currentIntensity = Mathf.Lerp(currentIntensity, targetIntensity, Time.deltaTime * instrumentData.smoothing);
 
-        currentIntensity = Mathf.Lerp(currentIntensity, target, Time.deltaTime * instrumentData.smoothing);
+        float targetDuet = duetEnabled ? 1f : 0f;
+        currentDuet = Mathf.Lerp(currentDuet, targetDuet, Time.deltaTime * instrumentData.smoothing);
 
-        if (duetEnabled)
-        {
-            //instance.setParameterByName("Duet", 1);
-        }
-        else
-        {
-            //instance.setParameterByName("Intensity", currentIntensity);
-        }
+        instance.setParameterByName("Intensity", currentIntensity);
+        instance.setParameterByName("Duet", currentDuet);
 
         if (debug)
         {
@@ -56,20 +52,27 @@ public class MusicLandmark : MonoBehaviour
 
     public void SetDuet(bool enabled)
     {
-        if (duetEnabled == enabled)
-        {
-            return;
-        }
-
         duetEnabled = enabled;
-
-        //instance.setParameterByName("Intensity", 0);
-        //instance.setParameterByName("Duet", enabled ? 1 : 0);
     }
 
     private void OnDestroy()
     {
         instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         instance.release();
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (instrumentData == null)
+            return;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, instrumentData.intenseDistance);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, instrumentData.maxDistance);
+
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, instrumentData.duetRadius);
     }
 }
