@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MusicLandmark : MonoBehaviour
 {
-    [SerializeField] private InstrumentData instrumentData;
+    [SerializeField] public InstrumentData instrumentData;
 
     private EventInstance instance;
     private Transform player;
