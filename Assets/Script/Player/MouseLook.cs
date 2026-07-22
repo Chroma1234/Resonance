@@ -3,34 +3,61 @@ using UnityEngine.InputSystem;
 
 public class MouseLook : MonoBehaviour
 {
-    public float sensitivity = 100f;
-    public Transform cameraTransform;
+    [SerializeField] private float sensitivity = 0.08f;
+    [SerializeField] private float maxMouseDelta = 50f;
+    [SerializeField] private Transform cameraTransform;
 
     private float xRotation;
+    private float yRotation;
 
-    void Start()
+    private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        yRotation = transform.eulerAngles.y;
     }
 
-    void Update()
+    private void Update()
     {
-        Vector2 mouse = Mouse.current.delta.ReadValue();
-
-        if (mouse.sqrMagnitude < 0.01f)
+        if (Mouse.current == null)
             return;
 
-        mouse *= sensitivity * Time.deltaTime;
+        if (Cursor.lockState != CursorLockMode.Locked)
+            return;
 
-        xRotation -= mouse.y;
+        Vector2 mouseDelta = Mouse.current.delta.ReadValue();
+
+        mouseDelta.x = Mathf.Clamp(
+            mouseDelta.x,
+            -maxMouseDelta,
+            maxMouseDelta
+        );
+
+        mouseDelta.y = Mathf.Clamp(
+            mouseDelta.y,
+            -maxMouseDelta,
+            maxMouseDelta
+        );
+
+        float mouseX = mouseDelta.x * sensitivity;
+        float mouseY = mouseDelta.y * sensitivity;
+
+        yRotation += mouseX;
+
+        xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -80f, 80f);
 
-        cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        if (Mathf.Abs(mouse.x) > 0.01f)
-        {
-            Debug.Log("Mouse X: " + mouse.x);
-            transform.Rotate(Vector3.up * mouse.x);
-        }
+        transform.rotation = Quaternion.Euler(
+            0f,
+            yRotation,
+            0f
+        );
+
+        cameraTransform.localRotation = Quaternion.Euler(
+            xRotation,
+            0f,
+            0f
+        );
     }
 }
