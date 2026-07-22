@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c61c99891f8de43befde01ef3dd604, type: 3}
+  m_Name: F Major
+  m_EditorClassIdentifier: Assembly-CSharp::ChordData
+  chordName: F Major
+  chordEvent:
+    Guid:
+      Data1: -1730096015
+      Data2: 1124113535
+      Data3: 995619734
+      Data4: 1019291196
+    Path: event:/Composition/Chords/F Major

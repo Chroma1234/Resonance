@@ -156,9 +156,7 @@ public class CompositionPlayer : MonoBehaviour
             else
             {
                 // Wait for the final slot to finish.
-                yield return new WaitForSeconds(
-                    secondsPerSlot
-                );
+                yield return new WaitForSecondsRealtime(secondsPerSlot);
             }
         }
 
@@ -270,7 +268,7 @@ public class CompositionPlayer : MonoBehaviour
         // Move the playhead smoothly every frame.
         while (elapsed < duration)
         {
-            elapsed += Time.deltaTime;
+            elapsed += Time.unscaledDeltaTime;
 
             float progress = Mathf.Clamp01(
                 elapsed / duration

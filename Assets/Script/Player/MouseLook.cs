@@ -27,6 +27,10 @@ public class MouseLook : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -80f, 80f);
 
         cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        transform.Rotate(Vector3.up * mouse.x);
+        if (Mathf.Abs(mouse.x) > 0.01f)
+        {
+            Debug.Log("Mouse X: " + mouse.x);
+            transform.Rotate(Vector3.up * mouse.x);
+        }
     }
 }
