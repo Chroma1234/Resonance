@@ -22,5 +22,6 @@ MonoBehaviour:
   instrumentName: Saxophone
   maxDistance: 15
   intenseDistance: 5
-  duetRadius: 3
+  duetRadius: 3.5
   smoothing: 3
+  modelPrefab: {fileID: 919132149155446097, guid: 25e91cc82670e1c4eaa276db98ea6c82, type: 3}

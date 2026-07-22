@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 0
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 1, g: 1, b: 1, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: e13011839e669b34db74e252e89d7a9b, type: 2}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.074
   m_FlareStrength: 1
   m_FlareFadeSpeed: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicLandmark
   instrumentData: {fileID: 11400000, guid: 21ee15b270f6bd4489d0647de26c4b75, type: 2}
-  debug: 0
+  model: {fileID: 0}
 --- !u!1 &79140359
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicLandmark
   instrumentData: {fileID: 11400000, guid: cef1b80b171a9874a8261ad87aa08a9b, type: 2}
-  debug: 0
+  model: {fileID: 0}
 --- !u!1 &159868490
 GameObject:
   m_ObjectHideFlags: 0
@@ -6892,7 +6892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicLandmark
   instrumentData: {fileID: 11400000, guid: 61a75c7d7af326e4580cb6e92081e23c, type: 2}
-  debug: 0
+  model: {fileID: 0}
 --- !u!1 &971709957
 GameObject:
   m_ObjectHideFlags: 0
@@ -7658,14 +7658,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1337856442}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 43, y: 1, z: 61}
+  m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 15.62, y: 1, z: 61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2120414901}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!54 &1337856444
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23150,7 +23150,7 @@ GameObject:
   - component: {fileID: 1854433742}
   - component: {fileID: 1854433741}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23174,9 +23174,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 61a75c7d7af326e4580cb6e92081e23c, type: 2}
   - {fileID: 11400000, guid: 21ee15b270f6bd4489d0647de26c4b75, type: 2}
   defaultPrefab: {fileID: 8953193194695002532, guid: d2e84bec81971474eafd80117a6a0745, type: 3}
-  innerRadius: 5
-  spiralGrowthRate: 1.5
-  separationDistance: 3
+  arcSpawnAngle: 120
 --- !u!4 &1854433742
 Transform:
   m_ObjectHideFlags: 0
@@ -23186,7 +23184,7 @@ Transform:
   m_GameObject: {fileID: 1854433740}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.94, y: -0, z: 61.86081}
+  m_LocalPosition: {x: 25.96, y: -0, z: 61.86081}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23312,7 +23310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1956191185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23325,6 +23323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ba7cba2cd4c3854a8fe5af5eaf1a044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DuetManager
+  landmarks: []
 --- !u!4 &1956191186
 Transform:
   m_ObjectHideFlags: 0

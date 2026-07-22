@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class DuetManager : MonoBehaviour
 {
-    private MusicLandmark[] landmarks;
+    [SerializeField] private MusicLandmark[] landmarks;
 
     private void Start()
     {

@@ -22,5 +22,6 @@ MonoBehaviour:
   instrumentName: Drums
   maxDistance: 15
   intenseDistance: 5
-  duetRadius: 3
+  duetRadius: 3.5
   smoothing: 3
+  modelPrefab: {fileID: 5962470643966178357, guid: efb2660ede2cfaf4585be93bee95c41c, type: 3}

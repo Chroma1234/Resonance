@@ -22,5 +22,6 @@ MonoBehaviour:
   instrumentName: Piano
   maxDistance: 15
   intenseDistance: 5
-  duetRadius: 3
+  duetRadius: 3.5
   smoothing: 3
+  modelPrefab: {fileID: 4783086268077998020, guid: c7b710ea7b440f24f9abdb8d7a84975b, type: 3}

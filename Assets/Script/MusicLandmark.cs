@@ -18,7 +18,7 @@ public class MusicLandmark : MonoBehaviour
 
     public bool PlayerInDuetRange => DistanceToPlayer <= instrumentData.duetRadius;
 
-    public bool debug;
+    [SerializeField] public GameObject model;
 
     private void Start()
     {
@@ -43,16 +43,28 @@ public class MusicLandmark : MonoBehaviour
 
         instance.setParameterByName("Intensity", currentIntensity);
         instance.setParameterByName("Duet", currentDuet);
-
-        if (debug)
-        {
-            Debug.Log(currentIntensity);
-        }
     }
 
     public void SetDuet(bool enabled)
     {
         duetEnabled = enabled;
+    }
+
+    public void SetModel()
+    {
+        if (instrumentData.modelPrefab != null)
+        {
+            if (model != null)
+                Destroy(model);
+
+            if (instrumentData.modelPrefab != null)
+            {
+                model = Instantiate(instrumentData.modelPrefab, transform);
+                model.transform.localPosition = Vector3.zero;
+                model.transform.localRotation = Quaternion.identity;
+                model.transform.localScale = Vector3.one;
+            }
+        }
     }
 
     private void OnDestroy()

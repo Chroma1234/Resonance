@@ -15,4 +15,6 @@ public class InstrumentData : ScriptableObject
     public float duetRadius = 8f;
 
     public float smoothing = 3f;
+
+    public GameObject modelPrefab;
 }

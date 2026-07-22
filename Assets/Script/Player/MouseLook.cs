@@ -29,7 +29,7 @@ public class MouseLook : MonoBehaviour
         cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         if (Mathf.Abs(mouse.x) > 0.01f)
         {
-            Debug.Log("Mouse X: " + mouse.x);
+            //Debug.Log("Mouse X: " + mouse.x);
             transform.Rotate(Vector3.up * mouse.x);
         }
     }

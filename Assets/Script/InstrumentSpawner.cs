@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
 public class InstrumentSpawner : MonoBehaviour
@@ -7,9 +8,7 @@ public class InstrumentSpawner : MonoBehaviour
     [SerializeField] private List<InstrumentData> instrumentsToSpawn;
     [SerializeField] private GameObject defaultPrefab;
 
-    [SerializeField] private float innerRadius = 2.0f;
-    [SerializeField] private float spiralGrowthRate = 1.5f;
-    [SerializeField] private float separationDistance = 3.0f;
+    [SerializeField] private float arcSpawnAngle;
 
     void Start()
     {
@@ -25,8 +24,12 @@ public class InstrumentSpawner : MonoBehaviour
     {
         Vector3 stageCenter = transform.position;
 
+        float angleStep = arcSpawnAngle * Mathf.Deg2Rad / (instrumentsToSpawn.Count - 1);
         float duetRadius = instrumentsToSpawn[0].duetRadius;
-        float currentRadius = duetRadius / Mathf.Sin(Mathf.PI / instrumentsToSpawn.Count) * 0.8f;
+
+        float desiredSpacing = duetRadius * 2f * 0.8f;
+
+        float currentRadius = desiredSpacing / (2f * Mathf.Sin(angleStep * 0.5f));
 
         for (int i = 0; i < instrumentsToSpawn.Count; i++)
         {
@@ -36,7 +39,10 @@ public class InstrumentSpawner : MonoBehaviour
                 continue;
             }
 
-            float angle = i * Mathf.PI * 2 / instrumentsToSpawn.Count;
+            float startAngle = -arcSpawnAngle * 0.5f;
+            float angle = startAngle + (i / (float)(instrumentsToSpawn.Count - 1)) * arcSpawnAngle;
+
+            angle *= Mathf.Deg2Rad;
 
             float x = currentRadius * Mathf.Cos(angle);
             float z = currentRadius * Mathf.Sin(angle);
@@ -51,6 +57,8 @@ public class InstrumentSpawner : MonoBehaviour
 
             MusicLandmark landmark = spawnedObj.GetComponent<MusicLandmark>();
             landmark.instrumentData = data;
+
+            landmark.SetModel();
 
             spawnedObj.name = $"Landmark_{data.instrumentName}_{i}";
         }
