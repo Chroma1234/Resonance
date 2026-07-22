@@ -24,7 +24,13 @@ public class MusicLandmark : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        instance = RuntimeManager.CreateInstance(instrumentData.eventReference);
+        Mood mood = MoodManager.Instance.GetMood(instrumentData);
+
+        Debug.Log($"{instrumentData.instrumentName} will play mood {mood}");
+
+        EventReference selectedEvent = instrumentData.GetEvent(mood);
+
+        instance = RuntimeManager.CreateInstance(selectedEvent);
 
         RuntimeManager.AttachInstanceToGameObject(instance, gameObject);
 
