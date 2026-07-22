@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MusicLandmark : MonoBehaviour
 {
-    [SerializeField] public InstrumentData instrumentData;
+    [HideInInspector] public InstrumentData instrumentData;
 
     private EventInstance instance;
     private Transform player;
@@ -18,7 +18,7 @@ public class MusicLandmark : MonoBehaviour
 
     public bool PlayerInDuetRange => DistanceToPlayer <= instrumentData.duetRadius;
 
-    public bool debug;
+    [SerializeField] public GameObject model;
 
     private void Start()
     {
@@ -29,6 +29,8 @@ public class MusicLandmark : MonoBehaviour
         RuntimeManager.AttachInstanceToGameObject(instance, gameObject);
 
         instance.start();
+
+        SetModel();
     }
 
     private void Update()
@@ -43,10 +45,22 @@ public class MusicLandmark : MonoBehaviour
 
         instance.setParameterByName("Intensity", currentIntensity);
         instance.setParameterByName("Duet", currentDuet);
+    }
 
-        if (debug)
+    public void SetModel()
+    {
+        if (instrumentData.modelPrefab != null)
         {
-            Debug.Log(currentIntensity);
+            if (model != null)
+                Destroy(model);
+
+            if (instrumentData.modelPrefab != null)
+            {
+                model = Instantiate(instrumentData.modelPrefab, transform);
+                model.transform.localPosition = Vector3.zero;
+                model.transform.localRotation = Quaternion.identity;
+                model.transform.localScale = Vector3.one;
+            }
         }
     }
 

@@ -24,3 +24,4 @@ MonoBehaviour:
   intenseDistance: 5
   duetRadius: 3
   smoothing: 3
+  modelPrefab: {fileID: 919132149155446097, guid: ffbbe08c575c7594a8a6dfa280917618, type: 3}
