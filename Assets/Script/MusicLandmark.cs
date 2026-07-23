@@ -1,18 +1,10 @@
-using FMODUnity;
-using FMOD.Studio;
 using UnityEngine;
 
 public class MusicLandmark : MonoBehaviour
 {
     [HideInInspector] public InstrumentData instrumentData;
 
-    private EventInstance instance;
     private Transform player;
-
-    private float currentIntensity;
-    private float currentDuet;
-
-    private bool duetEnabled;
 
     public float DistanceToPlayer { get; private set; }
 
@@ -20,65 +12,63 @@ public class MusicLandmark : MonoBehaviour
 
     [SerializeField] public GameObject model;
 
+    [SerializeField] private string instrumentId;
+
+    public int LandmarkId
+    {
+        get
+        {
+            if (SoundManager.Instance == null) return -1;
+            return ResolveLandmarkIdFromInstrumentId(instrumentId);
+        }
+    }
+
+    public float InfluenceRadius => instrumentData.maxDistance;
+    public float DuetRadius => instrumentData.duetRadius;
+
+    public Vector3 Position => transform.position;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-
-        Mood mood = MoodManager.Instance.GetMood(instrumentData);
-
-        Debug.Log($"{instrumentData.instrumentName} will play mood {mood}");
-
-        EventReference selectedEvent = instrumentData.GetEvent(mood);
-
-        instance = RuntimeManager.CreateInstance(selectedEvent);
-
-        RuntimeManager.AttachInstanceToGameObject(instance, gameObject);
-
-        instance.start();
-
         SetModel();
     }
 
     private void Update()
     {
+        if (player == null || instrumentData == null) return;
+
         DistanceToPlayer = Vector3.Distance(player.position, transform.position);
-
-        float targetIntensity = DistanceToPlayer <= instrumentData.intenseDistance ? 1f : 0f;
-        currentIntensity = Mathf.Lerp(currentIntensity, targetIntensity, Time.deltaTime * instrumentData.smoothing);
-
-        float targetDuet = duetEnabled ? 1f : 0f;
-        currentDuet = Mathf.Lerp(currentDuet, targetDuet, Time.deltaTime * instrumentData.smoothing);
-
-        instance.setParameterByName("Intensity", currentIntensity);
-        instance.setParameterByName("Duet", currentDuet);
     }
 
     public void SetModel()
     {
-        if (instrumentData.modelPrefab != null)
-        {
-            if (model != null)
-                Destroy(model);
+        if (instrumentData == null || instrumentData.modelPrefab == null)
+            return;
 
-            if (instrumentData.modelPrefab != null)
-            {
-                model = Instantiate(instrumentData.modelPrefab, transform);
-                model.transform.localPosition = Vector3.zero;
-                model.transform.localRotation = Quaternion.identity;
-                model.transform.localScale = Vector3.one;
-            }
-        }
+        if (model != null)
+            Destroy(model);
+
+        model = Instantiate(instrumentData.modelPrefab, transform);
+        model.transform.localPosition = Vector3.zero;
+        model.transform.localRotation = Quaternion.identity;
+        model.transform.localScale = Vector3.one;
     }
 
     public void SetDuet(bool enabled)
     {
-        duetEnabled = enabled;
+        // Visual or gameplay feedback for duet state here if needed
     }
 
-    private void OnDestroy()
+    private int ResolveLandmarkIdFromInstrumentId(string id)
     {
-        instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        instance.release();
+        switch (id)
+        {
+            case "Piano": return 0;
+            case "Cello": return 1;
+            case "Saxophone": return 2;
+            default: return -1;
+        }
     }
 
     private void OnDrawGizmos()

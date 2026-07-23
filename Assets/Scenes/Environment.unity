@@ -6000,7 +6000,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 24.799988, y: 9.799988}
+  m_AnchoredPosition: {x: 24.800049, y: 9.800049}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &496606623
@@ -7835,7 +7835,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 24.800049, y: 55.799988}
+  m_AnchoredPosition: {x: 24.800049, y: 55.80005}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1409706078
@@ -23714,6 +23714,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d24ed99145b8285419f64834bce0ee80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FmodAudioBackend
+  landmarkConfigs:
+  - landmarkId: 0
+    musicEvent:
+      Guid:
+        Data1: 1887747844
+        Data2: 1183311063
+        Data3: 1282896545
+        Data4: -1015308424
+      Path: event:/Happy/Piano_Happy
+  - landmarkId: 1
+    musicEvent:
+      Guid:
+        Data1: 1892253589
+        Data2: 1164996803
+        Data3: -1064318586
+        Data4: 738166796
+      Path: event:/Happy/Bass_Happy
+  - landmarkId: 2
+    musicEvent:
+      Guid:
+        Data1: 515810633
+        Data2: 1281492034
+        Data3: 645347986
+        Data4: 868627061
+      Path: event:/Happy/Drums_Happy
+  musicGain: 10
 --- !u!114 &2076144697
 MonoBehaviour:
   m_ObjectHideFlags: 0
