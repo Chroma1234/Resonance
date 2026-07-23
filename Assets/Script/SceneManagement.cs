@@ -4,12 +4,22 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour
 {
+    public static SceneManagement Instance { get; private set; }
+
     [SerializeField] private int gameplaySceneIndex = 1;
     [SerializeField] private int moodSceneIndex = 0;
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void OpenMood()
@@ -24,6 +34,11 @@ public class SceneManagement : MonoBehaviour
         SceneManager.LoadScene(gameplaySceneIndex);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 
     private void Update()
