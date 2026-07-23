@@ -1,8 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
-<<<<<<< HEAD
---- !u!114 &-8409119397174734360
-=======
 --- !u!114 &-7108694268830340502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18,7 +15,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639198997932985574
+  lastModified: 639197961448952881
   FileSizes: []
   Exists: 1
 --- !u!114 &-6437161465187224617
@@ -113,7 +110,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Instruments.bank
   Name: Instruments
   StudioPath: bank:/Instruments
-  lastModified: 639203935436354619
+  lastModified: 639203552262243754
   FileSizes: []
   Exists: 1
 --- !u!114 &-4614640978153429338
@@ -318,7 +315,6 @@ MonoBehaviour:
   MaxDistance: 20
   Length: 0
 --- !u!114 &-1009051841331956380
->>>>>>> main
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -342,9 +338,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
-<<<<<<< HEAD
---- !u!114 &-7989304777529580640
-=======
 --- !u!114 &-839647012296814021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,7 +390,6 @@ MonoBehaviour:
   Labels: []
   Exists: 1
 --- !u!114 &-551812627085148757
->>>>>>> main
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -407,19 +399,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
+  m_Name: bank:/Composition.bank
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: Assets/FMOD/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 639197980305111773
+  Path: Assets/FMOD/Desktop/Composition.bank
+  Name: Composition
+  StudioPath: bank:/Composition
+  lastModified: 639202225923660526
   FileSizes: []
   Exists: 1
-<<<<<<< HEAD
---- !u!114 &-6457012457913319829
-=======
 --- !u!114 &-404942960154560277
->>>>>>> main
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -428,29 +416,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Piano
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Piano
-  Guid:
-    Data1: 1887747844
-    Data2: 1183311063
-    Data3: 1282896545
-    Data4: -1015308424
-  Banks:
-  - {fileID: 2569857857911990858}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -1041807935879130403}
-  - {fileID: 5242996920246694375}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 48000
---- !u!114 &-4782706084566694934
-=======
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/Drums_Melancholic/Duet
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
@@ -467,7 +432,6 @@ MonoBehaviour:
   Labels: []
   Exists: 1
 --- !u!114 &-331760487556643450
->>>>>>> main
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -491,59 +455,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
-<<<<<<< HEAD
---- !u!114 &-3005572049886226511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Instrument_Template/Duet
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Duet
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2058162456
-    data2: 2631435744
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-1041807935879130403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Piano/Intensity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Intensity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2165841579
-    data2: 937912429
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-166638960419516425
-=======
 --- !u!114 &-319524429542372279
->>>>>>> main
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -553,18 +465,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-<<<<<<< HEAD
-  m_Name: event:/Bass
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Bass
-  Guid:
-    Data1: 1892253589
-    Data2: 1164996803
-    Data3: -1064318586
-    Data4: 738166796
-  Banks:
-  - {fileID: 2569857857911990858}
-=======
   m_Name: event:/Melancholic/Piano_Melancholic
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
   Path: event:/Melancholic/Piano_Melancholic
@@ -575,48 +475,15 @@ MonoBehaviour:
     Data4: 603923350
   Banks:
   - {fileID: -4671386060823531181}
->>>>>>> main
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
   Parameters:
-<<<<<<< HEAD
-  - {fileID: -67849886217773655}
-  - {fileID: -8409119397174734360}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 48000
---- !u!114 &-67849886217773655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Bass/Intensity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Intensity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2165841579
-    data2: 937912429
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
-=======
   - {fileID: -6317059084119022138}
   - {fileID: -4142428957396121666}
   MinDistance: 1
   MaxDistance: 20
   Length: 48000
->>>>>>> main
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,16 +497,11 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EventCache
   EditorBanks:
-  - {fileID: 2158720451946601445}
-  - {fileID: 2569857857911990858}
-  - {fileID: -7989304777529580640}
+  - {fileID: 6055322578081351304}
+  - {fileID: -4671386060823531181}
+  - {fileID: -7108694268830340502}
+  - {fileID: -551812627085148757}
   EditorEvents:
-<<<<<<< HEAD
-  - {fileID: -6457012457913319829}
-  - {fileID: -166638960419516425}
-  - {fileID: 8878155901535304765}
-  - {fileID: 7015691403777555636}
-=======
   - {fileID: 7127779997842965367}
   - {fileID: 6353166971116868656}
   - {fileID: -839647012296814021}
@@ -654,65 +516,13 @@ MonoBehaviour:
   - {fileID: 8006257553563343189}
   - {fileID: -4809863895727007683}
   - {fileID: 9158271821772173935}
->>>>>>> main
   EditorParameters: []
   MasterBanks:
-  - {fileID: -7989304777529580640}
+  - {fileID: -7108694268830340502}
   StringsBanks:
-  - {fileID: 2158720451946601445}
+  - {fileID: 6055322578081351304}
   cacheVersion: 131860
-<<<<<<< HEAD
-  cacheTime: 639199125825366888
-  SerializableEventsDict:
-  - key: event:/Piano
-    index: 0
-  - key: event:/Bass
-    index: 1
-  - key: event:/Drums
-    index: 2
-  - key: event:/Instrument_Template
-    index: 3
---- !u!114 &2158720451946601445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: Assets/FMOD/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 639199125825366888
-  FileSizes:
-  - Name: 
-    Value: 1052
-  Exists: 1
---- !u!114 &2569857857911990858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Instruments.bank
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: Assets/FMOD/Desktop/Instruments.bank
-  Name: Instruments
-  StudioPath: bank:/Instruments
-  lastModified: 639199125825265654
-  FileSizes: []
-  Exists: 1
---- !u!114 &3968369828755463105
-=======
-  cacheTime: 639203935436365419
+  cacheTime: 639203552262273661
   SerializableEventsDict:
   - key: event:/Instrument_Template
     index: 0
@@ -743,7 +553,6 @@ MonoBehaviour:
   - key: event:/Melancholic/Bass_Melancholic
     index: 13
 --- !u!114 &365092630513302299
->>>>>>> main
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -753,31 +562,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Drums/Intensity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Intensity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2165841579
-    data2: 937912429
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &5242996920246694375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Piano/Duet
+  m_Name: parameter:/Instrument_Template/Duet
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
   Name: Duet
   StudioPath: 
@@ -791,9 +576,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
-<<<<<<< HEAD
---- !u!114 &6436151709503460417
-=======
 --- !u!114 &4576757453048744618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -824,7 +606,6 @@ MonoBehaviour:
   MaxDistance: 20
   Length: 48000
 --- !u!114 &4806160193249205465
->>>>>>> main
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -848,9 +629,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
-<<<<<<< HEAD
---- !u!114 &7015691403777555636
-=======
 --- !u!114 &6055322578081351304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -866,7 +644,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639203935436365419
+  lastModified: 639203552262273661
   FileSizes:
   - Name: 
     Value: 1600
@@ -955,7 +733,6 @@ MonoBehaviour:
   MaxDistance: 20
   Length: 48000
 --- !u!114 &7127779997842965367
->>>>>>> main
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -974,19 +751,16 @@ MonoBehaviour:
     Data3: 1913276848
     Data4: 39164181
   Banks:
-  - {fileID: 2569857857911990858}
+  - {fileID: -4671386060823531181}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: -4782706084566694934}
-  - {fileID: -3005572049886226511}
+  - {fileID: -331760487556643450}
+  - {fileID: 365092630513302299}
   MinDistance: 1
   MaxDistance: 20
   Length: 48000
-<<<<<<< HEAD
---- !u!114 &8878155901535304765
-=======
 --- !u!114 &7435663254048039972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1041,7 +815,6 @@ MonoBehaviour:
   MaxDistance: 20
   Length: 48000
 --- !u!114 &8935070762927534728
->>>>>>> main
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1051,26 +824,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Drums
+  m_Name: event:/Composition/Chords/C Minor
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Drums
+  Path: event:/Composition/Chords/C Minor
   Guid:
-    Data1: 515810633
-    Data2: 1281492034
-    Data3: 645347986
-    Data4: 868627061
+    Data1: -1851702922
+    Data2: 1287588412
+    Data3: 383469246
+    Data4: -2118730827
   Banks:
-  - {fileID: 2569857857911990858}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 3968369828755463105}
-  - {fileID: 6436151709503460417}
+  - {fileID: -551812627085148757}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
   MinDistance: 1
   MaxDistance: 20
-<<<<<<< HEAD
-=======
   Length: 0
 --- !u!114 &9158271821772173935
 MonoBehaviour:
@@ -1100,5 +869,4 @@ MonoBehaviour:
   - {fileID: 7435663254048039972}
   MinDistance: 1
   MaxDistance: 20
->>>>>>> main
   Length: 48000
