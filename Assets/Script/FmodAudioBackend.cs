@@ -10,6 +10,7 @@ public class FmodAudioBackend : MonoBehaviour, IAudioBackend
     {
         public int landmarkId;
         public EventReference musicEvent;
+        public Transform landmarkTransform;
     }
 
     [SerializeField]
@@ -36,6 +37,12 @@ public class FmodAudioBackend : MonoBehaviour, IAudioBackend
                 continue;
             }
 
+            if (config.landmarkTransform == null)
+            {
+                Debug.LogWarning($"FmodAudioBackend: Landmark {config.landmarkId} has no transform assigned.");
+                continue;
+            }
+
             var inst = new LandmarkInstance
             {
                 instance = RuntimeManager.CreateInstance(config.musicEvent)
@@ -43,6 +50,15 @@ public class FmodAudioBackend : MonoBehaviour, IAudioBackend
 
             if (inst.instance.isValid())
             {
+                GameObject go = config.landmarkTransform.gameObject;
+                Rigidbody rb = go.GetComponent<Rigidbody>();
+
+                FMODUnity.RuntimeManager.AttachInstanceToGameObject(
+                    inst.instance,
+                    go,
+                    rb
+                );
+
                 inst.instance.setVolume(musicGain);
                 inst.instance.start();
                 inst.instance.setParameterByName("LoopType", (float)LoopType.Normal);

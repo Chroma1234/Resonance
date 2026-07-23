@@ -10,6 +10,8 @@ public class DuetManager : MonoBehaviour
     private void Start()
     {
         landmarks = FindObjectsByType<MusicLandmark>(FindObjectsSortMode.None);
+
+        Debug.Log("[DuetManager] Start called");
     }
 
     private void Update()

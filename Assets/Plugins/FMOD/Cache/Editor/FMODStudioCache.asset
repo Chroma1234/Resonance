@@ -87,7 +87,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639204213923861360
+  lastModified: 639204373139438141
   FileSizes: []
   Exists: 1
 --- !u!114 &-7016913281709544576
@@ -233,7 +233,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Instruments.bank
   Name: Instruments
   StudioPath: bank:/Instruments
-  lastModified: 639204169909339243
+  lastModified: 639204373139418036
   FileSizes: []
   Exists: 1
 --- !u!114 &-4614640978153429338
@@ -599,7 +599,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Composition.bank
   Name: Composition
   StudioPath: bank:/Composition
-  lastModified: 639204169874155624
+  lastModified: 639204371045107878
   FileSizes: []
   Exists: 1
 --- !u!114 &-404942960154560277
@@ -721,7 +721,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 6055322578081351304}
   cacheVersion: 131860
-  cacheTime: 639204213923891960
+  cacheTime: 639204373139443308
   SerializableEventsDict:
   - key: event:/Instrument_Template
     index: 0
@@ -990,7 +990,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639204213923891960
+  lastModified: 639204373139443308
   FileSizes:
   - Name: 
     Value: 1718

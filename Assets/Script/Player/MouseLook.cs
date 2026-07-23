@@ -13,6 +13,7 @@ public class MouseLook : MonoBehaviour
     private void Start()
     {
         yRotation = transform.eulerAngles.y;
+        xRotation = cameraTransform.localEulerAngles.x;
     }
 
     private void Update()
@@ -45,16 +46,8 @@ public class MouseLook : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -80f, 80f);
 
-        transform.rotation = Quaternion.Euler(
-            0f,
-            yRotation,
-            0f
-        );
+        transform.rotation = Quaternion.Euler(0f, yRotation, 0f);
 
-        cameraTransform.localRotation = Quaternion.Euler(
-            xRotation,
-            0f,
-            0f
-        );
+        cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
 }

@@ -14,6 +14,7 @@ public class MusicConductor : MonoBehaviour
         if (timer >= secondsPerBar)
         {
             timer -= secondsPerBar;
+            Debug.Log("[MusicConductor] Bar boundary");
             SoundManager.Instance.OnLoopBarBoundary();
         }
     }
