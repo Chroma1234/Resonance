@@ -16,10 +16,6 @@ public class ChordSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
 
     public ChordData AssignedChord => assignedChord;
 
-    //private void Awake()
-    //{
-    //    RefreshDisplay();
-    //}
 
     public void OnDrop(PointerEventData eventData)
     {

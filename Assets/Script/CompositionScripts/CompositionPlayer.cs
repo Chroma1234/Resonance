@@ -27,11 +27,17 @@ public class CompositionPlayer : MonoBehaviour
     // It is used to calculate the playhead position.
     [SerializeField] private RectTransform playheadContainer;
 
+
     // Stores the playback coroutine so it can be stopped.
     private Coroutine playbackCoroutine;
 
     // Stores the FMOD chord that is currently playing.
     private EventInstance currentChordInstance;
+
+
+    [Header("Recording")]
+    [SerializeField]
+    private FMODMasterRecorder masterRecorder;
 
     private void Start()
     {
@@ -298,6 +304,41 @@ public class CompositionPlayer : MonoBehaviour
             );
     }
 
+    public void RecordComposition()
+    {
+        if (masterRecorder == null)
+        {
+            Debug.LogError(
+                "FMOD Master Recorder is not assigned."
+            );
+
+            return;
+        }
+
+        // Start recording first.
+        masterRecorder.StartRecording();
+
+        // Then play the composition.
+        PlayComposition();
+    }
+
+    public void StopRecordingAndSave()
+    {
+        if (masterRecorder == null)
+        {
+            Debug.LogError(
+                "FMOD Master Recorder is not assigned."
+            );
+
+            return;
+        }
+
+        // Stop your composition.
+        StopComposition();
+
+        // Export the WAV.
+        masterRecorder.StopRecordingAndSave();
+    }
     public void StopComposition()
     {
         if (playbackCoroutine != null)
@@ -353,4 +394,5 @@ public class CompositionPlayer : MonoBehaviour
         // Stop the audio when the scene closes.
         StopComposition();
     }
+
 }
