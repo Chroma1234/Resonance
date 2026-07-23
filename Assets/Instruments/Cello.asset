@@ -12,15 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83ea01cdcdead0142b5fa02c6ca34a19, type: 3}
   m_Name: Cello
   m_EditorClassIdentifier: Assembly-CSharp::InstrumentData
-  eventReference:
-    Guid:
-      Data1: 1892253589
-      Data2: 1164996803
-      Data3: -1064318586
-      Data4: 738166796
-    Path: event:/Bass
+  moodEvents:
+  - mood: 0
+    eventReference:
+      Guid:
+        Data1: 1892253589
+        Data2: 1164996803
+        Data3: -1064318586
+        Data4: 738166796
+      Path: event:/Happy/Bass_Happy
+  - mood: 1
+    eventReference:
+      Guid:
+        Data1: -572425241
+        Data2: 1207686032
+        Data3: 1083161747
+        Data4: -1422075714
+      Path: event:/Melancholic/Bass_Melancholic
   instrumentName: Cello
   maxDistance: 15
   intenseDistance: 5
   duetRadius: 3
   smoothing: 3
+  modelPrefab: {fileID: 919132149155446097, guid: ffbbe08c575c7594a8a6dfa280917618, type: 3}

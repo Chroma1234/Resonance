@@ -12,15 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83ea01cdcdead0142b5fa02c6ca34a19, type: 3}
   m_Name: Piano
   m_EditorClassIdentifier: Assembly-CSharp::InstrumentData
-  eventReference:
-    Guid:
-      Data1: 1887747844
-      Data2: 1183311063
-      Data3: 1282896545
-      Data4: -1015308424
-    Path: event:/Piano
+  moodEvents:
+  - mood: 0
+    eventReference:
+      Guid:
+        Data1: 1887747844
+        Data2: 1183311063
+        Data3: 1282896545
+        Data4: -1015308424
+      Path: event:/Happy/Piano_Happy
+  - mood: 1
+    eventReference:
+      Guid:
+        Data1: 101784337
+        Data2: 1276020437
+        Data3: 1862274969
+        Data4: 603923350
+      Path: event:/Melancholic/Piano_Melancholic
   instrumentName: Piano
   maxDistance: 15
   intenseDistance: 5
   duetRadius: 3
   smoothing: 3
+  modelPrefab: {fileID: 4783086268077998020, guid: c7b710ea7b440f24f9abdb8d7a84975b, type: 3}

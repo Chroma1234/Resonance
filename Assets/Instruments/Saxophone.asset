@@ -12,15 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83ea01cdcdead0142b5fa02c6ca34a19, type: 3}
   m_Name: Saxophone
   m_EditorClassIdentifier: Assembly-CSharp::InstrumentData
-  eventReference:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+  moodEvents:
+  - mood: 0
+    eventReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+  - mood: 1
+    eventReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
   instrumentName: Saxophone
   maxDistance: 15
   intenseDistance: 5
   duetRadius: 3
   smoothing: 3
+  modelPrefab: {fileID: 919132149155446097, guid: 25e91cc82670e1c4eaa276db98ea6c82, type: 3}
