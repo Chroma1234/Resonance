@@ -87,7 +87,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639204373139438141
+  lastModified: 639205002397912292
   FileSizes: []
   Exists: 1
 --- !u!114 &-7016913281709544576
@@ -233,7 +233,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Instruments.bank
   Name: Instruments
   StudioPath: bank:/Instruments
-  lastModified: 639204373139418036
+  lastModified: 639205002397866784
   FileSizes: []
   Exists: 1
 --- !u!114 &-4614640978153429338
@@ -332,33 +332,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-3298599745483339826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Composition/Chords/D Minor
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Composition/Chords/D Minor
-  Guid:
-    Data1: 1210166191
-    Data2: 1145612937
-    Data3: 518479028
-    Data4: -196572657
-  Banks:
-  - {fileID: -551812627085148757}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &-3221101404992185736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,33 +356,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-3187989608420417929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Composition/Chords/F Major
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Composition/Chords/F Major
-  Guid:
-    Data1: -1730096015
-    Data2: 1124113535
-    Data3: 995619734
-    Data4: 1019291196
-  Banks:
-  - {fileID: -551812627085148757}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &-3095559857988201003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,33 +404,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-2612721787195337756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Composition/Chords/G Minor
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Composition/Chords/G Minor
-  Guid:
-    Data1: 605843166
-    Data2: 1263207894
-    Data3: 16489112
-    Data4: -1327942805
-  Banks:
-  - {fileID: -551812627085148757}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &-1009051841331956380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -509,33 +428,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-839647012296814021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Composition/Chords/Bb Major
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Composition/Chords/Bb Major
-  Guid:
-    Data1: 1716795741
-    Data2: 1125259939
-    Data3: -389437798
-    Data4: 1613904343
-  Banks:
-  - {fileID: -551812627085148757}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &-805113395977275531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -583,24 +475,6 @@ MonoBehaviour:
   Type: 0
   IsGlobal: 0
   Labels: []
-  Exists: 1
---- !u!114 &-551812627085148757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Composition.bank
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: Assets/FMOD/Desktop/Composition.bank
-  Name: Composition
-  StudioPath: bank:/Composition
-  lastModified: 639204371045107878
-  FileSizes: []
   Exists: 1
 --- !u!114 &-404942960154560277
 MonoBehaviour:
@@ -698,16 +572,8 @@ MonoBehaviour:
   - {fileID: 6055322578081351304}
   - {fileID: -4671386060823531181}
   - {fileID: -7108694268830340502}
-  - {fileID: -551812627085148757}
   EditorEvents:
   - {fileID: 7127779997842965367}
-  - {fileID: 6353166971116868656}
-  - {fileID: -839647012296814021}
-  - {fileID: 6075912871588686200}
-  - {fileID: -3187989608420417929}
-  - {fileID: 8935070762927534728}
-  - {fileID: -3298599745483339826}
-  - {fileID: -2612721787195337756}
   - {fileID: 6790913282916946854}
   - {fileID: -319524429542372279}
   - {fileID: 4576757453048744618}
@@ -721,7 +587,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 6055322578081351304}
   cacheVersion: 131860
-  cacheTime: 639204373139443308
+  cacheTime: 639205002397932227
   SerializableEventsDict:
   - key: event:/Instrument_Template
     index: 0
@@ -990,65 +856,11 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639204373139443308
+  lastModified: 639205002397932227
   FileSizes:
   - Name: 
     Value: 1718
   Exists: 1
---- !u!114 &6075912871588686200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Composition/Chords/A Dminished
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Composition/Chords/A Dminished
-  Guid:
-    Data1: 1189618025
-    Data2: 1131473562
-    Data3: 1173661570
-    Data4: 1534478519
-  Banks:
-  - {fileID: -551812627085148757}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &6353166971116868656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Composition/Chords/Eb Major
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Composition/Chords/Eb Major
-  Guid:
-    Data1: -178910137
-    Data2: 1103921126
-    Data3: 1798159284
-    Data4: 1671239434
-  Banks:
-  - {fileID: -551812627085148757}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &6790913282916946854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1262,33 +1074,6 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &8935070762927534728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Composition/Chords/C Minor
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Composition/Chords/C Minor
-  Guid:
-    Data1: -1851702922
-    Data2: 1287588412
-    Data3: 383469246
-    Data4: -2118730827
-  Banks:
-  - {fileID: -551812627085148757}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &9071829507426372927
 MonoBehaviour:
   m_ObjectHideFlags: 0
