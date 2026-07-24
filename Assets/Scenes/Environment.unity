@@ -168,6 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MusicLandmark
   instrumentData: {fileID: 11400000, guid: 21ee15b270f6bd4489d0647de26c4b75, type: 2}
   model: {fileID: 0}
+  instrumentId: 
 --- !u!1 &79140359
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MusicLandmark
   instrumentData: {fileID: 11400000, guid: cef1b80b171a9874a8261ad87aa08a9b, type: 2}
   model: {fileID: 0}
+  instrumentId: 
 --- !u!1 &113307226
 GameObject:
   m_ObjectHideFlags: 0
@@ -7245,6 +7247,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623542221}
   m_CullTransparentMesh: 1
+--- !u!4 &651947220 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8181295886334624671, guid: d2e84bec81971474eafd80117a6a0745, type: 3}
+  m_PrefabInstance: {fileID: 1401955176405353633}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &681117136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7815,6 +7822,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MusicLandmark
   instrumentData: {fileID: 11400000, guid: 61a75c7d7af326e4580cb6e92081e23c, type: 2}
   model: {fileID: 0}
+  instrumentId: 
 --- !u!1 &971709957
 GameObject:
   m_ObjectHideFlags: 0
@@ -25063,6 +25071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ba7cba2cd4c3854a8fe5af5eaf1a044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DuetManager
+  player: {fileID: 0}
 --- !u!4 &1956191186
 Transform:
   m_ObjectHideFlags: 0
@@ -25390,6 +25399,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d24ed99145b8285419f64834bce0ee80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FmodAudioBackend
+  landmarkConfigs:
+  - landmarkId: 0
+    musicEvent:
+      Guid:
+        Data1: 1887747844
+        Data2: 1183311063
+        Data3: 1282896545
+        Data4: -1015308424
+      Path: event:/Happy/Piano_Happy
+    landmarkTransform: {fileID: 951421964}
+  - landmarkId: 1
+    musicEvent:
+      Guid:
+        Data1: 1892253589
+        Data2: 1164996803
+        Data3: -1064318586
+        Data4: 738166796
+      Path: event:/Happy/Bass_Happy
+    landmarkTransform: {fileID: 79140360}
+  - landmarkId: 2
+    musicEvent:
+      Guid:
+        Data1: 515810633
+        Data2: 1281492034
+        Data3: 645347986
+        Data4: 868627061
+      Path: event:/Happy/Drums_Happy
+    landmarkTransform: {fileID: 651947220}
+  musicGain: 2
 --- !u!114 &2076144697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25429,7 +25467,7 @@ GameObject:
   - component: {fileID: 2120414901}
   - component: {fileID: 2120414900}
   - component: {fileID: 2120414898}
-  - component: {fileID: 2120414902}
+  - component: {fileID: 2120414904}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -25547,7 +25585,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1337856443}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2120414902
+--- !u!114 &2120414904
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
