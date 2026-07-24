@@ -1,77 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8706495928005991853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Bass_Happy/Clarity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Clarity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 2869341830
-    data2: 1366809245
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-8474610137750668815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Drums_Melancholic/Presence
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Presence
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2488293593
-    data2: 2892315591
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-7821059864968573172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Piano_Melancholic/Clarity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Clarity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 2869341830
-    data2: 1366809245
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
 --- !u!114 &-7108694268830340502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,32 +15,8 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639205002397912292
+  lastModified: 639201980273243170
   FileSizes: []
-  Exists: 1
---- !u!114 &-7016913281709544576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/ReverbSend
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: ReverbSend
-  StudioPath: parameter:/ReverbSend
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3274971341
-    data2: 548242061
-  Type: 0
-  IsGlobal: 1
-  Labels: []
   Exists: 1
 --- !u!114 &-6437161465187224617
 MonoBehaviour:
@@ -129,7 +33,7 @@ MonoBehaviour:
   Name: Intensity
   StudioPath: 
   Min: 0
-  Max: 2
+  Max: 1
   Default: 0
   ID:
     data1: 2165841579
@@ -162,30 +66,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-4953278208414628550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Drums_Melancholic/ReverbSend
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: ReverbSend
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3274971341
-    data2: 548242061
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
 --- !u!114 &-4809863895727007683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,9 +92,6 @@ MonoBehaviour:
   Parameters:
   - {fileID: -4614640978153429338}
   - {fileID: -805113395977275531}
-  - {fileID: 8726591128341557411}
-  - {fileID: -8706495928005991853}
-  - {fileID: 7021481018671067839}
   MinDistance: 1
   MaxDistance: 20
   Length: 48000
@@ -233,7 +110,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Instruments.bank
   Name: Instruments
   StudioPath: bank:/Instruments
-  lastModified: 639205002397866784
+  lastModified: 639203541093843571
   FileSizes: []
   Exists: 1
 --- !u!114 &-4614640978153429338
@@ -260,30 +137,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-4571381019821532356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Piano_Melancholic/Presence
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Presence
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2488293593
-    data2: 2892315591
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
 --- !u!114 &-4495977326170823109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,7 +152,7 @@ MonoBehaviour:
   Name: Intensity
   StudioPath: 
   Min: 0
-  Max: 2
+  Max: 1
   Default: 0
   ID:
     data1: 2165841579
@@ -323,7 +176,7 @@ MonoBehaviour:
   Name: Intensity
   StudioPath: 
   Min: 0
-  Max: 2
+  Max: 1
   Default: 0
   ID:
     data1: 2165841579
@@ -332,6 +185,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-3298599745483339826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Composition/Chords/D Minor
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Composition/Chords/D Minor
+  Guid:
+    Data1: 1210166191
+    Data2: 1145612937
+    Data3: 518479028
+    Data4: -196572657
+  Banks:
+  - {fileID: -551812627085148757}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-3221101404992185736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,7 +236,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-3095559857988201003
+--- !u!114 &-3187989608420417929
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -365,21 +245,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Drums_Happy/ReverbSend
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: ReverbSend
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3274971341
-    data2: 548242061
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Composition/Chords/F Major
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Composition/Chords/F Major
+  Guid:
+    Data1: -1730096015
+    Data2: 1124113535
+    Data3: 995619734
+    Data4: 1019291196
+  Banks:
+  - {fileID: -551812627085148757}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-2824014042603425170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,6 +287,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-2612721787195337756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Composition/Chords/G Minor
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Composition/Chords/G Minor
+  Guid:
+    Data1: 605843166
+    Data2: 1263207894
+    Data3: 16489112
+    Data4: -1327942805
+  Banks:
+  - {fileID: -551812627085148757}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-1009051841331956380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,7 +329,7 @@ MonoBehaviour:
   Name: Intensity
   StudioPath: 
   Min: 0
-  Max: 2
+  Max: 1
   Default: 0
   ID:
     data1: 2165841579
@@ -428,6 +338,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-839647012296814021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Composition/Chords/Bb Major
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Composition/Chords/Bb Major
+  Guid:
+    Data1: 1716795741
+    Data2: 1125259939
+    Data3: -389437798
+    Data4: 1613904343
+  Banks:
+  - {fileID: -551812627085148757}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-805113395977275531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,7 +380,7 @@ MonoBehaviour:
   Name: Intensity
   StudioPath: 
   Min: 0
-  Max: 2
+  Max: 1
   Default: 0
   ID:
     data1: 2165841579
@@ -452,7 +389,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-698658990716957513
+--- !u!114 &-551812627085148757
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -461,20 +398,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Drums_Happy/Clarity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Clarity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 2869341830
-    data2: 1366809245
-  Type: 0
-  IsGlobal: 0
-  Labels: []
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Composition.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/FMOD/Desktop/Composition.bank
+  Name: Composition
+  StudioPath: bank:/Composition
+  lastModified: 639202224856031634
+  FileSizes: []
   Exists: 1
 --- !u!114 &-404942960154560277
 MonoBehaviour:
@@ -515,7 +446,7 @@ MonoBehaviour:
   Name: Intensity
   StudioPath: 
   Min: 0
-  Max: 2
+  Max: 1
   Default: 0
   ID:
     data1: 2165841579
@@ -550,9 +481,6 @@ MonoBehaviour:
   Parameters:
   - {fileID: -6317059084119022138}
   - {fileID: -4142428957396121666}
-  - {fileID: 1487043841371957040}
-  - {fileID: -7821059864968573172}
-  - {fileID: -4571381019821532356}
   MinDistance: 1
   MaxDistance: 20
   Length: 48000
@@ -572,22 +500,29 @@ MonoBehaviour:
   - {fileID: 6055322578081351304}
   - {fileID: -4671386060823531181}
   - {fileID: -7108694268830340502}
+  - {fileID: -551812627085148757}
   EditorEvents:
   - {fileID: 7127779997842965367}
+  - {fileID: 6353166971116868656}
+  - {fileID: -839647012296814021}
+  - {fileID: 6075912871588686200}
+  - {fileID: -3187989608420417929}
+  - {fileID: 8935070762927534728}
+  - {fileID: -3298599745483339826}
+  - {fileID: -2612721787195337756}
   - {fileID: 6790913282916946854}
   - {fileID: -319524429542372279}
   - {fileID: 4576757453048744618}
   - {fileID: 8006257553563343189}
   - {fileID: -4809863895727007683}
   - {fileID: 9158271821772173935}
-  EditorParameters:
-  - {fileID: -7016913281709544576}
+  EditorParameters: []
   MasterBanks:
   - {fileID: -7108694268830340502}
   StringsBanks:
   - {fileID: 6055322578081351304}
   cacheVersion: 131860
-  cacheTime: 639205002397932227
+  cacheTime: 639203541093843571
   SerializableEventsDict:
   - key: event:/Instrument_Template
     index: 0
@@ -641,126 +576,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &1088903812154410603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Bass_Melancholic/ReverbSend
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: ReverbSend
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3274971341
-    data2: 548242061
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &1487043841371957040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Piano_Melancholic/ReverbSend
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: ReverbSend
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3274971341
-    data2: 548242061
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &2395648169030092104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Piano_Happy/Clarity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Clarity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 2869341830
-    data2: 1366809245
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &3360892997079347373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Bass_Melancholic/Clarity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Clarity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 2869341830
-    data2: 1366809245
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &3706964483895586811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Drums_Melancholic/Clarity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Clarity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 2869341830
-    data2: 1366809245
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
 --- !u!114 &4576757453048744618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -787,36 +602,9 @@ MonoBehaviour:
   Parameters:
   - {fileID: 4806160193249205465}
   - {fileID: -404942960154560277}
-  - {fileID: -8474610137750668815}
-  - {fileID: 3706964483895586811}
-  - {fileID: -4953278208414628550}
   MinDistance: 1
   MaxDistance: 20
   Length: 48000
---- !u!114 &4754492634766583770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Drums_Happy/Presence
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Presence
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2488293593
-    data2: 2892315591
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
 --- !u!114 &4806160193249205465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,7 +620,7 @@ MonoBehaviour:
   Name: Intensity
   StudioPath: 
   Min: 0
-  Max: 2
+  Max: 1
   Default: 0
   ID:
     data1: 2165841579
@@ -856,11 +644,65 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639205002397932227
+  lastModified: 639203541093843571
   FileSizes:
   - Name: 
-    Value: 1718
+    Value: 1600
   Exists: 1
+--- !u!114 &6075912871588686200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Composition/Chords/A Dminished
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Composition/Chords/A Dminished
+  Guid:
+    Data1: 1189618025
+    Data2: 1131473562
+    Data3: 1173661570
+    Data4: 1534478519
+  Banks:
+  - {fileID: -551812627085148757}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &6353166971116868656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Composition/Chords/Eb Major
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Composition/Chords/Eb Major
+  Guid:
+    Data1: -178910137
+    Data2: 1103921126
+    Data3: 1798159284
+    Data4: 1671239434
+  Banks:
+  - {fileID: -551812627085148757}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &6790913282916946854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -887,36 +729,9 @@ MonoBehaviour:
   Parameters:
   - {fileID: -4495977326170823109}
   - {fileID: -3221101404992185736}
-  - {fileID: 7164674643553052332}
-  - {fileID: 7898235339722308512}
-  - {fileID: 2395648169030092104}
   MinDistance: 1
   MaxDistance: 20
   Length: 48000
---- !u!114 &7021481018671067839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Bass_Happy/Presence
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Presence
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2488293593
-    data2: 2892315591
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
 --- !u!114 &7127779997842965367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -946,30 +761,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 48000
---- !u!114 &7164674643553052332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Piano_Happy/ReverbSend
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: ReverbSend
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3274971341
-    data2: 548242061
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
 --- !u!114 &7435663254048039972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -990,30 +781,6 @@ MonoBehaviour:
   ID:
     data1: 2058162456
     data2: 2631435744
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &7898235339722308512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Piano_Happy/Presence
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Presence
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2488293593
-    data2: 2892315591
   Type: 0
   IsGlobal: 0
   Labels: []
@@ -1044,13 +811,10 @@ MonoBehaviour:
   Parameters:
   - {fileID: -1009051841331956380}
   - {fileID: -2824014042603425170}
-  - {fileID: -3095559857988201003}
-  - {fileID: 4754492634766583770}
-  - {fileID: -698658990716957513}
   MinDistance: 1
   MaxDistance: 20
   Length: 48000
---- !u!114 &8726591128341557411
+--- !u!114 &8935070762927534728
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1059,45 +823,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Bass_Happy/ReverbSend
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: ReverbSend
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3274971341
-    data2: 548242061
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &9071829507426372927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Bass_Melancholic/Presence
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Presence
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2488293593
-    data2: 2892315591
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Composition/Chords/C Minor
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Composition/Chords/C Minor
+  Guid:
+    Data1: -1851702922
+    Data2: 1287588412
+    Data3: 383469246
+    Data4: -2118730827
+  Banks:
+  - {fileID: -551812627085148757}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &9158271821772173935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1124,9 +867,6 @@ MonoBehaviour:
   Parameters:
   - {fileID: -6437161465187224617}
   - {fileID: 7435663254048039972}
-  - {fileID: 3360892997079347373}
-  - {fileID: 9071829507426372927}
-  - {fileID: 1088903812154410603}
   MinDistance: 1
   MaxDistance: 20
   Length: 48000

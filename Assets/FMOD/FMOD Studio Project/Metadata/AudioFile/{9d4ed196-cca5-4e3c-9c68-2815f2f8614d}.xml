@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{9d4ed196-cca5-4e3c-9c68-2815f2f8614d}">
+		<property name="assetPath">
+			<value>Bb Major.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e24508e3-46a4-41a7-903b-dfb4c6534fd0}</destination>
+		</relationship>
+	</object>
+</objects>

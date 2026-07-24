@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c61c99891f8de43befde01ef3dd604, type: 3}
+  m_Name: D Minor
+  m_EditorClassIdentifier: Assembly-CSharp::ChordData
+  chordName: D Minor
+  chordEvent:
+    Guid:
+      Data1: 1210166191
+      Data2: 1145612937
+      Data3: 518479028
+      Data4: -196572657
+    Path: event:/Composition/Chords/D Minor
