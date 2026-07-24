@@ -128,7 +128,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 38768408}
-  - component: {fileID: 38768409}
   m_Layer: 0
   m_Name: Saxophone
   m_TagString: Untagged
@@ -154,21 +153,6 @@ Transform:
   - {fileID: 1414827726}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &38768409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 38768407}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 263f4bfbcaff26d4f8c3f5ec5ef51bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MusicLandmark
-  instrumentData: {fileID: 11400000, guid: 21ee15b270f6bd4489d0647de26c4b75, type: 2}
-  model: {fileID: 0}
-  instrumentId: 
 --- !u!1 &71577670
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +237,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 79140360}
-  - component: {fileID: 79140361}
   m_Layer: 0
   m_Name: Cello
   m_TagString: Untagged
@@ -279,21 +262,6 @@ Transform:
   - {fileID: 971709960}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &79140361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 79140359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 263f4bfbcaff26d4f8c3f5ec5ef51bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MusicLandmark
-  instrumentData: {fileID: 11400000, guid: cef1b80b171a9874a8261ad87aa08a9b, type: 2}
-  model: {fileID: 0}
-  instrumentId: 
 --- !u!1 &130998215
 GameObject:
   m_ObjectHideFlags: 0
@@ -7229,6 +7197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CompositionUIManager
   composeButton: {fileID: 579717234}
+  playerMovement: {fileID: 1337856448}
+  mouseLook: {fileID: 1337856449}
 --- !u!1 &352469554
 GameObject:
   m_ObjectHideFlags: 0
@@ -7533,7 +7503,7 @@ GameObject:
   - component: {fileID: 387592153}
   - component: {fileID: 387592152}
   m_Layer: 5
-  m_Name: Button
+  m_Name: x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7618,10 +7588,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1127777995}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 337788221}
+        m_TargetAssemblyTypeName: CompositionUIManager, Assembly-CSharp
+        m_MethodName: CloseSelectedPanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9923,7 +9893,7 @@ GameObject:
   - component: {fileID: 762607965}
   - component: {fileID: 762607964}
   m_Layer: 5
-  m_Name: Button
+  m_Name: X
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10008,10 +9978,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 473839689}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 337788221}
+        m_TargetAssemblyTypeName: CompositionUIManager, Assembly-CSharp
+        m_MethodName: CloseSelectedPanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -11494,7 +11464,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 951421964}
-  - component: {fileID: 951421965}
   - component: {fileID: 951421966}
   m_Layer: 0
   m_Name: Piano
@@ -11521,21 +11490,6 @@ Transform:
   - {fileID: 1547731386}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &951421965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 951421963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 263f4bfbcaff26d4f8c3f5ec5ef51bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MusicLandmark
-  instrumentData: {fileID: 11400000, guid: 61a75c7d7af326e4580cb6e92081e23c, type: 2}
-  model: {fileID: 0}
-  instrumentId: 
 --- !u!114 &951421966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34808,10 +34762,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 244514767791868430}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 337788221}
+        m_TargetAssemblyTypeName: CompositionUIManager, Assembly-CSharp
+        m_MethodName: CloseSelectedPanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -37802,7 +37756,7 @@ GameObject:
   - component: {fileID: 1659615085204630807}
   - component: {fileID: 8731929379082103451}
   m_Layer: 5
-  m_Name: Button
+  m_Name: x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class CompositionUIManager : MonoBehaviour
 {
+    [Header("UI")]
     [SerializeField] private GameObject composeButton;
+
+    [Header("Player")]
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private MouseLook mouseLook;
 
     private GameObject selectedPanel;
     private bool playerNearby;
@@ -10,6 +15,9 @@ public class CompositionUIManager : MonoBehaviour
     private void Start()
     {
         composeButton.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void EnterInstrument(GameObject panel)
@@ -22,7 +30,6 @@ public class CompositionUIManager : MonoBehaviour
 
     public void ExitInstrument(GameObject panel)
     {
-        // Prevent another trigger from hiding the button.
         if (selectedPanel != panel)
             return;
 
@@ -39,15 +46,45 @@ public class CompositionUIManager : MonoBehaviour
 
         selectedPanel.SetActive(true);
         composeButton.SetActive(false);
+
+        SetPlayerControls(false);
+
+        Time.timeScale = 0f;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
-    public void ClosePanel(GameObject panel)
+    public void CloseSelectedPanel()
     {
-        panel.SetActive(false);
+        if (selectedPanel != null)
+        {
+            selectedPanel.SetActive(false);
+        }
+
+        SetPlayerControls(true);
+
+        Time.timeScale = 1f;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         if (playerNearby)
         {
             composeButton.SetActive(true);
+        }
+    }
+
+    private void SetPlayerControls(bool enabled)
+    {
+        if (playerMovement != null)
+        {
+            playerMovement.enabled = enabled;
+        }
+
+        if (mouseLook != null)
+        {
+            mouseLook.enabled = enabled;
         }
     }
 }
