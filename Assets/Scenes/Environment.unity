@@ -167,8 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicLandmark
   instrumentData: {fileID: 11400000, guid: 21ee15b270f6bd4489d0647de26c4b75, type: 2}
-  model: {fileID: 0}
-  instrumentId: 
+  model: {fileID: 38768407}
+  instrumentId: 2
 --- !u!1 &79140359
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,8 +217,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicLandmark
   instrumentData: {fileID: 11400000, guid: cef1b80b171a9874a8261ad87aa08a9b, type: 2}
-  model: {fileID: 0}
-  instrumentId: 
+  model: {fileID: 79140359}
+  instrumentId: 1
 --- !u!1 &113307226
 GameObject:
   m_ObjectHideFlags: 0
@@ -7140,11 +7140,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623542221}
   m_CullTransparentMesh: 1
---- !u!4 &651947220 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8181295886334624671, guid: d2e84bec81971474eafd80117a6a0745, type: 3}
-  m_PrefabInstance: {fileID: 1401955176405353633}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &681117136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7714,8 +7709,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicLandmark
   instrumentData: {fileID: 11400000, guid: 61a75c7d7af326e4580cb6e92081e23c, type: 2}
-  model: {fileID: 0}
-  instrumentId: 
+  model: {fileID: 951421963}
+  instrumentId: 0
 --- !u!1 &971709957
 GameObject:
   m_ObjectHideFlags: 0
@@ -25219,7 +25214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ba7cba2cd4c3854a8fe5af5eaf1a044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DuetManager
-  player: {fileID: 0}
+  player: {fileID: 1337856443}
 --- !u!4 &1956191186
 Transform:
   m_ObjectHideFlags: 0
@@ -25700,12 +25695,21 @@ MonoBehaviour:
   - landmarkId: 2
     musicEvent:
       Guid:
-        Data1: 515810633
-        Data2: 1281492034
-        Data3: 645347986
-        Data4: 868627061
-      Path: event:/Happy/Drums_Happy
-    landmarkTransform: {fileID: 651947220}
+        Data1: 1175297259
+        Data2: 1195529765
+        Data3: -1284432979
+        Data4: 2136747151
+      Path: event:/Happy/Saxophone_Happy
+    landmarkTransform: {fileID: 38768408}
+  - landmarkId: 3
+    musicEvent:
+      Guid:
+        Data1: 983654249
+        Data2: 1088689311
+        Data3: 542318507
+        Data4: 883878883
+      Path: event:/Drums
+    landmarkTransform: {fileID: 1401955176405353634}
   musicGain: 2
 --- !u!114 &2076144697
 MonoBehaviour:
@@ -25946,6 +25950,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8298392605919340879, guid: d2e84bec81971474eafd80117a6a0745, type: 3}
+      propertyPath: instrumentId
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298392605919340879, guid: d2e84bec81971474eafd80117a6a0745, type: 3}
+      propertyPath: instrumentData
+      value: 
+      objectReference: {fileID: 11400000, guid: b13df09d52b2fa64a82dceaf50eb4bac, type: 2}
     - target: {fileID: 8953193194695002532, guid: d2e84bec81971474eafd80117a6a0745, type: 3}
       propertyPath: m_Name
       value: Instrument
@@ -25959,6 +25971,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2e84bec81971474eafd80117a6a0745, type: 3}
+--- !u!4 &1401955176405353634 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8906819278935484028, guid: d2e84bec81971474eafd80117a6a0745, type: 3}
+  m_PrefabInstance: {fileID: 1401955176405353633}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1565338378934141646
 MonoBehaviour:
   m_ObjectHideFlags: 0

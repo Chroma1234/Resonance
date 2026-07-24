@@ -72,6 +72,7 @@ public class MusicLandmark : MonoBehaviour
             case "Piano": return 0;
             case "Cello": return 1;
             case "Saxophone": return 2;
+            case "Drums": return 3;
             default: return -1;
         }
     }
