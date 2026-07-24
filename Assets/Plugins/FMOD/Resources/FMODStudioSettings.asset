@@ -708,7 +708,6 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
-  - Composition
   - Instruments
   BanksToLoad: []
   LiveUpdatePort: 9264

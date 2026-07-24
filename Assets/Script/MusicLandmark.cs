@@ -2,7 +2,11 @@ using UnityEngine;
 
 public class MusicLandmark : MonoBehaviour
 {
+<<<<<<< HEAD
+    [SerializeField] private InstrumentData instrumentData;
+=======
     [HideInInspector] public InstrumentData instrumentData;
+>>>>>>> main
 
     private Transform player;
 
