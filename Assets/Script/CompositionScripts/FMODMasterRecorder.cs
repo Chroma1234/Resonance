@@ -6,6 +6,8 @@ using System.Threading;
 using FMOD;
 using FMODUnity;
 using UnityEngine;
+using TMPro;
+using System.Collections;
 
 using Debug = UnityEngine.Debug;
 using Thread = System.Threading.Thread;
@@ -65,6 +67,19 @@ public class FMODMasterRecorder : MonoBehaviour
 
     private int droppedSamples;
 
+
+    [Header("UI Feedback")]
+    [SerializeField] private TMP_Text recordingStatusText;
+
+    [SerializeField] private string readyMessage = "Ready to record";
+    [SerializeField] private string recordingMessage = "? Recording...";
+    [SerializeField] private string savedMessage = "Recording saved!";
+
+    [SerializeField] private float savedMessageDuration = 2f;
+
+    private Coroutine statusCoroutine;
+
+
     public bool IsRecording
     {
         get { return isRecording; }
@@ -73,6 +88,7 @@ public class FMODMasterRecorder : MonoBehaviour
     private void Start()
     {
         SetupRecorder();
+        UpdateStatusText(readyMessage);
     }
 
     private void SetupRecorder()
@@ -263,6 +279,8 @@ public class FMODMasterRecorder : MonoBehaviour
 
             isRecording = true;
 
+            UpdateStatusText(recordingMessage);
+
             Debug.Log(
                 "FMOD Master Bus recording started."
             );
@@ -341,6 +359,8 @@ public class FMODMasterRecorder : MonoBehaviour
                 "audio was captured."
             );
 
+            UpdateStatusText("No audio was recorded.");
+
             return;
         }
 
@@ -348,6 +368,8 @@ public class FMODMasterRecorder : MonoBehaviour
             "Stereo recording saved successfully:\n" +
             currentFilePath
         );
+
+        ShowSavedFeedback();
 
         if (droppedSamples > 0)
         {
@@ -1042,7 +1064,38 @@ public class FMODMasterRecorder : MonoBehaviour
             );
         }
     }
+    private void UpdateStatusText(string message)
+    {
+        if (recordingStatusText != null)
+        {
+            recordingStatusText.text = message;
+        }
+    }
 
+    private void ShowSavedFeedback()
+    {
+        if (statusCoroutine != null)
+        {
+            StopCoroutine(statusCoroutine);
+        }
+
+        statusCoroutine =
+            StartCoroutine(SavedFeedbackCoroutine());
+    }
+
+    private IEnumerator SavedFeedbackCoroutine()
+    {
+        UpdateStatusText(savedMessage);
+
+        yield return new WaitForSecondsRealtime(
+            savedMessageDuration
+        );
+
+        // Hide the text after a short delay.
+        UpdateStatusText("");
+
+        statusCoroutine = null;
+    }
     private void OnDestroy()
     {
         if (isRecording)
