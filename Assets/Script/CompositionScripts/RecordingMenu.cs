@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class RecordingMenu : MonoBehaviour
 {
@@ -12,7 +11,12 @@ public class RecordingMenu : MonoBehaviour
 
     private void Start()
     {
+        isOpen = false;
         recordingPanel.SetActive(false);
+
+        // Cursor stays visible during normal gameplay.
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void ToggleRecording()
@@ -21,15 +25,42 @@ public class RecordingMenu : MonoBehaviour
 
         recordingPanel.SetActive(isOpen);
 
-        playerMovement.enabled = !isOpen;
-        mouseLook.enabled = !isOpen;
+        if (playerMovement != null)
+        {
+            playerMovement.enabled = !isOpen;
+        }
 
-        Cursor.lockState = isOpen
-            ? CursorLockMode.None
-            : CursorLockMode.Locked;
+        if (mouseLook != null)
+        {
+            mouseLook.enabled = !isOpen;
+        }
 
-        Cursor.visible = isOpen;
+        // Always keep the cursor visible.
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         Time.timeScale = isOpen ? 0f : 1f;
+    }
+
+    public void CloseRecording()
+    {
+        isOpen = false;
+
+        recordingPanel.SetActive(false);
+
+        if (playerMovement != null)
+        {
+            playerMovement.enabled = true;
+        }
+
+        if (mouseLook != null)
+        {
+            mouseLook.enabled = true;
+        }
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        Time.timeScale = 1f;
     }
 }
