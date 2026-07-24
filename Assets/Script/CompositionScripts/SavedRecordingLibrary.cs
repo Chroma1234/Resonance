@@ -22,6 +22,13 @@ public class SavedRecordingLibrary : MonoBehaviour
     [SerializeField]
     private Button recordingButtonPrefab;
 
+    [Header("Selection Highlight")]
+    [SerializeField]
+    private Color normalButtonColor = Color.white;
+
+    [SerializeField]
+    private Color selectedButtonColor = Color.green;
+
     // The FMOD Studio Master Bus.
     private StudioBus studioMasterBus;
 
@@ -32,6 +39,12 @@ public class SavedRecordingLibrary : MonoBehaviour
     private FmodChannel recordingChannel;
 
     private Coroutine playbackCoroutine;
+
+    // Stores the selected recording file.
+    private string selectedRecordingPath;
+
+    // Stores the selected button so it can be highlighted.
+    private Button selectedRecordingButton;
 
     private void Start()
     {
@@ -138,7 +151,14 @@ public class SavedRecordingLibrary : MonoBehaviour
             }
         }
 
+        // Set the normal button colour.
+        SetButtonColor(
+            newButton,
+            normalButtonColor
+        );
+
         string selectedFilePath = filePath;
+        Button selectedButton = newButton;
 
         /*
          * Removes listeners added through code.
@@ -150,7 +170,8 @@ public class SavedRecordingLibrary : MonoBehaviour
             delegate
             {
                 SelectRecording(
-                    selectedFilePath
+                    selectedFilePath,
+                    selectedButton
                 );
             }
         );
@@ -162,18 +183,66 @@ public class SavedRecordingLibrary : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+
+        selectedRecordingButton = null;
+        selectedRecordingPath = null;
     }
 
     public void SelectRecording(
-        string filePath
+        string filePath,
+        Button clickedButton
     )
     {
+        // Return the previous button to its normal colour.
+        if (selectedRecordingButton != null)
+        {
+            SetButtonColor(
+                selectedRecordingButton,
+                normalButtonColor
+            );
+        }
+
+        // Remember the newly selected recording.
+        selectedRecordingPath = filePath;
+        selectedRecordingButton = clickedButton;
+
+        // Highlight the selected recording button.
+        SetButtonColor(
+            selectedRecordingButton,
+            selectedButtonColor
+        );
+
         StopSelectedRecording();
 
         playbackCoroutine =
             StartCoroutine(
                 PlayRecording(filePath)
             );
+    }
+
+    private void SetButtonColor(
+        Button button,
+        Color colour
+    )
+    {
+        if (button == null)
+        {
+            return;
+        }
+
+        ColorBlock colours = button.colors;
+
+        colours.normalColor = colour;
+        colours.selectedColor = colour;
+        colours.highlightedColor = colour;
+
+        button.colors = colours;
+
+        // Immediately update the visible button colour.
+        if (button.targetGraphic != null)
+        {
+            button.targetGraphic.color = colour;
+        }
     }
 
     private IEnumerator PlayRecording(
@@ -295,10 +364,6 @@ public class SavedRecordingLibrary : MonoBehaviour
 
             if (result != RESULT.OK)
             {
-                /*
-                 * An invalid handle commonly means playback
-                 * has already ended.
-                 */
                 break;
             }
 
@@ -354,6 +419,42 @@ public class SavedRecordingLibrary : MonoBehaviour
 
         ReleaseRecordingSound();
         ResumeStudioAudio();
+    }
+
+    public void DeleteSelectedRecording()
+    {
+        if (string.IsNullOrEmpty(selectedRecordingPath))
+        {
+            Debug.LogWarning(
+                "Select a recording before deleting."
+            );
+
+            return;
+        }
+
+        // Stop playback before deleting the WAV.
+        StopSelectedRecording();
+
+        if (File.Exists(selectedRecordingPath))
+        {
+            File.Delete(selectedRecordingPath);
+
+            Debug.Log(
+                "Deleted recording:\n" +
+                Path.GetFileName(selectedRecordingPath)
+            );
+        }
+        else
+        {
+            Debug.LogWarning(
+                "The selected recording could not be found."
+            );
+        }
+
+        selectedRecordingPath = null;
+        selectedRecordingButton = null;
+
+        RefreshRecordingList();
     }
 
     private void ReleaseRecordingSound()

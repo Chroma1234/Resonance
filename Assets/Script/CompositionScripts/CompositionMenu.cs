@@ -3,114 +3,50 @@ using UnityEngine.InputSystem;
 
 public class CompositionMenu : MonoBehaviour
 {
-    [Header("Panels")]
-    [SerializeField] private GameObject compositionPanel;
-    [SerializeField] private GameObject recordingPanel;
-
-    [Header("Player")]
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private MouseLook mouseLook;
 
-    [Header("Composition")]
-    [SerializeField] private CompositionPlayer compositionPlayer;
+    private GameObject currentPanel;
 
-    private bool compositionOpen;
-    private bool recordingOpen;
-
-    private void Start()
+    public void OpenComposition(GameObject panel)
     {
-        compositionPanel.SetActive(false);
-        recordingPanel.SetActive(false);
+        currentPanel = panel;
+
+        panel.SetActive(true);
+
+        playerMovement.enabled = false;
+        mouseLook.enabled = false;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        Time.timeScale = 0f;
     }
 
     private void Update()
     {
-        if (Keyboard.current == null)
+        if (currentPanel == null)
             return;
 
-        // E = Composition Menu
-        if (Keyboard.current.eKey.wasPressedThisFrame)
+        if (Keyboard.current.eKey.wasPressedThisFrame ||
+            Keyboard.current.xKey.wasPressedThisFrame)
         {
-            SetCompositionMenu(!compositionOpen);
-        }
-
-        // R = Saved Recordings
-        if (Keyboard.current.rKey.wasPressedThisFrame)
-        {
-            SetRecordingMenu(!recordingOpen);
+            CloseComposition();
         }
     }
 
-    public void OpenCompositionMenu()
+    public void CloseComposition()
     {
-        SetCompositionMenu(true);
-    }
+        currentPanel.SetActive(false);
 
-    public void CloseCompositionMenu()
-    {
-        SetCompositionMenu(false);
-    }
+        currentPanel = null;
 
-    public void OpenRecordingMenu()
-    {
-        SetRecordingMenu(true);
-    }
+        playerMovement.enabled = true;
+        mouseLook.enabled = true;
 
-    public void CloseRecordingMenu()
-    {
-        SetRecordingMenu(false);
-    }
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
-    private void SetCompositionMenu(bool open)
-    {
-        compositionOpen = open;
-
-        if (!open && compositionPlayer != null)
-        {
-            compositionPlayer.ClearComposition();
-        }
-
-        compositionPanel.SetActive(open);
-
-        // Close the recording panel if composition opens
-        if (open)
-        {
-            recordingOpen = false;
-            recordingPanel.SetActive(false);
-        }
-
-        UpdatePlayerState();
-    }
-
-    private void SetRecordingMenu(bool open)
-    {
-        recordingOpen = open;
-
-        recordingPanel.SetActive(open);
-
-        // Close the composition panel if recordings open
-        if (open)
-        {
-            compositionOpen = false;
-            compositionPanel.SetActive(false);
-        }
-
-        UpdatePlayerState();
-    }
-
-    private void UpdatePlayerState()
-    {
-        bool menuOpen = compositionOpen || recordingOpen;
-
-        playerMovement.enabled = !menuOpen;
-        mouseLook.enabled = !menuOpen;
-
-        Time.timeScale = menuOpen ? 0f : 1f;
-
-        Cursor.lockState = menuOpen
-            ? CursorLockMode.None
-            : CursorLockMode.Locked;
-
-        Cursor.visible = menuOpen;
+        Time.timeScale = 1f;
     }
 }

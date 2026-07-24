@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CompositionPlayer : MonoBehaviour
 {
@@ -47,13 +48,23 @@ public class CompositionPlayer : MonoBehaviour
 
     public void PlayComposition()
     {
-        // Stop the previous playback before starting again.
         StopComposition();
 
         if (chordSlots == null || chordSlots.Count == 0)
         {
             Debug.LogWarning("No chord slots are assigned.");
             return;
+        }
+
+        // Make sure the UI layout finishes updating
+        // before calculating the playhead positions.
+        Canvas.ForceUpdateCanvases();
+
+        if (playheadContainer != null)
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(
+                playheadContainer
+            );
         }
 
         playbackCoroutine =
@@ -161,8 +172,16 @@ public class CompositionPlayer : MonoBehaviour
             }
             else
             {
-                // Wait for the final slot to finish.
-                yield return new WaitForSecondsRealtime(secondsPerSlot);
+                // Move from the beginning to the end
+                // of the final chord slot.
+                float finalX = GetSlotEndX(currentSlot);
+
+                yield return StartCoroutine(
+                    SlidePlayheadToX(
+                        finalX,
+                        secondsPerSlot
+                    )
+                );
             }
         }
 
@@ -229,6 +248,25 @@ public class CompositionPlayer : MonoBehaviour
         return localPosition.x;
     }
 
+    private float GetSlotEndX(ChordSlot slot)
+    {
+        RectTransform slotRect =
+            slot.GetComponent<RectTransform>();
+
+        Vector3[] corners = new Vector3[4];
+        slotRect.GetWorldCorners(corners);
+
+        // Corner 3 is the top-right corner.
+        Vector3 rightSide = corners[3];
+
+        Vector3 localPosition =
+            playheadContainer.InverseTransformPoint(
+                rightSide
+            );
+
+        return localPosition.x;
+    }
+
     private void MovePlayheadImmediately(ChordSlot slot)
     {
         if (playhead == null ||
@@ -240,18 +278,17 @@ public class CompositionPlayer : MonoBehaviour
 
         float targetX = GetSlotStartX(slot);
 
-        playhead.anchoredPosition = new Vector2(
-            targetX,
-            playhead.anchoredPosition.y
-        );
+        Vector3 position = playhead.localPosition;
+        position.x = targetX;
+        playhead.localPosition = position;
 
         playhead.gameObject.SetActive(true);
     }
 
     private IEnumerator SlidePlayheadToSlot(
-        ChordSlot slot,
-        float duration
-    )
+     ChordSlot slot,
+     float duration
+ )
     {
         if (playhead == null ||
             playheadContainer == null ||
@@ -260,18 +297,23 @@ public class CompositionPlayer : MonoBehaviour
             yield break;
         }
 
-        // Save the start and target positions.
-        float startX =
-            playhead.anchoredPosition.x;
+        float targetX = GetSlotStartX(slot);
 
-        float targetX =
-            GetSlotStartX(slot);
+        yield return StartCoroutine(
+            SlidePlayheadToX(targetX, duration)
+        );
+    }
 
+    private IEnumerator SlidePlayheadToX(
+    float targetX,
+    float duration
+)
+    {
+        float startX = playhead.localPosition.x;
         float elapsed = 0f;
 
         playhead.gameObject.SetActive(true);
 
-        // Move the playhead smoothly every frame.
         while (elapsed < duration)
         {
             elapsed += Time.unscaledDeltaTime;
@@ -280,28 +322,22 @@ public class CompositionPlayer : MonoBehaviour
                 elapsed / duration
             );
 
-            float newX = Mathf.Lerp(
+            Vector3 position = playhead.localPosition;
+
+            position.x = Mathf.Lerp(
                 startX,
                 targetX,
                 progress
             );
 
-            playhead.anchoredPosition =
-                new Vector2(
-                    newX,
-                    playhead.anchoredPosition.y
-                );
+            playhead.localPosition = position;
 
             yield return null;
         }
 
-        // Make sure the playhead ends exactly
-        // at the beginning of the next slot.
-        playhead.anchoredPosition =
-            new Vector2(
-                targetX,
-                playhead.anchoredPosition.y
-            );
+        Vector3 finalPosition = playhead.localPosition;
+        finalPosition.x = targetX;
+        playhead.localPosition = finalPosition;
     }
 
     public void RecordComposition()
