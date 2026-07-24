@@ -23,6 +23,8 @@ public class DuetManager : MonoBehaviour
 
         foreach (MusicLandmark landmark in landmarks)
         {
+            if (landmark == null) continue;
+
             int landmarkId = landmark.LandmarkId;
             if (landmarkId < 0) continue;
 
@@ -40,9 +42,9 @@ public class DuetManager : MonoBehaviour
 
             int priority;
             if (distance > influenceRadius)
-                priority = 0; 
+                priority = 0;
             else if (distance > influenceRadius * 0.5f)
-                priority = 1; 
+                priority = 1;
             else
                 priority = 2;
 
