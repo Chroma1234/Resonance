@@ -7,6 +7,7 @@ public enum UIState { MainMenu, Tutorial, Playing, Paused }
 
 public class UIManager : MonoBehaviour
 {
+
     public static UIManager Instance { get; private set; }
 
     [Header("Panels")]
@@ -17,9 +18,49 @@ public class UIManager : MonoBehaviour
 
     [Header("Sub-Systems")]
     private TutorialSystem tutorialSystem; // Link TutorialSystem script here in Inspector
-
     private UIState currentState;
 
+
+    [Header("Mood Display UI")]
+    [SerializeField] private Transform moodContainerContent; // Content transform of a ScrollView or Vertical Layout Group
+    [SerializeField] private GameObject moodRowPrefab;       // Prefab with MoodDisplayRow attached
+    [SerializeField] private ConfigurationProfile currentProfile; // Reference to the active configuration profile
+
+    /// Refreshes the UI to display the currently chosen moods from MoodManager.
+    public void RefreshSelectedMoodsDisplay()
+    {
+        if (moodContainerContent == null || moodRowPrefab == null) return;
+
+        // Clear existing dynamic rows to prevent duplicates
+        foreach (Transform child in moodContainerContent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        if (currentProfile == null || currentProfile.instruments == null)
+        {
+            Debug.LogWarning("UIManager: No configuration profile assigned to display moods.");
+            return;
+        }
+
+        // Loop through instruments dynamically from the profile
+        foreach (var instrumentConfig in currentProfile.instruments)
+        {
+            if (instrumentConfig == null || string.IsNullOrEmpty(instrumentConfig.instrumentId)) continue;
+
+            string instrumentId = instrumentConfig.instrumentId;
+
+            Mood currentMood = Mood.Happy; // Fallback default
+
+            GameObject rowInstance = Instantiate(moodRowPrefab, moodContainerContent);
+            TextDisplay rowComponent = rowInstance.GetComponent<TextDisplay>();
+
+            if (rowComponent != null)
+            {
+                rowComponent.SetupByName(instrumentId, currentMood);
+            }
+        }
+    }
     private void Awake()
     {
         if (Instance == null) Instance = this;
