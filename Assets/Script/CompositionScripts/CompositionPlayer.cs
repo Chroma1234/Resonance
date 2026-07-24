@@ -36,10 +36,6 @@ public class CompositionPlayer : MonoBehaviour
     private EventInstance currentChordInstance;
 
 
-    [Header("Recording")]
-    [SerializeField]
-    private FMODMasterRecorder masterRecorder;
-
     private void Start()
     {
         // Hide the playhead until Play is pressed.
@@ -340,41 +336,6 @@ public class CompositionPlayer : MonoBehaviour
         playhead.localPosition = finalPosition;
     }
 
-    public void RecordComposition()
-    {
-        if (masterRecorder == null)
-        {
-            Debug.LogError(
-                "FMOD Master Recorder is not assigned."
-            );
-
-            return;
-        }
-
-        // Start recording first.
-        masterRecorder.StartRecording();
-
-        // Then play the composition.
-        PlayComposition();
-    }
-
-    public void StopRecordingAndSave()
-    {
-        if (masterRecorder == null)
-        {
-            Debug.LogError(
-                "FMOD Master Recorder is not assigned."
-            );
-
-            return;
-        }
-
-        // Stop your composition.
-        StopComposition();
-
-        // Export the WAV.
-        masterRecorder.StopRecordingAndSave();
-    }
     public void StopComposition()
     {
         if (playbackCoroutine != null)

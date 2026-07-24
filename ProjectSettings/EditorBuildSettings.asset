@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Environment.unity
     guid: 36f8e1fa147a2554889391674f39feaf
   - enabled: 1
+    path: Assets/Scenes/SceneComposition.unity
+    guid: 857e30afa973c1e47bd4545beebf4687
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
