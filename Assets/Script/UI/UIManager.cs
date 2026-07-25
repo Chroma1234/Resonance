@@ -1,115 +1,73 @@
-using System.Collections.Generic;
-using System.Linq;
+using System;
 using FMODUnity;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement; // Required for SceneManager
 
 public enum UIState { MainMenu, Tutorial, Playing, Paused }
 
 public class UIManager : MonoBehaviour
 {
+
     public static UIManager Instance { get; private set; }
 
     [Header("Panels")]
-    [SerializeField] private GameObject mainMenuPanel;
-    [SerializeField] private GameObject hudPanel;
-    [SerializeField] private GameObject tutorialPanel;
-    [SerializeField] private GameObject pausePanel;
+    private GameObject mainMenuPanel;
+    private GameObject hudPanel;
+    private GameObject tutorialPanel;
+    private GameObject pausePanel;
 
     [Header("Sub-Systems")]
-    [SerializeField] private TutorialSystem tutorialSystem;
+    private TutorialSystem tutorialSystem; // Link TutorialSystem script here in Inspector
     private UIState currentState;
 
-    [Header("Mood Display UI")]
-    [SerializeField] private Transform moodContainerContent;
-    [SerializeField] private GameObject moodRowPrefab;
-    [SerializeField] private ConfigurationProfile currentProfile;
 
+    [Header("Mood Display UI")]
+    [SerializeField] private Transform moodContainerContent; // Content transform of a ScrollView or Vertical Layout Group
+    [SerializeField] private GameObject moodRowPrefab;       // Prefab with MoodDisplayRow attached
+    [SerializeField] private ConfigurationProfile currentProfile; // Reference to the active configuration profile
+
+    /// Refreshes the UI to display the currently chosen moods from MoodManager.
+    public void RefreshSelectedMoodsDisplay()
+    {
+        if (moodContainerContent == null || moodRowPrefab == null) return;
+
+        // Clear existing dynamic rows to prevent duplicates
+        foreach (Transform child in moodContainerContent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        if (currentProfile == null || currentProfile.instruments == null)
+        {
+            Debug.LogWarning("UIManager: No configuration profile assigned to display moods.");
+            return;
+        }
+
+        // Loop through instruments dynamically from the profile
+        foreach (var instrumentConfig in currentProfile.instruments)
+        {
+            if (instrumentConfig == null || string.IsNullOrEmpty(instrumentConfig.instrumentId)) continue;
+
+            string instrumentId = instrumentConfig.instrumentId;
+
+            Mood currentMood = Mood.Happy; // Fallback default
+
+            GameObject rowInstance = Instantiate(moodRowPrefab, moodContainerContent);
+            TextDisplay rowComponent = rowInstance.GetComponent<TextDisplay>();
+
+            if (rowComponent != null)
+            {
+                rowComponent.SetupByName(instrumentId, currentMood);
+            }
+        }
+    }
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
     }
 
-    //public void RefreshSelectedMoodsDisplay()
-    //{
-    //    if (moodContainerContent == null || moodRowPrefab == null) return;
-
-    //    // Clear existing dynamic rows to prevent duplicates
-    //    foreach (Transform child in moodContainerContent)
-    //    {
-    //        Destroy(child.gameObject);
-    //    }
-
-    //    if (currentProfile == null || currentProfile.instruments == null)
-    //    {
-    //        Debug.LogWarning("UIManager: No configuration profile assigned to display moods.");
-    //        return;
-    //    }
-
-    //    // Loop through instruments dynamically from the profile
-    //    foreach (var instrumentConfig in currentProfile.instruments)
-    //    {
-    //        if (instrumentConfig == null || string.IsNullOrEmpty(instrumentConfig.instrumentId)) continue;
-
-    //        string instrumentId = instrumentConfig.instrumentId;
-    //        Mood currentMood = Mood.Happy; // Default fallback
-
-    //        GameObject rowInstance = Instantiate(moodRowPrefab, moodContainerContent);
-    //        TextDisplay rowComponent = rowInstance.GetComponent<TextDisplay>();
-
-    //        if (rowComponent != null)
-    //        {
-    //            // Calls the method safely now that it exists in TextDisplay
-    //            rowComponent.SetupByName(instrumentId, currentMood);
-    //        }
-    //    }
-    //}
-    public void RefreshSelectedMoodsDisplay()
-    {
-        if (moodContainerContent == null)
-        {
-            Debug.LogError("UIManager: moodContainerContent is NULL!");
-            return;
-        }
-        if (moodRowPrefab == null)
-        {
-            Debug.LogError("UIManager: moodRowPrefab is NULL!");
-            return;
-        }
-        if (currentProfile == null)
-        {
-            Debug.LogError("UIManager: currentProfile is NULL! Assign it in the Inspector.");
-            return;
-        }
-
-        Debug.Log("Refreshing moods... Profile instruments count: "  + currentProfile.instruments.Count());
-
-        foreach (Transform child in moodContainerContent)
-        {
-            Destroy(child.gameObject);
-        }
-
-        foreach (var instrumentConfig in currentProfile.instruments)
-        {
-            if (instrumentConfig == null) continue;
-
-            Debug.Log("Spawning row for instrument: " + instrumentConfig.instrumentId);
-
-            GameObject rowInstance = Instantiate(moodRowPrefab, moodContainerContent);
-            TextDisplay rowComponent = rowInstance.GetComponent<TextDisplay>();
-
-            if (rowComponent != null)
-         
-            {
-                rowComponent.SetupByName(instrumentConfig.instrumentId, Mood.Happy);
-            }
-            else
-            {
-                Debug.LogError("The spawned row prefab is missing the TextDisplay script!");
-            }
-        }
-    }
+    // Event listener method for state changes
     private void HandleStateChange(UIState newState)
     {
         ChangeState(newState);
@@ -120,6 +78,7 @@ public class UIManager : MonoBehaviour
         currentState = newState;
         UpdateUIVisibility();
 
+        // Architectural Trigger: If we enter the Tutorial state, initialize the tutorial logic
         if (currentState == UIState.Tutorial && tutorialSystem != null)
         {
             tutorialSystem.StartTutorial();
@@ -138,14 +97,13 @@ public class UIManager : MonoBehaviour
     {
         // hudPanel.GetComponent<ProximityUI>().UpdateMeter(value);
     }
-
+    /// Loads the MoodSelection scene. Hook this up to the Start / Play button OnClick event.
     public void StartGame()
     {
         SceneManager.LoadScene("MoodSelection");
-        Debug.Log("UIManager Start called - forcing refresh!");
-        RefreshSelectedMoodsDisplay();
     }
 
+    /// Quits the application. Hook this up to the Quit button OnClick event
     public void QuitGame()
     {
         Debug.Log("Quitting application...");
