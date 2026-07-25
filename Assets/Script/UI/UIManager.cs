@@ -4,7 +4,7 @@ using FMODUnity;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum UIState { MainMenu, Tutorial, Playing, Paused }
+public enum UIState { MainMenu,Playing, Paused }
 
 public class UIManager : MonoBehaviour
 {
@@ -13,11 +13,10 @@ public class UIManager : MonoBehaviour
     [Header("Panels")]
     [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject hudPanel;
-    [SerializeField] private GameObject tutorialPanel;
+    //[SerializeField] private GameObject tutorialPanel;
     [SerializeField] private GameObject pausePanel;
 
     [Header("Sub-Systems")]
-    [SerializeField] private TutorialSystem tutorialSystem;
     private UIState currentState;
 
     [Header("Mood Display UI")]
@@ -31,40 +30,6 @@ public class UIManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    //public void RefreshSelectedMoodsDisplay()
-    //{
-    //    if (moodContainerContent == null || moodRowPrefab == null) return;
-
-    //    // Clear existing dynamic rows to prevent duplicates
-    //    foreach (Transform child in moodContainerContent)
-    //    {
-    //        Destroy(child.gameObject);
-    //    }
-
-    //    if (currentProfile == null || currentProfile.instruments == null)
-    //    {
-    //        Debug.LogWarning("UIManager: No configuration profile assigned to display moods.");
-    //        return;
-    //    }
-
-    //    // Loop through instruments dynamically from the profile
-    //    foreach (var instrumentConfig in currentProfile.instruments)
-    //    {
-    //        if (instrumentConfig == null || string.IsNullOrEmpty(instrumentConfig.instrumentId)) continue;
-
-    //        string instrumentId = instrumentConfig.instrumentId;
-    //        Mood currentMood = Mood.Happy; // Default fallback
-
-    //        GameObject rowInstance = Instantiate(moodRowPrefab, moodContainerContent);
-    //        TextDisplay rowComponent = rowInstance.GetComponent<TextDisplay>();
-
-    //        if (rowComponent != null)
-    //        {
-    //            // Calls the method safely now that it exists in TextDisplay
-    //            rowComponent.SetupByName(instrumentId, currentMood);
-    //        }
-    //    }
-    //}
     public void RefreshSelectedMoodsDisplay()
     {
         if (moodContainerContent == null)
@@ -110,27 +75,27 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-    private void HandleStateChange(UIState newState)
-    {
-        ChangeState(newState);
-    }
+    //private void HandleStateChange(UIState newState)
+    //{
+    //    ChangeState(newState);
+    //}
 
     public void ChangeState(UIState newState)
     {
         currentState = newState;
         UpdateUIVisibility();
 
-        if (currentState == UIState.Tutorial && tutorialSystem != null)
-        {
-            tutorialSystem.StartTutorial();
-        }
+        //if (currentState == UIState.Tutorial && tutorialSystem != null)
+        //{
+        //    tutorialSystem.StartTutorial();
+        //}
     }
 
     private void UpdateUIVisibility()
     {
         if (mainMenuPanel != null) mainMenuPanel.SetActive(currentState == UIState.MainMenu);
-        if (hudPanel != null) hudPanel.SetActive(currentState == UIState.Playing || currentState == UIState.Tutorial);
-        if (tutorialPanel != null) tutorialPanel.SetActive(currentState == UIState.Tutorial);
+        //if (hudPanel != null) hudPanel.SetActive(currentState == UIState.Playing || currentState == UIState.Tutorial);
+        //if (tutorialPanel != null) tutorialPanel.SetActive(currentState == UIState.Tutorial);
         if (pausePanel != null) pausePanel.SetActive(currentState == UIState.Paused);
     }
 

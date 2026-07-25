@@ -8061,9 +8061,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ea66a506fa422004091f25fedfede79e, type: 2}
   - {fileID: 11400000, guid: 71f7565d1c5dd414a86d25c4578216bf, type: 2}
   player: {fileID: 1337856443}
-  tutorialSaveKey: HasSeenTutorial_Environment
-  tutorialApproachRadiusMultiplier: 0.5
-  tutorialDuetRadiusMultiplier: 0.7
 --- !u!1 &786160364
 GameObject:
   m_ObjectHideFlags: 0
@@ -27555,7 +27552,7 @@ MonoBehaviour:
         Data2: 1181215814
         Data3: -1292045171
         Data4: 1807476974
-      Path: event:/RESONANCE/PIANO
+      Path: event:/NEW HAPPY/HAPPY PIANO
     landmarkTransform: {fileID: 951421964}
   - landmarkId: 1
     musicEvent:
@@ -27564,7 +27561,7 @@ MonoBehaviour:
         Data2: 1326164539
         Data3: 1719321005
         Data4: 223558344
-      Path: event:/RESONANCE/BASS
+      Path: event:/NEW HAPPY/HAPPY BASS
     landmarkTransform: {fileID: 79140360}
   - landmarkId: 2
     musicEvent:
@@ -27573,7 +27570,7 @@ MonoBehaviour:
         Data2: 1081246901
         Data3: 129248412
         Data4: 1444845852
-      Path: event:/RESONANCE/SAXOPHONE
+      Path: event:/NEW HAPPY/HAPPY SAX
     landmarkTransform: {fileID: 38768408}
   - landmarkId: 3
     musicEvent:
@@ -27582,7 +27579,7 @@ MonoBehaviour:
         Data2: 1228674974
         Data3: -93742154
         Data4: 1823612319
-      Path: event:/RESONANCE/DRUMS
+      Path: event:/NEW HAPPY/HAPPY DRUMS
     landmarkTransform: {fileID: 1401955176405353634}
   musicGain: 2
 --- !u!114 &2076144697

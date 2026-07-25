@@ -275,6 +275,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f609a8e94a7a15459f35b268d59816d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
+  mainMenuPanel: {fileID: 0}
+  hudPanel: {fileID: 0}
+  pausePanel: {fileID: 0}
   moodContainerContent: {fileID: 4700221461546211501}
   moodRowPrefab: {fileID: 2787266916191226644}
   currentProfile: {fileID: 11400000, guid: 1aff20498bc98ca48974d1aef1d96f1f, type: 2}
@@ -665,6 +668,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1676144895}
     m_Modifications:
+    - target: {fileID: 168882086774215944, guid: 76a19f1dc30af0041bf6433709f573c0, type: 3}
+      propertyPath: m_Color.a
+      value: 0.94509804
+      objectReference: {fileID: 0}
     - target: {fileID: 336663653725104221, guid: 76a19f1dc30af0041bf6433709f573c0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
