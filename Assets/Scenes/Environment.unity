@@ -7083,17 +7083,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 564987830}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 725f45052e89b244994aceef5548ad18, type: 3}
+  m_Script: {fileID: 11500000, guid: 6fdf8365d8f819a4fa7dc66c492f40b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DirectUIUpdater
-  contentContainer: {fileID: 885844953}
-  moodRowPrefab: {fileID: 885844954}
-  sharedToggleGroup: {fileID: 0}
-  allInstruments:
-  - {fileID: 11400000, guid: cef1b80b171a9874a8261ad87aa08a9b, type: 2}
-  - {fileID: 11400000, guid: b13df09d52b2fa64a82dceaf50eb4bac, type: 2}
-  - {fileID: 11400000, guid: 61a75c7d7af326e4580cb6e92081e23c, type: 2}
-  - {fileID: 11400000, guid: 21ee15b270f6bd4489d0647de26c4b75, type: 2}
+  pauseMenuUI: {fileID: 885844951}
+  mainMenuSceneName: MainMenu
 --- !u!1001 &583722371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8268,6 +8262,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -181
       objectReference: {fileID: 0}
+    - target: {fileID: 8363256052258108721, guid: 76a19f1dc30af0041bf6433709f573c0, type: 3}
+      propertyPath: instruments.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363256052258108721, guid: 76a19f1dc30af0041bf6433709f573c0, type: 3}
+      propertyPath: 'instruments.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: cef1b80b171a9874a8261ad87aa08a9b, type: 2}
+    - target: {fileID: 8363256052258108721, guid: 76a19f1dc30af0041bf6433709f573c0, type: 3}
+      propertyPath: 'instruments.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b13df09d52b2fa64a82dceaf50eb4bac, type: 2}
+    - target: {fileID: 8363256052258108721, guid: 76a19f1dc30af0041bf6433709f573c0, type: 3}
+      propertyPath: 'instruments.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 61a75c7d7af326e4580cb6e92081e23c, type: 2}
+    - target: {fileID: 8363256052258108721, guid: 76a19f1dc30af0041bf6433709f573c0, type: 3}
+      propertyPath: 'instruments.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 21ee15b270f6bd4489d0647de26c4b75, type: 2}
     - target: {fileID: 8377366780497801310, guid: 76a19f1dc30af0041bf6433709f573c0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
