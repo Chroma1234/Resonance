@@ -48,22 +48,32 @@ public class FmodAudioBackend : MonoBehaviour, IAudioBackend
                 instance = RuntimeManager.CreateInstance(config.musicEvent)
             };
 
-            if (inst.instance.isValid())
+            if (!inst.instance.isValid())
             {
-                GameObject go = config.landmarkTransform.gameObject;
-                Rigidbody rb = go.GetComponent<Rigidbody>();
-
-                FMODUnity.RuntimeManager.AttachInstanceToGameObject(
-                    inst.instance,
-                    go,
-                    rb
-                );
-
-                inst.instance.setVolume(musicGain);
-                inst.instance.start();
-                inst.instance.setParameterByName("LoopType", (float)LoopType.Normal);
+                Debug.LogWarning($"FmodAudioBackend: Instance for landmark {config.landmarkId} is not valid.");
+                continue;
             }
 
+            GameObject go = config.landmarkTransform.gameObject;
+            Rigidbody rb = go.GetComponent<Rigidbody>();
+
+            RuntimeManager.AttachInstanceToGameObject(inst.instance, go, rb);
+
+            inst.instance.setVolume(musicGain);
+
+            FMOD.RESULT startResult = inst.instance.start();
+            if (startResult != FMOD.RESULT.OK)
+            {
+                Debug.LogWarning($"FmodAudioBackend: Failed to start event for landmark {config.landmarkId}: {startResult}");
+            }
+
+            // Force a simple, known state to test audibility
+            inst.instance.setParameterByName("LoopType", (float)LoopType.Normal);
+            inst.instance.setParameterByName("Presence", 1.0f);
+            inst.instance.setParameterByName("Clarity", 1.0f);
+            inst.instance.setParameterByName("ReverbSend", 0.0f);
+
+            Debug.Log($"FmodAudioBackend: Started music event for landmark {config.landmarkId}.");
             _instances[config.landmarkId] = inst;
         }
     }
