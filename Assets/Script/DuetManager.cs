@@ -10,8 +10,8 @@ public class DuetManager : MonoBehaviour
     private void Start()
     {
         landmarks = FindObjectsByType<MusicLandmark>(FindObjectsSortMode.None);
+        Debug.Log("[DuetManager] Start called");  
 
-        Debug.Log("[DuetManager] Start called");
     }
 
     private void Update()
@@ -58,11 +58,18 @@ public class DuetManager : MonoBehaviour
             });
         }
 
+
         if (nearbyForDuet.Count == 2)
         {
             int duetAId = nearbyForDuet[0].LandmarkId;
             int duetBId = nearbyForDuet[1].LandmarkId;
             SoundManager.Instance.SetDuetPair(duetAId, duetBId);
+            // --- NOTIFY TUTORIAL MANAGER DIRECTLY ---
+            TutorialManager tutorial = FindFirstObjectByType<TutorialManager>();
+            if (tutorial != null)
+            {
+                tutorial.TryAdvanceStep(TutorialTriggerType.TriggerDuet);
+            }
         }
         else
         {
@@ -72,3 +79,4 @@ public class DuetManager : MonoBehaviour
         SoundManager.Instance.UpdateMixing(mixInputs.ToArray());
     }
 }
+
