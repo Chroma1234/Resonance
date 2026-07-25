@@ -14,6 +14,9 @@ public class MouseLook : MonoBehaviour
     {
         yRotation = transform.eulerAngles.y;
         xRotation = cameraTransform.localEulerAngles.x;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     private void Update()
@@ -21,7 +24,8 @@ public class MouseLook : MonoBehaviour
         if (Mouse.current == null)
             return;
 
-        if (Cursor.lockState != CursorLockMode.Locked)
+        // Hold right-click to rotate the camera.
+        if (!Mouse.current.rightButton.isPressed)
             return;
 
         Vector2 mouseDelta = Mouse.current.delta.ReadValue();
@@ -44,10 +48,24 @@ public class MouseLook : MonoBehaviour
         yRotation += mouseX;
 
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
+        xRotation = Mathf.Clamp(
+            xRotation,
+            -80f,
+            80f
+        );
 
-        transform.rotation = Quaternion.Euler(0f, yRotation, 0f);
+        transform.rotation =
+            Quaternion.Euler(
+                0f,
+                yRotation,
+                0f
+            );
 
-        cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        cameraTransform.localRotation =
+            Quaternion.Euler(
+                xRotation,
+                0f,
+                0f
+            );
     }
 }

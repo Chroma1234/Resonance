@@ -26,21 +26,27 @@ public class PauseMenuController : MonoBehaviour
 
     public void Resume()
     {
-        pauseMenuUI.SetActive(false);
+        if (pauseMenuUI != null)
+        {
+            pauseMenuUI.SetActive(false); // Specifically turns off your assigned UI panel/prefab
+        }
         Time.timeScale = 1f;
         isPaused = false;
     }
 
     public void Pause()
     {
-        pauseMenuUI.SetActive(true);
+        if (pauseMenuUI != null)
+        {
+            pauseMenuUI.SetActive(true); // Specifically turns on your assigned UI panel/prefab
+        }
         Time.timeScale = 0f;
         isPaused = true;
     }
 
     public void LoadMainMenu()
     {
-        Debug.Log("LoadMainMenu button clicked!"); 
+        Debug.Log("LoadMainMenu button clicked!");
         Time.timeScale = 1f;
         SceneManager.LoadScene(mainMenuSceneName);
     }

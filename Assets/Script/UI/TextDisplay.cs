@@ -1,25 +1,42 @@
 using UnityEngine;
-using TMPro; // Use UnityEngine.UI if using standard UI Text
+using TMPro;
+using System.Collections.Generic;
 
 public class TextDisplay : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI instrumentLabel;
     [SerializeField] private TextMeshProUGUI moodLabel;
 
-    public void Setup(InstrumentData instrumentData, Mood mood)
-    {
-        if (instrumentLabel != null)
-        {
-            instrumentLabel.text = instrumentData.instrumentName;
-        }
+    [Header("List of all instruments to display/cycle through")]
+    [SerializeField] private List<InstrumentData> instruments;
 
-        if (moodLabel != null)
+    private void OnEnable()
+    {
+        DisplayFirstInstrument();
+    }
+
+    public void DisplayFirstInstrument()
+    {
+        if (instruments == null || instruments.Count == 0) return;
+
+        // Grab the first instrument (or you can expand this to loop/select active ones)
+        InstrumentData currentInstrument = instruments[0];
+
+        if (currentInstrument != null)
         {
-            moodLabel.text = mood.ToString();
+            string instName = currentInstrument.instrumentName;
+
+            // Get its mood from MoodManager
+            Mood currentMood = Mood.Happy; // Fallback
+            if (MoodManager.Instance != null)
+            {
+                currentMood = MoodManager.Instance.GetMood(currentInstrument);
+            }
+
+            SetupByName(instName, currentMood);
         }
     }
 
-    // To handle string-based IDs/names directly:
     public void SetupByName(string instrumentName, Mood mood)
     {
         if (instrumentLabel != null)
