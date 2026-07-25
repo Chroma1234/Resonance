@@ -1,7 +1,9 @@
-using UnityEngine;
-using TMPro;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -9,32 +11,38 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject tutorialPanel;
     [SerializeField] private TMP_Text instructionLabel;
     [SerializeField] private GameObject tutorialArrow;
+    [SerializeField] private GameObject startButtonGlow; // Drag your GlowOutline object here
+    
+    ////[Header("Highlight Settings")]
+    //private GameObject currentGlowObject;
 
     [Header("Tutorial Steps Sequence")]
     [SerializeField] private List<TutorialStep> tutorialSteps;
+
+    [Header("One-Time Settings")]
+    [SerializeField] private string tutorialSaveKey = "HasSeenTutorial_Scene";
+
+    [Header("Tutorial Difficulty Settings")]
+    [SerializeField] private float tutorialApproachRadiusMultiplier = 0.5f;
+    [SerializeField] private float tutorialDuetRadiusMultiplier = 0.7f;
 
     [Header("References for Custom Triggers")]
     [SerializeField] private Transform player;
     private MusicLandmark[] landmarks;
 
-    [Header("One-Time Settings")]
-    [SerializeField] private string tutorialSaveKey = "HasSeenTutorial_Scene"; 
-
-    [Header("Tutorial Difficulty Settings")]
-    [SerializeField] private float tutorialApproachRadiusMultiplier = 0.5f; // Makes approach range 50% smaller
-    [SerializeField] private float tutorialDuetRadiusMultiplier = 0.7f;     // Makes duet range tighter
-
     private int currentStepIndex = 0;
     private float timer = 0f;
+    private bool isWaitingForDelay = false;
 
     void Start()
     {
-        // Check if the player has already seen this tutorial before
+        // REMOVE OR COMMENT OUT THIS LINE ONCE YOU BUILD YOUR .EXE:
+        PlayerPrefs.DeleteKey(tutorialSaveKey);
+
         if (PlayerPrefs.GetInt(tutorialSaveKey, 0) == 1)
         {
-            // Already seen! Turn off the tutorial panel immediately and disable this script.
             if (tutorialPanel != null) tutorialPanel.SetActive(false);
-            if (tutorialArrow != null) tutorialArrow.SetActive(false);
+           
             enabled = false;
             return;
         }
@@ -52,9 +60,8 @@ public class TutorialManager : MonoBehaviour
 
     void Update()
     {
-        if (tutorialSteps == null || currentStepIndex >= tutorialSteps.Count) return;
+        if (isWaitingForDelay || tutorialSteps == null || currentStepIndex >= tutorialSteps.Count) return;
 
-        // Only try to cache the player if the current step actually needs it!
         TutorialStep currentStep = tutorialSteps[currentStepIndex];
 
         if (currentStep.triggerType == TutorialTriggerType.ApproachLandmark ||
@@ -63,7 +70,7 @@ public class TutorialManager : MonoBehaviour
             if (player == null || landmarks == null || landmarks.Length == 0)
             {
                 CacheReferences();
-                if (player == null) return; // Skip if no player exists in this menu scene
+                if (player == null) return;
             }
         }
 
@@ -115,21 +122,14 @@ public class TutorialManager : MonoBehaviour
             if (landmark != null && landmark.instrumentData != null)
             {
                 float distance = Vector3.Distance(player.position, landmark.Position);
-
-                // Tightened radius specifically for the tutorial
-                float adjustedRadius = landmark.InfluenceRadius * tutorialApproachRadiusMultiplier;
-
-                if (distance <= adjustedRadius)
+                if (distance <= landmark.InfluenceRadius * tutorialApproachRadiusMultiplier)
                 {
-                    Debug.Log($"[TutorialManager] Approached landmark: {landmark.name} at distance {distance:F2} (Required: < {adjustedRadius})");
                     return true;
                 }
             }
         }
         return false;
     }
-
-  
 
     private bool CheckPlayerTriggeredDuet()
     {
@@ -141,18 +141,12 @@ public class TutorialManager : MonoBehaviour
             if (landmark != null && landmark.instrumentData != null)
             {
                 float distance = Vector3.Distance(player.position, landmark.Position);
-
-                // Tightened duet radius specifically for the tutorial so you have to stand closer
-                float adjustedDuetRadius = landmark.DuetRadius * tutorialDuetRadiusMultiplier;
-                bool inRange = distance <= adjustedDuetRadius;
-
-                if (inRange)
+                if (distance <= landmark.DuetRadius * tutorialDuetRadiusMultiplier)
                 {
                     nearbyCount++;
                 }
             }
         }
-
         return nearbyCount >= 2;
     }
 
@@ -163,41 +157,73 @@ public class TutorialManager : MonoBehaviour
 
         if (currentStepIndex < tutorialSteps.Count)
         {
-            if (tutorialPanel != null) tutorialPanel.SetActive(true);
-
             TutorialStep step = tutorialSteps[currentStepIndex];
 
-            if (instructionLabel != null)
-                instructionLabel.text = step.instructionText;
-
-            if (tutorialArrow != null)
-                tutorialArrow.SetActive(step.showArrowIndicator);
+            if (step.delayBeforeShowing > 0f)
+            {
+                StartCoroutine(ShowStepWithDelay(step));
+            }
+            else
+            {
+                DisplayStepUI(step);
+            }
         }
         else
         {
-            // --- TUTORIAL COMPLETED ---
-            // Save that the player has finished this tutorial so it never pops up again!
             PlayerPrefs.SetInt(tutorialSaveKey, 1);
             PlayerPrefs.Save();
-
             if (tutorialPanel != null) tutorialPanel.SetActive(false);
             if (tutorialArrow != null) tutorialArrow.SetActive(false);
-
-            enabled = false; // Turn off script
+            if (startButtonGlow != null) startButtonGlow.SetActive(false);
+            enabled = false;
         }
     }
-    public void TryAdvanceStep(TutorialTriggerType requiredType)
+
+    private void DisplayStepUI(TutorialStep step)
     {
-        if (tutorialSteps == null || currentStepIndex >= tutorialSteps.Count) return;
+        if (tutorialPanel != null) tutorialPanel.SetActive(true);
+
+        if (instructionLabel != null)
+            instructionLabel.text = step.instructionText;
+
+        if (tutorialArrow != null)
+            tutorialArrow.SetActive(step.showArrowIndicator);
+
+        if (startButtonGlow != null)
+            startButtonGlow.SetActive(step.showArrowIndicator);
+    }
+
+    private IEnumerator ShowStepWithDelay(TutorialStep step)
+    {
+        isWaitingForDelay = true;
+
+        // Disappear/hide the panel during the wait time
+        if (tutorialPanel != null) tutorialPanel.SetActive(false);
+       
+
+        yield return new WaitForSecondsRealtime(step.delayBeforeShowing);
+
+        isWaitingForDelay = false;
+        DisplayStepUI(step);
+    }
+
+
+
+    public void NextStep()
+    {
+        StopAllCoroutines();// Cancel any pending delayed steps if we move forward manually
+        ShowStep(currentStepIndex + 1);
+    }
+
+
+     public void TryAdvanceStep(TutorialTriggerType requiredType)
+     {
+        if (isWaitingForDelay || tutorialSteps == null || currentStepIndex >= tutorialSteps.Count) return;
 
         if (tutorialSteps[currentStepIndex].triggerType == requiredType)
         {
             Debug.Log($"[TutorialManager] Successfully triggered step advance for: {requiredType}");
             NextStep();
         }
-    }
-    public void NextStep()
-    {
-        ShowStep(currentStepIndex + 1);
-    }
+     }
 }

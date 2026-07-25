@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf98c04f95792ef4da3a14a095759957, type: 3}
-  m_Name: LeadtoDuet
+  m_Name: Recording
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStep
-  instructionText: "Go between any two instruments \n"
-  triggerType: 0
-  displayDuration: 7
-  delayBeforeShowing: 0
-  glowObjectName: StartRecord
+  instructionText: How do you like the tunes? Ready to lay down a track?
+  triggerType: 2
+  displayDuration: 3
+  delayBeforeShowing: 4
+  glowObjectName: GlowOutline
+  showArrowIndicator: 1

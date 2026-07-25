@@ -23,7 +23,14 @@ public class TutorialStep : ScriptableObject
     [Tooltip("Only used if triggerType is set to Timer")]
     public float displayDuration = 3f;
 
+    [Header("Timing")]
+    public float delayBeforeShowing = 0f; // <--- set a delay per step!
+
+    [Header("Highlight Settings")]
+    public string glowObjectName = "GlowOuline"; // Type your target object's name here
+
     [Header("Visual Aids")]
-    [Tooltip("Check if this step should show a directional arrow or highlight")]
+    [Tooltip("Check if this step should show a directional arrow and button glow")]
     public bool showArrowIndicator = false;
+
 }
