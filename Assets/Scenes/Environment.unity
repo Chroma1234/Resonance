@@ -27061,7 +27061,7 @@ MonoBehaviour:
         Data2: 1181215814
         Data3: -1292045171
         Data4: 1807476974
-      Path: event:/NEW HAPPY/HAPPY PIANO
+      Path: event:/RESONANCE/PIANO
     landmarkTransform: {fileID: 951421964}
   - landmarkId: 1
     musicEvent:
@@ -27070,7 +27070,7 @@ MonoBehaviour:
         Data2: 1326164539
         Data3: 1719321005
         Data4: 223558344
-      Path: event:/NEW HAPPY/HAPPY BASS
+      Path: event:/RESONANCE/BASS
     landmarkTransform: {fileID: 79140360}
   - landmarkId: 2
     musicEvent:
@@ -27079,7 +27079,7 @@ MonoBehaviour:
         Data2: 1081246901
         Data3: 129248412
         Data4: 1444845852
-      Path: event:/NEW HAPPY/HAPPY SAX
+      Path: event:/RESONANCE/SAXOPHONE
     landmarkTransform: {fileID: 38768408}
   - landmarkId: 3
     musicEvent:
@@ -27088,7 +27088,7 @@ MonoBehaviour:
         Data2: 1228674974
         Data3: -93742154
         Data4: 1823612319
-      Path: event:/NEW HAPPY/HAPPY DRUMS
+      Path: event:/RESONANCE/DRUMS
     landmarkTransform: {fileID: 1401955176405353634}
   musicGain: 2
 --- !u!114 &2076144697

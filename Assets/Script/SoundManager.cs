@@ -83,6 +83,26 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void ApplyInstrumentMood(InstrumentData instrument, Mood mood)
+    {
+        if (_backend == null || instrument == null)
+        {
+            return;
+        }
+
+        int landmarkId = ResolveLandmarkIdFromInstrumentId(instrument.instrumentName);
+        Debug.Log($"ApplyInstrumentMood: {instrument.instrumentName} -> landmark {landmarkId}, mood {mood}");
+
+        if (landmarkId < 0)
+        {
+            Debug.LogWarning($"SoundManager: No landmarkId for instrument '{instrument.instrumentName}'");
+            return;
+        }
+
+        float moodValue = (float)mood;
+        (_backend as FmodAudioBackend)?.SetMoodParameter(landmarkId, moodValue);
+    }
+
     public void InitializeSession(ConfigurationProfile profile)
     {
         _landmarks.Clear();

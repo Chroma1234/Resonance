@@ -1,77 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9129180855867646950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY DRUMS/Presence
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Presence
-  StudioPath: 
-  Min: 0
-  Max: 2
-  Default: 0
-  ID:
-    data1: 2488293593
-    data2: 2892315591
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-8926746196750399034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Saxophone_Melancholic/Intensity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Intensity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2165841579
-    data2: 937912429
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-8749643008701902579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Drums_Happy/Presence
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Presence
-  StudioPath: 
-  Min: 0
-  Max: 2
-  Default: 0
-  ID:
-    data1: 2488293593
-    data2: 2892315591
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
 --- !u!114 &-8707888778220535868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +78,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-7944837677234483121
+--- !u!114 &-8079718894764878741
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,7 +88,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Drums_Happy/LoopType
+  m_Name: parameter:/BASS/LoopType
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
   Name: LoopType
   StudioPath: 
@@ -174,39 +102,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-7868772336044586829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/NEW HAPPY/HAPPY SAX
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/NEW HAPPY/HAPPY SAX
-  Guid:
-    Data1: -1062363373
-    Data2: 1081246901
-    Data3: 129248412
-    Data4: 1444845852
-  Banks:
-  - {fileID: -5355539138971275942}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -7031808584276495776}
-  - {fileID: -7511464052225563681}
-  - {fileID: -6751014570487046818}
-  - {fileID: -1853722060933787460}
-  - {fileID: 5961427934050683369}
-  - {fileID: 3124211716946815652}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 39242
 --- !u!114 &-7803228010647901558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,30 +150,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-7511464052225563681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY SAX/Intensity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Intensity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2165841579
-    data2: 937912429
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
 --- !u!114 &-7369935850972996189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,10 +165,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Composition.bank
   Name: Composition
   StudioPath: bank:/Composition
-  lastModified: 639205787776693447
+  lastModified: 639206250585348503
   FileSizes: []
   Exists: 1
---- !u!114 &-7337856220752995679
+--- !u!114 &-7355949047113629371
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -307,41 +178,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY BASS/ReverbSend
+  m_Name: parameter:/SAXOPHONE/LoopType
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: ReverbSend
+  Name: LoopType
   StudioPath: 
   Min: 0
-  Max: 1
+  Max: 2
   Default: 0
   ID:
-    data1: 3274971341
-    data2: 548242061
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &-7299419025910355813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Bass_Melancholic/Intensity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Intensity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2165841579
-    data2: 937912429
-  Type: 0
+    data1: 1887399632
+    data2: 945382093
+  Type: 1
   IsGlobal: 0
   Labels: []
   Exists: 1
@@ -369,7 +216,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-7145636884387295163
+--- !u!114 &-7011656453053489926
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -378,45 +225,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Bass_Happy/ReverbSend
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: ReverbSend
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3274971341
-    data2: 548242061
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &-7031808584276495776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY SAX/Duet
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Duet
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2058162456
-    data2: 2631435744
-  Type: 1
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/RESONANCE/MASTER
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/RESONANCE/MASTER
+  Guid:
+    Data1: 958455475
+    Data2: 1074780745
+    Data3: 1483392178
+    Data4: -1755440455
+  Banks:
+  - {fileID: 6667485164451124964}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 7523331490581092384}
+  - {fileID: 3401486763377838323}
+  - {fileID: -465198025729284270}
+  - {fileID: -2810224957499104832}
+  - {fileID: -3788031456708419185}
+  - {fileID: -3767577444129556057}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 39242
 --- !u!114 &-7005451272844619807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,102 +276,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-6786368529114288540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY MASTER/Presence
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Presence
-  StudioPath: 
-  Min: 0
-  Max: 2
-  Default: 0
-  ID:
-    data1: 2488293593
-    data2: 2892315591
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-6751014570487046818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY SAX/ReverbSend
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: ReverbSend
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3274971341
-    data2: 548242061
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &-6733749034124935064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Bass_Happy/Duet
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Duet
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2058162456
-    data2: 2631435744
-  Type: 1
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-6641714338762419210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Piano_Happy/Duet
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Duet
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2058162456
-    data2: 2631435744
-  Type: 1
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
 --- !u!114 &-6496102387006392893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,30 +297,6 @@ MonoBehaviour:
     data1: 2165841579
     data2: 937912429
   Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-6418919730960885024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Bass_Happy/LoopType
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: LoopType
-  StudioPath: 
-  Min: 0
-  Max: 2
-  Default: 0
-  ID:
-    data1: 1887399632
-    data2: 945382093
-  Type: 1
   IsGlobal: 0
   Labels: []
   Exists: 1
@@ -634,7 +346,7 @@ MonoBehaviour:
   - {fileID: -5355539138971275942}
   IsStream: 1
   Is3D: 1
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters:
   - {fileID: -2684391344411103013}
   - {fileID: 5749219797382457837}
@@ -642,57 +354,10 @@ MonoBehaviour:
   - {fileID: -2200710566015872862}
   - {fileID: -117052612226831013}
   - {fileID: -6358891380767659563}
+  - {fileID: 7711028200437825686}
   MinDistance: 1
   MaxDistance: 20
-  Length: 38775
---- !u!114 &-6354228541795928002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Instrument_Template/Intensity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Intensity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2165841579
-    data2: 937912429
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-6331212543364876966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY PIANO/Clarity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Clarity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 2869341830
-    data2: 1366809245
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
+  Length: 39242
 --- !u!114 &-6288814677090668741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -717,7 +382,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-6246215773225429025
+--- !u!114 &-6231020199674292554
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -727,31 +392,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY PIANO/LoopType
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: LoopType
-  StudioPath: 
-  Min: 0
-  Max: 2
-  Default: 0
-  ID:
-    data1: 1887399632
-    data2: 945382093
-  Type: 1
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-6181401127665739590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Saxophone_Melancholic/Duet
+  m_Name: parameter:/BASS/Duet
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
   Name: Duet
   StudioPath: 
@@ -789,7 +430,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-6067764605170957136
+--- !u!114 &-6067610166021404477
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -798,30 +439,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Melancholic/Drums_Melancholic
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Melancholic/Drums_Melancholic
-  Guid:
-    Data1: 1829044005
-    Data2: 1265215030
-    Data3: 706479793
-    Data4: -963362563
-  Banks:
-  - {fileID: -5355539138971275942}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 3603556773840994542}
-  - {fileID: 8203778956683400106}
-  - {fileID: 6702636664997632572}
-  - {fileID: 254286924997704884}
-  - {fileID: -3614106519950787382}
-  - {fileID: 3769127265623654171}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 48000
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MELANCHOLIC SAX/Mood
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Mood
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1625517450
+    data2: 208221070
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-5598145366463586523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/DRUMS/Intensity
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Intensity
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2165841579
+    data2: 937912429
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-5355539138971275942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -837,7 +493,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Instruments.bank
   Name: Instruments
   StudioPath: bank:/Instruments
-  lastModified: 639205897097753542
+  lastModified: 639206264823250683
   FileSizes: []
   Exists: 1
 --- !u!114 &-5165840453294665837
@@ -867,30 +523,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 102997
---- !u!114 &-5073781009498949916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Piano_Melancholic/Presence
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Presence
-  StudioPath: 
-  Min: 0
-  Max: 2
-  Default: 0
-  ID:
-    data1: 2488293593
-    data2: 2892315591
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
 --- !u!114 &-4851036123002482126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -913,7 +545,7 @@ MonoBehaviour:
   - {fileID: -5355539138971275942}
   IsStream: 1
   Is3D: 1
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters:
   - {fileID: -3914464041389347116}
   - {fileID: -6496102387006392893}
@@ -921,43 +553,11 @@ MonoBehaviour:
   - {fileID: 7710137637796199180}
   - {fileID: 1740356634708422786}
   - {fileID: 3440941307267889035}
+  - {fileID: 5330870810910453939}
   MinDistance: 1
   MaxDistance: 20
-  Length: 102997
---- !u!114 &-4846401332785411437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/NEW HAPPY/HAPPY BASS
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/NEW HAPPY/HAPPY BASS
-  Guid:
-    Data1: -1700064473
-    Data2: 1326164539
-    Data3: 1719321005
-    Data4: 223558344
-  Banks:
-  - {fileID: -5355539138971275942}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -3008611114202078303}
-  - {fileID: 7726544907640930823}
-  - {fileID: -579727460612832623}
-  - {fileID: 3514370114986169890}
-  - {fileID: -7337856220752995679}
-  - {fileID: -4780783120937002433}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 39242
---- !u!114 &-4780783120937002433
+  Length: 39289
+--- !u!114 &-4468756008205435502
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -967,21 +567,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY BASS/LoopType
+  m_Name: parameter:/SAXOPHONE/Mood
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: LoopType
+  Name: Mood
   StudioPath: 
   Min: 0
-  Max: 2
+  Max: 1
   Default: 0
   ID:
-    data1: 1887399632
-    data2: 945382093
+    data1: 1625517450
+    data2: 208221070
   Type: 1
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-4429290148606048533
+--- !u!114 &-4203246423753260600
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -991,7 +591,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Bass_Happy/Presence
+  m_Name: parameter:/SAXOPHONE/Presence
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
   Name: Presence
   StudioPath: 
@@ -1002,30 +602,6 @@ MonoBehaviour:
     data1: 2488293593
     data2: 2892315591
   Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-4280463470420596358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Saxophone_Happy/Duet
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Duet
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2058162456
-    data2: 2631435744
-  Type: 1
   IsGlobal: 0
   Labels: []
   Exists: 1
@@ -1053,7 +629,7 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &-3950302531262828948
+--- !u!114 &-4183949026517155835
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1062,45 +638,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY MASTER/LoopType
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: LoopType
-  StudioPath: 
-  Min: 0
-  Max: 2
-  Default: 0
-  ID:
-    data1: 1887399632
-    data2: 945382093
-  Type: 1
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-3940164908593460075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Bass_Melancholic/ReverbSend
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: ReverbSend
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3274971341
-    data2: 548242061
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/RESONANCE/DRUMS
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/RESONANCE/DRUMS
+  Guid:
+    Data1: 1825666444
+    Data2: 1228674974
+    Data3: -93742154
+    Data4: 1823612319
+  Banks:
+  - {fileID: -5355539138971275942}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -3833798736859379134}
+  - {fileID: 1871585509932066390}
+  - {fileID: -5598145366463586523}
+  - {fileID: -955918448132309002}
+  - {fileID: -3454458274426081786}
+  - {fileID: 5592898441669877421}
+  - {fileID: 6870491573426885893}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 39242
 --- !u!114 &-3914464041389347116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1125,7 +687,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-3887335511100438390
+--- !u!114 &-3833798736859379134
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1135,21 +697,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY DRUMS/Intensity
+  m_Name: parameter:/DRUMS/LoopType
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Intensity
+  Name: LoopType
   StudioPath: 
   Min: 0
-  Max: 1
+  Max: 2
   Default: 0
   ID:
-    data1: 2165841579
-    data2: 937912429
-  Type: 0
+    data1: 1887399632
+    data2: 945382093
+  Type: 1
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-3614106519950787382
+--- !u!114 &-3788031456708419185
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1159,31 +721,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Drums_Melancholic/ReverbSend
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: ReverbSend
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3274971341
-    data2: 548242061
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &-3385193177748607043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY DRUMS/Clarity
+  m_Name: parameter:/MASTER/Clarity
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
   Name: Clarity
   StudioPath: 
@@ -1197,7 +735,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-3141056157900356841
+--- !u!114 &-3767577444129556057
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1207,21 +745,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Piano_Happy/Intensity
+  m_Name: parameter:/MASTER/ReverbSend
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Intensity
+  Name: ReverbSend
   StudioPath: 
   Min: 0
   Max: 1
   Default: 0
   ID:
-    data1: 2165841579
-    data2: 937912429
+    data1: 3274971341
+    data2: 548242061
   Type: 0
-  IsGlobal: 0
+  IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &-3023078095040947459
+--- !u!114 &-3454458274426081786
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1231,45 +769,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY MASTER/Duet
+  m_Name: parameter:/DRUMS/ReverbSend
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Duet
+  Name: ReverbSend
   StudioPath: 
   Min: 0
   Max: 1
   Default: 0
   ID:
-    data1: 2058162456
-    data2: 2631435744
-  Type: 1
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-3008611114202078303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY BASS/Intensity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Intensity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2165841579
-    data2: 937912429
+    data1: 3274971341
+    data2: 548242061
   Type: 0
-  IsGlobal: 0
+  IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &-2919510115316390270
+--- !u!114 &-2971557368921739827
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1279,25 +793,54 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Happy/Saxophone_Happy
+  m_Name: event:/RESONANCE/BASS
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Happy/Saxophone_Happy
+  Path: event:/RESONANCE/BASS
   Guid:
-    Data1: 1175297259
-    Data2: 1195529765
-    Data3: -1284432979
-    Data4: 2136747151
+    Data1: -1700064473
+    Data2: 1326164539
+    Data3: 1719321005
+    Data4: 223558344
   Banks:
   - {fileID: -5355539138971275942}
-  IsStream: 0
+  IsStream: 1
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 350282097624866386}
-  - {fileID: -4280463470420596358}
+  - {fileID: 449872277273039221}
+  - {fileID: -6231020199674292554}
+  - {fileID: 2660364971652483103}
+  - {fileID: 9014704072576721465}
+  - {fileID: 603502348309350874}
+  - {fileID: -8079718894764878741}
+  - {fileID: 8038070159302656205}
   MinDistance: 1
   MaxDistance: 20
-  Length: 48000
+  Length: 39242
+--- !u!114 &-2810224957499104832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MASTER/Presence
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Presence
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 2488293593
+    data2: 2892315591
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-2781821141372976865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1322,54 +865,6 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &-2778148872384394457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY MASTER/Clarity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Clarity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 2869341830
-    data2: 1366809245
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-2773904492173182119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Piano_Happy/LoopType
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: LoopType
-  StudioPath: 
-  Min: 0
-  Max: 2
-  Default: 0
-  ID:
-    data1: 1887399632
-    data2: 945382093
-  Type: 1
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
 --- !u!114 &-2684391344411103013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1392,63 +887,6 @@ MonoBehaviour:
     data2: 945382093
   Type: 1
   IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-2648964244480990295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Melancholic/Piano_Melancholic
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Melancholic/Piano_Melancholic
-  Guid:
-    Data1: 101784337
-    Data2: 1276020437
-    Data3: 1862274969
-    Data4: 603923350
-  Banks:
-  - {fileID: -5355539138971275942}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 9217789732738442538}
-  - {fileID: 1835394276833450103}
-  - {fileID: 5531890277189324201}
-  - {fileID: 3210216448564376613}
-  - {fileID: -5073781009498949916}
-  - {fileID: 1774284623238467509}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 20000
---- !u!114 &-2599769579991670647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Drums_Happy/ReverbSend
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: ReverbSend
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3274971341
-    data2: 548242061
-  Type: 0
-  IsGlobal: 1
   Labels: []
   Exists: 1
 --- !u!114 &-2200710566015872862
@@ -1524,7 +962,7 @@ MonoBehaviour:
   - {fileID: -5355539138971275942}
   IsStream: 1
   Is3D: 1
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters:
   - {fileID: -7681926962096396159}
   - {fileID: -8707888778220535868}
@@ -1532,33 +970,10 @@ MonoBehaviour:
   - {fileID: -2781821141372976865}
   - {fileID: 136342662016042448}
   - {fileID: -6165081351592605009}
+  - {fileID: 8668258930286798484}
   MinDistance: 1
   MaxDistance: 20
-  Length: 38636
---- !u!114 &-1853722060933787460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY SAX/Presence
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Presence
-  StudioPath: 
-  Min: 0
-  Max: 2
-  Default: 0
-  ID:
-    data1: 2488293593
-    data2: 2892315591
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
+  Length: 39242
 --- !u!114 &-1746553167975134656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1579,6 +994,64 @@ MonoBehaviour:
   ID:
     data1: 2869341830
     data2: 1366809245
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-1708750778066254030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/RESONANCE/SAXOPHONE
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/RESONANCE/SAXOPHONE
+  Guid:
+    Data1: -1062363373
+    Data2: 1081246901
+    Data3: 129248412
+    Data4: 1444845852
+  Banks:
+  - {fileID: -5355539138971275942}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 2583047232821782804}
+  - {fileID: 4039063202753309308}
+  - {fileID: 3582323284970039842}
+  - {fileID: -4203246423753260600}
+  - {fileID: 6847614124341133836}
+  - {fileID: -4468756008205435502}
+  - {fileID: -7355949047113629371}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 39242
+--- !u!114 &-1306734746602285806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PIANO/Intensity
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Intensity
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2165841579
+    data2: 937912429
   Type: 0
   IsGlobal: 0
   Labels: []
@@ -1610,40 +1083,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-1001748506683904141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/NEW HAPPY/HAPPY MASTER
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/NEW HAPPY/HAPPY MASTER
-  Guid:
-    Data1: 958455475
-    Data2: 1074780745
-    Data3: 1483392178
-    Data4: -1755440455
-  Banks:
-  - {fileID: 6667485164451124964}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -3950302531262828948}
-  - {fileID: -3023078095040947459}
-  - {fileID: 7953732342423042210}
-  - {fileID: -6786368529114288540}
-  - {fileID: -2778148872384394457}
-  - {fileID: 2685974399245792837}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 39242
---- !u!114 &-579727460612832623
+--- !u!114 &-955918448132309002
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1653,21 +1093,45 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY BASS/Clarity
+  m_Name: parameter:/DRUMS/Duet
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Clarity
+  Name: Duet
   StudioPath: 
   Min: 0
   Max: 1
-  Default: 1
+  Default: 0
   ID:
-    data1: 2869341830
-    data2: 1366809245
+    data1: 2058162456
+    data2: 2631435744
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-465198025729284270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MASTER/Intensity
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Intensity
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2165841579
+    data2: 937912429
   Type: 0
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-373400786252938246
+--- !u!114 &-251905854125434981
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1677,17 +1141,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY PIANO/Presence
+  m_Name: parameter:/PIANO/Mood
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Presence
+  Name: Mood
   StudioPath: 
   Min: 0
-  Max: 2
+  Max: 1
   Default: 0
   ID:
-    data1: 2488293593
-    data2: 2892315591
-  Type: 0
+    data1: 1625517450
+    data2: 208221070
+  Type: 1
   IsGlobal: 0
   Labels: []
   Exists: 1
@@ -1740,26 +1204,16 @@ MonoBehaviour:
   - {fileID: 7451274423497821520}
   - {fileID: -2152242109430083091}
   - {fileID: -7005451272844619807}
-  - {fileID: 4368933532546082958}
-  - {fileID: -2648964244480990295}
-  - {fileID: -7868772336044586829}
-  - {fileID: -6067764605170957136}
-  - {fileID: -4846401332785411437}
-  - {fileID: 4791127534409364604}
-  - {fileID: 9192694702829389610}
-  - {fileID: 3616736850641145947}
-  - {fileID: 4563239308747386811}
   - {fileID: -4851036123002482126}
-  - {fileID: 3429437784018667877}
   - {fileID: -6354906982182169918}
-  - {fileID: 3778926557968311133}
-  - {fileID: 6784431948970403884}
   - {fileID: 5894242851225389984}
-  - {fileID: 7241172232170857951}
-  - {fileID: -2919510115316390270}
   - {fileID: -1861696988881228671}
-  - {fileID: -1001748506683904141}
   - {fileID: -5165840453294665837}
+  - {fileID: -1708750778066254030}
+  - {fileID: -2971557368921739827}
+  - {fileID: -4183949026517155835}
+  - {fileID: 2235840765537547630}
+  - {fileID: -7011656453053489926}
   EditorParameters:
   - {fileID: -4192359926374109661}
   MasterBanks:
@@ -1767,7 +1221,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 3250549758733988562}
   cacheVersion: 131860
-  cacheTime: 639205897098198597
+  cacheTime: 639206264823669601
   SerializableEventsDict:
   - key: event:/Composition/Chords/Eb Major
     index: 0
@@ -1783,46 +1237,26 @@ MonoBehaviour:
     index: 5
   - key: event:/Composition/Chords/G Minor
     index: 6
-  - key: event:/Happy/Piano_Happy
-    index: 7
-  - key: event:/Melancholic/Piano_Melancholic
-    index: 8
-  - key: event:/NEW HAPPY/HAPPY SAX
-    index: 9
-  - key: event:/Melancholic/Drums_Melancholic
-    index: 10
-  - key: event:/NEW HAPPY/HAPPY BASS
-    index: 11
-  - key: event:/Happy/Drums_Happy
-    index: 12
-  - key: event:/Melancholic/Saxophone_Melancholic
-    index: 13
-  - key: event:/Drums
-    index: 14
-  - key: event:/NEW HAPPY/HAPPY DRUMS
-    index: 15
   - key: event:/NEW MELANCHOLIC/MELANCHOLIC PIANO
-    index: 16
-  - key: event:/Happy/Bass_Happy
-    index: 17
+    index: 7
   - key: event:/NEW MELANCHOLIC/MELANCHOLIC BASS
-    index: 18
-  - key: event:/NEW HAPPY/HAPPY PIANO
-    index: 19
-  - key: event:/Instrument_Template
-    index: 20
+    index: 8
   - key: event:/NEW MELANCHOLIC/MELANCHOLIC SAX
-    index: 21
-  - key: event:/Melancholic/Bass_Melancholic
-    index: 22
-  - key: event:/Happy/Saxophone_Happy
-    index: 23
+    index: 9
   - key: event:/NEW MELANCHOLIC/MELANCHOLIC DRUMS
-    index: 24
-  - key: event:/NEW HAPPY/HAPPY MASTER
-    index: 25
+    index: 10
   - key: event:/NEW MELANCHOLIC/MELANCHOLIC MASTER
-    index: 26
+    index: 11
+  - key: event:/RESONANCE/SAXOPHONE
+    index: 12
+  - key: event:/RESONANCE/BASS
+    index: 13
+  - key: event:/RESONANCE/DRUMS
+    index: 14
+  - key: event:/RESONANCE/PIANO
+    index: 15
+  - key: event:/RESONANCE/MASTER
+    index: 16
 --- !u!114 &24488620135746183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1871,7 +1305,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &254286924997704884
+--- !u!114 &449872277273039221
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1881,31 +1315,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Drums_Melancholic/Clarity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Clarity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 2869341830
-    data2: 1366809245
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &350282097624866386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Saxophone_Happy/Intensity
+  m_Name: parameter:/BASS/Intensity
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
   Name: Intensity
   StudioPath: 
@@ -1919,7 +1329,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &657681900680341017
+--- !u!114 &603502348309350874
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1929,7 +1339,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Piano_Happy/ReverbSend
+  m_Name: parameter:/BASS/ReverbSend
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
   Name: ReverbSend
   StudioPath: 
@@ -1941,30 +1351,6 @@ MonoBehaviour:
     data2: 548242061
   Type: 0
   IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &892154143371249494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Bass_Melancholic/Clarity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Clarity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 2869341830
-    data2: 1366809245
-  Type: 0
-  IsGlobal: 0
   Labels: []
   Exists: 1
 --- !u!114 &912857888433040292
@@ -1991,30 +1377,6 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &1592773884520602516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY PIANO/Duet
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Duet
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2058162456
-    data2: 2631435744
-  Type: 1
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
 --- !u!114 &1740356634708422786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2039,7 +1401,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &1774284623238467509
+--- !u!114 &1871585509932066390
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2049,21 +1411,55 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Piano_Melancholic/LoopType
+  m_Name: parameter:/DRUMS/Mood
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: LoopType
+  Name: Mood
   StudioPath: 
   Min: 0
-  Max: 2
+  Max: 1
   Default: 0
   ID:
-    data1: 1887399632
-    data2: 945382093
+    data1: 1625517450
+    data2: 208221070
   Type: 1
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &1799062456840360549
+--- !u!114 &2235840765537547630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/RESONANCE/PIANO
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/RESONANCE/PIANO
+  Guid:
+    Data1: -596967490
+    Data2: 1181215814
+    Data3: -1292045171
+    Data4: 1807476974
+  Banks:
+  - {fileID: -5355539138971275942}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -251905854125434981}
+  - {fileID: 5304455190276750618}
+  - {fileID: 5978592536122805060}
+  - {fileID: -1306734746602285806}
+  - {fileID: 8688338414853836814}
+  - {fileID: 4628151344787099941}
+  - {fileID: 8081588585480277815}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 39289
+--- !u!114 &2583047232821782804
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2073,55 +1469,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Drums_Happy/Clarity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Clarity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 2869341830
-    data2: 1366809245
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &1835394276833450103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Piano_Melancholic/Intensity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Intensity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2165841579
-    data2: 937912429
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &2438365978820938071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY DRUMS/Duet
+  m_Name: parameter:/SAXOPHONE/Duet
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
   Name: Duet
   StudioPath: 
@@ -2135,7 +1483,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &2685974399245792837
+--- !u!114 &2660364971652483103
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2145,103 +1493,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY MASTER/ReverbSend
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: ReverbSend
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3274971341
-    data2: 548242061
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &2870900617832814108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY DRUMS/ReverbSend
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: ReverbSend
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3274971341
-    data2: 548242061
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &2947538728289506759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Bass_Melancholic/LoopType
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: LoopType
-  StudioPath: 
-  Min: 0
-  Max: 2
-  Default: 0
-  ID:
-    data1: 1887399632
-    data2: 945382093
-  Type: 1
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &3124211716946815652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY SAX/LoopType
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: LoopType
-  StudioPath: 
-  Min: 0
-  Max: 2
-  Default: 0
-  ID:
-    data1: 1887399632
-    data2: 945382093
-  Type: 1
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &3210216448564376613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Piano_Melancholic/Clarity
+  m_Name: parameter:/BASS/Clarity
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
   Name: Clarity
   StudioPath: 
@@ -2270,12 +1522,12 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639205897098198597
+  lastModified: 639206264823669601
   FileSizes:
   - Name: 
-    Value: 2358
+    Value: 1892
   Exists: 1
---- !u!114 &3381223172471737130
+--- !u!114 &3401486763377838323
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2285,7 +1537,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Drums_Happy/Duet
+  m_Name: parameter:/MASTER/Duet
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
   Name: Duet
   StudioPath: 
@@ -2299,39 +1551,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &3429437784018667877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Happy/Bass_Happy
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Happy/Bass_Happy
-  Guid:
-    Data1: 1892253589
-    Data2: 1164996803
-    Data3: -1064318586
-    Data4: 738166796
-  Banks:
-  - {fileID: -5355539138971275942}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -6418919730960885024}
-  - {fileID: -6733749034124935064}
-  - {fileID: 4136232079897987035}
-  - {fileID: -7145636884387295163}
-  - {fileID: 8261997728647066386}
-  - {fileID: -4429290148606048533}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 48000
 --- !u!114 &3440941307267889035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2356,7 +1575,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &3514370114986169890
+--- !u!114 &3582323284970039842
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2366,42 +1585,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY BASS/Presence
+  m_Name: parameter:/SAXOPHONE/ReverbSend
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Presence
-  StudioPath: 
-  Min: 0
-  Max: 2
-  Default: 0
-  ID:
-    data1: 2488293593
-    data2: 2892315591
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &3603556773840994542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Drums_Melancholic/Intensity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Intensity
+  Name: ReverbSend
   StudioPath: 
   Min: 0
   Max: 1
   Default: 0
   ID:
-    data1: 2165841579
-    data2: 937912429
+    data1: 3274971341
+    data2: 548242061
   Type: 0
-  IsGlobal: 0
+  IsGlobal: 1
   Labels: []
   Exists: 1
 --- !u!114 &3613000055656994999
@@ -2431,34 +1626,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &3616736850641145947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Drums
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Drums
-  Guid:
-    Data1: 983654249
-    Data2: 1088689311
-    Data3: 542318507
-    Data4: 883878883
-  Banks:
-  - {fileID: -5355539138971275942}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &3711138416694645666
+--- !u!114 &4039063202753309308
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2468,7 +1636,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY PIANO/Intensity
+  m_Name: parameter:/SAXOPHONE/Intensity
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
   Name: Intensity
   StudioPath: 
@@ -2482,7 +1650,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &3769127265623654171
+--- !u!114 &4628151344787099941
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2492,7 +1660,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Drums_Melancholic/LoopType
+  m_Name: parameter:/PIANO/Clarity
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Clarity
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 2869341830
+    data2: 1366809245
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &5304455190276750618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PIANO/LoopType
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
   Name: LoopType
   StudioPath: 
@@ -2506,40 +1698,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &3778926557968311133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/NEW HAPPY/HAPPY PIANO
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/NEW HAPPY/HAPPY PIANO
-  Guid:
-    Data1: -596967490
-    Data2: 1181215814
-    Data3: -1292045171
-    Data4: 1807476974
-  Banks:
-  - {fileID: -5355539138971275942}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -6246215773225429025}
-  - {fileID: 1592773884520602516}
-  - {fileID: 3711138416694645666}
-  - {fileID: -373400786252938246}
-  - {fileID: -6331212543364876966}
-  - {fileID: 9094827734216475991}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 39242
---- !u!114 &4136232079897987035
+--- !u!114 &5330870810910453939
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2549,111 +1708,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Bass_Happy/Intensity
+  m_Name: parameter:/MELANCHOLIC PIANO/Mood
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Intensity
+  Name: Mood
   StudioPath: 
   Min: 0
   Max: 1
   Default: 0
   ID:
-    data1: 2165841579
-    data2: 937912429
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &4174096619258401595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Instrument_Template/Duet
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Duet
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2058162456
-    data2: 2631435744
+    data1: 1625517450
+    data2: 208221070
   Type: 1
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &4368933532546082958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Happy/Piano_Happy
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Happy/Piano_Happy
-  Guid:
-    Data1: 1887747844
-    Data2: 1183311063
-    Data3: 1282896545
-    Data4: -1015308424
-  Banks:
-  - {fileID: -5355539138971275942}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -3141056157900356841}
-  - {fileID: -6641714338762419210}
-  - {fileID: 657681900680341017}
-  - {fileID: 7487980062093456110}
-  - {fileID: 7772694206708933943}
-  - {fileID: -2773904492173182119}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 10000
---- !u!114 &4563239308747386811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/NEW HAPPY/HAPPY DRUMS
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/NEW HAPPY/HAPPY DRUMS
-  Guid:
-    Data1: 1825666444
-    Data2: 1228674974
-    Data3: -93742154
-    Data4: 1823612319
-  Banks:
-  - {fileID: -5355539138971275942}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 8458423399349869960}
-  - {fileID: -3887335511100438390}
-  - {fileID: 2438365978820938071}
-  - {fileID: 2870900617832814108}
-  - {fileID: -3385193177748607043}
-  - {fileID: -9129180855867646950}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 39242
---- !u!114 &4685441590418538897
+--- !u!114 &5592898441669877421
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2663,99 +1732,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Bass_Melancholic/Duet
+  m_Name: parameter:/DRUMS/Clarity
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Duet
+  Name: Clarity
   StudioPath: 
   Min: 0
   Max: 1
-  Default: 0
+  Default: 1
   ID:
-    data1: 2058162456
-    data2: 2631435744
-  Type: 1
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &4791127534409364604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Happy/Drums_Happy
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Happy/Drums_Happy
-  Guid:
-    Data1: 515810633
-    Data2: 1281492034
-    Data3: 645347986
-    Data4: 868627061
-  Banks:
-  - {fileID: -5355539138971275942}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -2599769579991670647}
-  - {fileID: -8749643008701902579}
-  - {fileID: 1799062456840360549}
-  - {fileID: 7825934254692728233}
-  - {fileID: 3381223172471737130}
-  - {fileID: -7944837677234483121}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 48000
---- !u!114 &5370809554973333046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Bass_Melancholic/Presence
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Presence
-  StudioPath: 
-  Min: 0
-  Max: 2
-  Default: 0
-  ID:
-    data1: 2488293593
-    data2: 2892315591
+    data1: 2869341830
+    data2: 1366809245
   Type: 0
   IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &5531890277189324201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Piano_Melancholic/ReverbSend
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: ReverbSend
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3274971341
-    data2: 548242061
-  Type: 0
-  IsGlobal: 1
   Labels: []
   Exists: 1
 --- !u!114 &5749219797382457837
@@ -2804,7 +1792,7 @@ MonoBehaviour:
   - {fileID: -5355539138971275942}
   IsStream: 1
   Is3D: 1
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters:
   - {fileID: -6288814677090668741}
   - {fileID: 912857888433040292}
@@ -2812,10 +1800,11 @@ MonoBehaviour:
   - {fileID: 8718300235462492465}
   - {fileID: 8701710752188895683}
   - {fileID: -7231030591803879533}
+  - {fileID: -6067610166021404477}
   MinDistance: 1
   MaxDistance: 20
   Length: 39242
---- !u!114 &5961427934050683369
+--- !u!114 &5978592536122805060
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2825,17 +1814,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY SAX/Clarity
+  m_Name: parameter:/PIANO/Duet
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Clarity
+  Name: Duet
   StudioPath: 
   Min: 0
   Max: 1
-  Default: 1
+  Default: 0
   ID:
-    data1: 2869341830
-    data2: 1366809245
-  Type: 0
+    data1: 2058162456
+    data2: 2631435744
+  Type: 1
   IsGlobal: 0
   Labels: []
   Exists: 1
@@ -2878,10 +1867,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639205897098183490
+  lastModified: 639206264823659531
   FileSizes: []
   Exists: 1
---- !u!114 &6702636664997632572
+--- !u!114 &6847614124341133836
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2891,7 +1880,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Drums_Melancholic/Presence
+  m_Name: parameter:/SAXOPHONE/Clarity
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Clarity
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 2869341830
+    data2: 1366809245
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &6870491573426885893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/DRUMS/Presence
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
   Name: Presence
   StudioPath: 
@@ -2905,68 +1918,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &6784431948970403884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Instrument_Template
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Instrument_Template
-  Guid:
-    Data1: 1537242315
-    Data2: 1268609376
-    Data3: 1913276848
-    Data4: 39164181
-  Banks:
-  - {fileID: -5355539138971275942}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -6354228541795928002}
-  - {fileID: 4174096619258401595}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 48000
---- !u!114 &7241172232170857951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Melancholic/Bass_Melancholic
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Melancholic/Bass_Melancholic
-  Guid:
-    Data1: -572425241
-    Data2: 1207686032
-    Data3: 1083161747
-    Data4: -1422075714
-  Banks:
-  - {fileID: -5355539138971275942}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 2947538728289506759}
-  - {fileID: 892154143371249494}
-  - {fileID: 5370809554973333046}
-  - {fileID: -3940164908593460075}
-  - {fileID: -7299419025910355813}
-  - {fileID: 4685441590418538897}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 48000
 --- !u!114 &7451274423497821520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2994,7 +1945,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &7487980062093456110
+--- !u!114 &7523331490581092384
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3004,17 +1955,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Piano_Happy/Presence
+  m_Name: parameter:/MASTER/LoopType
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Presence
+  Name: LoopType
   StudioPath: 
   Min: 0
   Max: 2
   Default: 0
   ID:
-    data1: 2488293593
-    data2: 2892315591
-  Type: 0
+    data1: 1887399632
+    data2: 945382093
+  Type: 1
   IsGlobal: 0
   Labels: []
   Exists: 1
@@ -3042,7 +1993,7 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &7726544907640930823
+--- !u!114 &7711028200437825686
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3052,21 +2003,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY BASS/Duet
+  m_Name: parameter:/MELANCHOLIC BASS/Mood
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Duet
+  Name: Mood
   StudioPath: 
   Min: 0
   Max: 1
   Default: 0
   ID:
-    data1: 2058162456
-    data2: 2631435744
+    data1: 1625517450
+    data2: 208221070
   Type: 1
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &7772694206708933943
+--- !u!114 &8038070159302656205
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3076,93 +2027,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Piano_Happy/Clarity
+  m_Name: parameter:/BASS/Mood
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Clarity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 2869341830
-    data2: 1366809245
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &7825934254692728233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Drums_Happy/Intensity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Intensity
+  Name: Mood
   StudioPath: 
   Min: 0
   Max: 1
   Default: 0
   ID:
-    data1: 2165841579
-    data2: 937912429
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &7953732342423042210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY MASTER/Intensity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Intensity
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2165841579
-    data2: 937912429
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &8203778956683400106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Drums_Melancholic/Duet
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Duet
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2058162456
-    data2: 2631435744
+    data1: 1625517450
+    data2: 208221070
   Type: 1
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &8261997728647066386
+--- !u!114 &8081588585480277815
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3172,21 +2051,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Bass_Happy/Clarity
+  m_Name: parameter:/PIANO/ReverbSend
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Clarity
+  Name: ReverbSend
   StudioPath: 
   Min: 0
   Max: 1
-  Default: 1
+  Default: 0
   ID:
-    data1: 2869341830
-    data2: 1366809245
+    data1: 3274971341
+    data2: 548242061
   Type: 0
-  IsGlobal: 0
+  IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &8458423399349869960
+--- !u!114 &8668258930286798484
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3196,17 +2075,41 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY DRUMS/LoopType
+  m_Name: parameter:/MELANCHOLIC DRUMS/Mood
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: LoopType
+  Name: Mood
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1625517450
+    data2: 208221070
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &8688338414853836814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PIANO/Presence
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Presence
   StudioPath: 
   Min: 0
   Max: 2
   Default: 0
   ID:
-    data1: 1887399632
-    data2: 945382093
-  Type: 1
+    data1: 2488293593
+    data2: 2892315591
+  Type: 0
   IsGlobal: 0
   Labels: []
   Exists: 1
@@ -3258,7 +2161,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &9094827734216475991
+--- !u!114 &9014704072576721465
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3268,70 +2171,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HAPPY PIANO/ReverbSend
+  m_Name: parameter:/BASS/Presence
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: ReverbSend
+  Name: Presence
   StudioPath: 
   Min: 0
-  Max: 1
+  Max: 2
   Default: 0
   ID:
-    data1: 3274971341
-    data2: 548242061
+    data1: 2488293593
+    data2: 2892315591
   Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &9192694702829389610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Melancholic/Saxophone_Melancholic
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Melancholic/Saxophone_Melancholic
-  Guid:
-    Data1: 1472576348
-    Data2: 1229965874
-    Data3: -1229438329
-    Data4: -648642634
-  Banks:
-  - {fileID: -5355539138971275942}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -6181401127665739590}
-  - {fileID: -8926746196750399034}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 48000
---- !u!114 &9217789732738442538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Piano_Melancholic/Duet
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Duet
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2058162456
-    data2: 2631435744
-  Type: 1
   IsGlobal: 0
   Labels: []
   Exists: 1

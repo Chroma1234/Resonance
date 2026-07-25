@@ -31,8 +31,27 @@ public class MoodToggleUI : MonoBehaviour
             return;
         }
 
+        if (instrument == null)
+        {
+            Debug.LogWarning("MoodToggleUI: instrument is null in OnToggleChanged");
+            return;
+        }
+
+        if (MoodManager.Instance == null)
+        {
+            Debug.LogWarning("MoodToggleUI: MoodManager.Instance is null in OnToggleChanged");
+            return;
+        }
+
+        if (SoundManager.Instance == null)
+        {
+            Debug.LogWarning("MoodToggleUI: SoundManager.Instance is null in OnToggleChanged");
+            return;
+        }
+
         Debug.Log($"Selected {mood} for {instrument.instrumentName}");
 
         MoodManager.Instance.SetMood(instrument, mood);
+        SoundManager.Instance.ApplyInstrumentMood(instrument, mood);
     }
 }

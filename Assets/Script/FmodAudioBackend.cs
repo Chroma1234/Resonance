@@ -67,7 +67,6 @@ public class FmodAudioBackend : MonoBehaviour, IAudioBackend
                 Debug.LogWarning($"FmodAudioBackend: Failed to start event for landmark {config.landmarkId}: {startResult}");
             }
 
-            // Force a simple, known state to test audibility
             inst.instance.setParameterByName("LoopType", (float)LoopType.Normal);
             inst.instance.setParameterByName("Presence", 1.0f);
             inst.instance.setParameterByName("Clarity", 1.0f);
@@ -89,6 +88,18 @@ public class FmodAudioBackend : MonoBehaviour, IAudioBackend
                 inst.release();
             }
         }
+    }
+
+    public void SetMoodParameter(int landmarkId, float moodValue)
+    {
+        if (!_instances.TryGetValue(landmarkId, out var data) || !data.instance.isValid())
+        {
+            Debug.LogWarning($"SetMoodParameter: No valid instance for landmark {landmarkId}");
+            return;
+        }
+
+        Debug.Log($"SetMoodParameter: landmark {landmarkId}, Mood = {moodValue}");
+        data.instance.setParameterByName("Mood", moodValue);
     }
 
     public void CrossfadeLoop(
