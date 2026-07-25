@@ -17,6 +17,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private Transform player;
     private MusicLandmark[] landmarks;
 
+    [Header("One-Time Settings")]
+    [SerializeField] private string tutorialSaveKey = "HasSeenTutorial_Scene"; 
 
     [Header("Tutorial Difficulty Settings")]
     [SerializeField] private float tutorialApproachRadiusMultiplier = 0.5f; // Makes approach range 50% smaller
@@ -27,6 +29,16 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
+        // Check if the player has already seen this tutorial before
+        if (PlayerPrefs.GetInt(tutorialSaveKey, 0) == 1)
+        {
+            // Already seen! Turn off the tutorial panel immediately and disable this script.
+            if (tutorialPanel != null) tutorialPanel.SetActive(false);
+            if (tutorialArrow != null) tutorialArrow.SetActive(false);
+            enabled = false;
+            return;
+        }
+
         CacheReferences();
 
         if (tutorialSteps == null || tutorialSteps.Count == 0)
@@ -37,45 +49,6 @@ public class TutorialManager : MonoBehaviour
 
         ShowStep(0);
     }
-
-
-    //void Update()
-    //{
-    //    if (tutorialSteps == null || currentStepIndex >= tutorialSteps.Count) return;
-
-    //    // Auto-cache if missing during runtime
-    //    if (player == null || landmarks == null || landmarks.Length == 0)
-    //    {
-    //        CacheReferences();
-    //        if (player == null) return;
-    //    }
-
-    //    TutorialStep currentStep = tutorialSteps[currentStepIndex];
-
-    //    switch (currentStep.triggerType)
-    //    {
-    //        case TutorialTriggerType.Timer:
-    //            timer += Time.unscaledDeltaTime;
-    //            if (timer >= currentStep.displayDuration) NextStep();
-    //            break;
-
-    //        case TutorialTriggerType.Spacebar:
-    //            if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame) NextStep();
-    //            break;
-
-    //        case TutorialTriggerType.MouseClick:
-    //            if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame) NextStep();
-    //            break;
-
-    //        case TutorialTriggerType.ApproachLandmark:
-    //            if (CheckPlayerApproachedLandmark()) NextStep();
-    //            break;
-
-    //        case TutorialTriggerType.TriggerDuet:
-    //            if (CheckPlayerTriggeredDuet()) NextStep();
-    //            break;
-    //    }
-    //}
 
     void Update()
     {
@@ -202,8 +175,15 @@ public class TutorialManager : MonoBehaviour
         }
         else
         {
+            // --- TUTORIAL COMPLETED ---
+            // Save that the player has finished this tutorial so it never pops up again!
+            PlayerPrefs.SetInt(tutorialSaveKey, 1);
+            PlayerPrefs.Save();
+
             if (tutorialPanel != null) tutorialPanel.SetActive(false);
             if (tutorialArrow != null) tutorialArrow.SetActive(false);
+
+            enabled = false; // Turn off script
         }
     }
     public void TryAdvanceStep(TutorialTriggerType requiredType)

@@ -1157,6 +1157,10 @@ MonoBehaviour:
   tutorialSteps:
   - {fileID: 11400000, guid: f875233c2ac15b6419a09ec9679639e9, type: 2}
   - {fileID: 11400000, guid: 55775a9465ef3dc4dbf3f310761d50bc, type: 2}
+  player: {fileID: 0}
+  tutorialSaveKey: HasSeenTutorial_MoodSelection
+  tutorialApproachRadiusMultiplier: 0.5
+  tutorialDuetRadiusMultiplier: 0.7
 --- !u!4 &938499880
 Transform:
   m_ObjectHideFlags: 0

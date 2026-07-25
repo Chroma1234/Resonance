@@ -8061,6 +8061,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ea66a506fa422004091f25fedfede79e, type: 2}
   - {fileID: 11400000, guid: 71f7565d1c5dd414a86d25c4578216bf, type: 2}
   player: {fileID: 1337856443}
+  tutorialSaveKey: HasSeenTutorial_Environment
+  tutorialApproachRadiusMultiplier: 0.5
+  tutorialDuetRadiusMultiplier: 0.7
 --- !u!1 &786160364
 GameObject:
   m_ObjectHideFlags: 0
