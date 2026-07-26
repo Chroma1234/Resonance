@@ -393,7 +393,7 @@ public class CompositionPlayer : MonoBehaviour
     }
 
     // Used internally by Clear and OnDestroy.
-    private void StopComposition()
+    public void StopComposition()
     {
         if (playbackCoroutine != null)
         {

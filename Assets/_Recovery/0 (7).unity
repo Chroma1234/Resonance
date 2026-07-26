@@ -20697,7 +20697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoaderScript
   compositionPanel: {fileID: 2425446112878636102}
-  compositionPlayer: {fileID: 5302033900859715952}
+  compositionPlayer: {fileID: 0}
   playerMovement: {fileID: 1337856448}
   mouseLook: {fileID: 1337856449}
 --- !u!1 &1701197403
