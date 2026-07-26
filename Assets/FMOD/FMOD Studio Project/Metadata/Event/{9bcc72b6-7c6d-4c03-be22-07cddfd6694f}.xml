@@ -70,7 +70,7 @@
 			<destination>{66cb4897-0d65-474a-86c0-70c41a98c577}</destination>
 		</relationship>
 		<relationship name="modules">
-			<destination>{b9201d6a-b463-4a98-8b3f-6819b46dedfd}</destination>
+			<destination>{64e933b8-f20c-4503-b023-7f4256199e81}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{9b0055b5-a03a-4b48-88e7-5daeb8560df4}</destination>
@@ -81,7 +81,7 @@
 			<destination>{240607a2-c4f4-4b90-8546-663ae6fdf104}</destination>
 		</relationship>
 		<relationship name="modules">
-			<destination>{0f920076-5dc8-4f11-a62b-1f9882bd5491}</destination>
+			<destination>{0c21ef1f-afb1-4437-8c82-fbb923b43190}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{5df48e45-e76a-4288-b4d0-bf3206493cbd}</destination>
@@ -92,7 +92,7 @@
 			<destination>{8966efcf-874c-412c-946a-5f71815af885}</destination>
 		</relationship>
 		<relationship name="modules">
-			<destination>{371a3673-5b8d-44af-9b64-78ad01615d1b}</destination>
+			<destination>{d919da90-c46f-4d35-8318-c441b9f03be3}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{772a5329-9770-4d9f-b687-4690b33f136e}</destination>
@@ -100,9 +100,9 @@
 	</object>
 	<object class="Timeline" id="{9e1dc59a-663b-42d0-9bf1-0b56cf27c359}">
 		<relationship name="modules">
-			<destination>{b9201d6a-b463-4a98-8b3f-6819b46dedfd}</destination>
-			<destination>{0f920076-5dc8-4f11-a62b-1f9882bd5491}</destination>
-			<destination>{371a3673-5b8d-44af-9b64-78ad01615d1b}</destination>
+			<destination>{64e933b8-f20c-4503-b023-7f4256199e81}</destination>
+			<destination>{0c21ef1f-afb1-4437-8c82-fbb923b43190}</destination>
+			<destination>{d919da90-c46f-4d35-8318-c441b9f03be3}</destination>
 		</relationship>
 		<relationship name="markers">
 			<destination>{ae8f6a55-c19e-42c1-a66d-aabe8a0128cc}</destination>
@@ -140,12 +140,12 @@
 			<destination>{be445472-f90c-4de3-8ce1-36815a1e59f3}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{b9201d6a-b463-4a98-8b3f-6819b46dedfd}">
+	<object class="SingleSound" id="{64e933b8-f20c-4503-b023-7f4256199e81}">
 		<property name="length">
-			<value>38.775351473922903</value>
+			<value>19.591836734693878</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{b67e58cb-ce7c-49c2-9548-43d5a25f44e1}</destination>
+			<destination>{cef94243-c5a7-4de1-b907-20b0104f6d16}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{9b0055b5-a03a-4b48-88e7-5daeb8560df4}">
@@ -170,12 +170,12 @@
 			<destination>{d16c9f0f-ece1-4a5e-b039-13b8b7b44f5f}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{0f920076-5dc8-4f11-a62b-1f9882bd5491}">
+	<object class="SingleSound" id="{0c21ef1f-afb1-4437-8c82-fbb923b43190}">
 		<property name="length">
-			<value>38.775351473922903</value>
+			<value>19.591836734693878</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{b67e58cb-ce7c-49c2-9548-43d5a25f44e1}</destination>
+			<destination>{c21f0507-960b-4d1e-ab13-fc8473a9eacc}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{5df48e45-e76a-4288-b4d0-bf3206493cbd}">
@@ -200,12 +200,12 @@
 			<destination>{44edb766-933c-4c4e-b4be-78f56d3508bc}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{371a3673-5b8d-44af-9b64-78ad01615d1b}">
+	<object class="SingleSound" id="{d919da90-c46f-4d35-8318-c441b9f03be3}">
 		<property name="length">
-			<value>38.775351473922903</value>
+			<value>19.591836734693878</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{b67e58cb-ce7c-49c2-9548-43d5a25f44e1}</destination>
+			<destination>{5b077022-645d-4ad7-83cd-2107356ae0bc}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{772a5329-9770-4d9f-b687-4690b33f136e}">
@@ -230,7 +230,7 @@
 			<value>0</value>
 		</property>
 		<property name="length">
-			<value>38.775351473922903</value>
+			<value>19.591836734693878</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{9e1dc59a-663b-42d0-9bf1-0b56cf27c359}</destination>

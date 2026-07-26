@@ -14,9 +14,12 @@ public class MoodUIManager : MonoBehaviour
     {
         foreach (InstrumentData instrument in database.instruments)
         {
-            InstrumentPanelUI panel = Instantiate(panelPrefab, panelParent);
+            if (instrument.mixable)
+            {
+                InstrumentPanelUI panel = Instantiate(panelPrefab, panelParent);
 
-            panel.Initialise(instrument);
+                panel.Initialise(instrument);
+            }
         }
     }
 }

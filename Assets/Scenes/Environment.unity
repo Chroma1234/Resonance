@@ -7170,7 +7170,7 @@ GameObject:
   - component: {fileID: 564987833}
   m_Layer: 5
   m_Name: PauseMenu
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8065,6 +8065,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b30b3ef7a14d35142b36858fc01b69e2, type: 2}
   - {fileID: 11400000, guid: 941f816d0ba710a4194853eada23e430, type: 2}
   - {fileID: 11400000, guid: 3b2d6405a5b314c4299b4597bdfa4cbd, type: 2}
+  <TutorialEnded>k__BackingField: 0
   tutorialSaveKey: HasSeenTutorial_Environment
   tutorialApproachRadiusMultiplier: 0.5
   tutorialDuetRadiusMultiplier: 0.7

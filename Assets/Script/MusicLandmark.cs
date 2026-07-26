@@ -39,9 +39,12 @@ public class MusicLandmark : MonoBehaviour
             SoundManager.Instance.Register(this);
         }
 
-        CreateRadiusIndicator("Intensity Radius", instrumentData.intenseDistance, new Color(1, 0, 0, 0.05f));
-        CreateRadiusIndicator("Max Radius", instrumentData.maxDistance, new Color(1, 1, 0, 0.01f));
-        CreateRadiusIndicator("Duet Radius", instrumentData.duetRadius, new Color(0, 1, 1, 0.1f));
+        if (instrumentData.mixable)
+        {
+            CreateRadiusIndicator("Intensity Radius", instrumentData.intenseDistance, new Color(1, 0, 0, 0.05f));
+            CreateRadiusIndicator("Max Radius", instrumentData.maxDistance, new Color(1, 1, 0, 0.01f));
+            CreateRadiusIndicator("Duet Radius", instrumentData.duetRadius, new Color(0, 1, 1, 0.1f));
+        }
     }
 
     private void Update()

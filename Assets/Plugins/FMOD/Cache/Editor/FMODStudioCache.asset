@@ -29,7 +29,7 @@ MonoBehaviour:
   - {fileID: 5813099408066142144}
   MinDistance: 1
   MaxDistance: 20
-  Length: 38775
+  Length: 19591
 --- !u!114 &-8707888778220535868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +192,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Composition.bank
   Name: Composition
   StudioPath: bank:/Composition
-  lastModified: 639206780864839293
+  lastModified: 639207045522073854
   FileSizes: []
   Exists: 1
 --- !u!114 &-7355949047113629371
@@ -541,7 +541,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Instruments.bank
   Name: Instruments
   StudioPath: bank:/Instruments
-  lastModified: 639207010508057487
+  lastModified: 639207053736078007
   FileSizes: []
   Exists: 1
 --- !u!114 &-5165840453294665837
@@ -634,7 +634,7 @@ MonoBehaviour:
   - {fileID: 4341218704474277268}
   MinDistance: 1
   MaxDistance: 20
-  Length: 38786
+  Length: 19591
 --- !u!114 &-4468756008205435502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1092,7 +1092,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 38636
+  Length: 19591
 --- !u!114 &-1861696988881228671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1404,7 +1404,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 3250549758733988562}
   cacheVersion: 131860
-  cacheTime: 639207010508292590
+  cacheTime: 639207053737454745
   SerializableEventsDict:
   - key: event:/Composition/Chords/Eb Major
     index: 0
@@ -1625,7 +1625,7 @@ MonoBehaviour:
   - {fileID: 4646567782433830105}
   MinDistance: 1
   MaxDistance: 20
-  Length: 39242
+  Length: 19591
 --- !u!114 &1269874842171604661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1655,7 +1655,7 @@ MonoBehaviour:
   - {fileID: -4302761438634495469}
   MinDistance: 1
   MaxDistance: 20
-  Length: 38692
+  Length: 19591
 --- !u!114 &1352253453707351042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1879,7 +1879,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639207010508292590
+  lastModified: 639207053737454745
   FileSizes:
   - Name: 
     Value: 2298
@@ -1913,7 +1913,7 @@ MonoBehaviour:
   - {fileID: 2772625987625285912}
   MinDistance: 1
   MaxDistance: 20
-  Length: 38775
+  Length: 19591
 --- !u!114 &3401486763377838323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2340,7 +2340,7 @@ MonoBehaviour:
   - {fileID: -8200112492021060412}
   MinDistance: 1
   MaxDistance: 20
-  Length: 39242
+  Length: 19591
 --- !u!114 &6667485164451124964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2356,7 +2356,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639207010508272569
+  lastModified: 639207053737428808
   FileSizes: []
   Exists: 1
 --- !u!114 &6847614124341133836

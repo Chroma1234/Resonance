@@ -19,6 +19,8 @@ public class InstrumentData : ScriptableObject
 
     public GameObject modelPrefab;
 
+    public bool mixable = false;
+
     public EventReference GetEvent(Mood mood)
     {
         foreach (MoodEvent moodEvent in moodEvents)
