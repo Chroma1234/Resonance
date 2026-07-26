@@ -21,23 +21,59 @@ public class CompositionPlayer : MonoBehaviour
     private Coroutine playbackCoroutine;
     private EventInstance currentChordInstance;
 
+    private bool isPaused;
+
     private void Start()
     {
+        isPaused = false;
+
         HidePlayhead();
         PreloadChordEvents();
     }
 
+    // Connect this to the Play button.
     public void PlayComposition()
     {
-        StopComposition();
-
-        if (chordSlots == null || chordSlots.Count == 0)
+        // Resume from the paused position.
+        if (isPaused && currentChordInstance.isValid())
         {
-            Debug.LogWarning("No chord slots are assigned.");
+            FMOD.RESULT resumeResult =
+                currentChordInstance.setPaused(false);
+
+            if (resumeResult != FMOD.RESULT.OK)
+            {
+                Debug.LogError(
+                    "Could not resume composition: " +
+                    resumeResult
+                );
+
+                return;
+            }
+
+            isPaused = false;
+
+            Debug.Log("Composition resumed.");
             return;
         }
 
-        if (playhead == null || playheadContainer == null)
+        // Do not restart if it is already playing.
+        if (playbackCoroutine != null)
+        {
+            Debug.Log("Composition is already playing.");
+            return;
+        }
+
+        if (chordSlots == null || chordSlots.Count == 0)
+        {
+            Debug.LogWarning(
+                "No chord slots are assigned."
+            );
+
+            return;
+        }
+
+        if (playhead == null ||
+            playheadContainer == null)
         {
             Debug.LogError(
                 "Playhead or Playhead Container is not assigned."
@@ -46,15 +82,52 @@ public class CompositionPlayer : MonoBehaviour
             return;
         }
 
+        isPaused = false;
+
         Canvas.ForceUpdateCanvases();
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(
             playheadContainer
         );
 
-        playbackCoroutine = StartCoroutine(
-            PlayChordSequence()
-        );
+        playbackCoroutine =
+            StartCoroutine(PlayChordSequence());
+    }
+
+    // Connect this to the Pause button.
+    public void PauseComposition()
+    {
+        if (!currentChordInstance.isValid())
+        {
+            Debug.LogWarning(
+                "There is no composition currently playing."
+            );
+
+            return;
+        }
+
+        if (isPaused)
+        {
+            Debug.Log("Composition is already paused.");
+            return;
+        }
+
+        FMOD.RESULT pauseResult =
+            currentChordInstance.setPaused(true);
+
+        if (pauseResult != FMOD.RESULT.OK)
+        {
+            Debug.LogError(
+                "Could not pause composition: " +
+                pauseResult
+            );
+
+            return;
+        }
+
+        isPaused = true;
+
+        Debug.Log("Composition paused.");
     }
 
     private IEnumerator PlayChordSequence()
@@ -95,6 +168,7 @@ public class CompositionPlayer : MonoBehaviour
             );
 
             HidePlayhead();
+
             playbackCoroutine = null;
             yield break;
         }
@@ -153,15 +227,18 @@ public class CompositionPlayer : MonoBehaviour
             {
                 Debug.LogError(
                     $"Could not play {chord.chordName}: " +
-                    $"{startResult}"
+                    startResult
                 );
 
                 ReleaseCurrentChord();
                 continue;
             }
 
+            isPaused = false;
+
             Debug.Log(
-                $"Playing {chord.chordName} from slot {i + 1}."
+                $"Playing {chord.chordName} " +
+                $"from slot {i + 1}."
             );
 
             while (currentChordInstance.isValid())
@@ -181,26 +258,21 @@ public class CompositionPlayer : MonoBehaviour
                     break;
                 }
 
-                float progress = Mathf.Clamp01(
-                    (float)timelineMilliseconds /
-                    eventLengthMilliseconds
-                );
+                float progress =
+                    Mathf.Clamp01(
+                        (float)timelineMilliseconds /
+                        eventLengthMilliseconds
+                    );
 
-                float playheadX = Mathf.Lerp(
-                    startX,
-                    endX,
-                    progress
-                );
+                float playheadX =
+                    Mathf.Lerp(
+                        startX,
+                        endX,
+                        progress
+                    );
 
                 SetPlayheadX(playheadX);
 
-                /*
-                 * Change to the next chord just before the
-                 * timeline's exact final millisecond.
-                 *
-                 * This small 20 ms allowance compensates for
-                 * Unity checking the timeline once per frame.
-                 */
                 if (timelineMilliseconds >=
                     eventLengthMilliseconds - 20)
                 {
@@ -222,7 +294,8 @@ public class CompositionPlayer : MonoBehaviour
                     break;
                 }
 
-                if (playbackState == PLAYBACK_STATE.STOPPED)
+                if (playbackState ==
+                    PLAYBACK_STATE.STOPPED)
                 {
                     break;
                 }
@@ -230,22 +303,15 @@ public class CompositionPlayer : MonoBehaviour
                 yield return null;
             }
 
-            // Finish the current slot visually.
             SetPlayheadX(endX);
 
-            /*
-             * FMOD already handles the fade.
-             * Unity only releases the completed event.
-             */
             ReleaseCurrentChord();
-
-            /*
-             * There is intentionally no yield here.
-             * The next chord starts immediately.
-             */
+            isPaused = false;
         }
 
         HidePlayhead();
+
+        isPaused = false;
         playbackCoroutine = null;
     }
 
@@ -317,14 +383,17 @@ public class CompositionPlayer : MonoBehaviour
             return;
         }
 
-        Vector3 position = playhead.localPosition;
+        Vector3 position =
+            playhead.localPosition;
+
         position.x = targetX;
 
         playhead.localPosition = position;
         playhead.gameObject.SetActive(true);
     }
 
-    public void StopComposition()
+    // Used internally by Clear and OnDestroy.
+    private void StopComposition()
     {
         if (playbackCoroutine != null)
         {
@@ -333,6 +402,9 @@ public class CompositionPlayer : MonoBehaviour
         }
 
         StopCurrentChord();
+
+        isPaused = false;
+
         HidePlayhead();
     }
 
