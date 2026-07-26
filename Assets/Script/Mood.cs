@@ -2,9 +2,6 @@ using UnityEngine;
 
 public enum Mood
 {
-    Happy,
-    Melancholic,
-    Bas,
-    assaasa,
-    sasa
+    Happy = 0,
+    Melancholic = 1
 }

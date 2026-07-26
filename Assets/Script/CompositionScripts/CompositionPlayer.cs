@@ -11,216 +11,337 @@ public class CompositionPlayer : MonoBehaviour
     [SerializeField]
     private List<ChordSlot> chordSlots = new List<ChordSlot>();
 
-    // The composition always plays at 98 BPM.
-    private const float BPM = 98f;
-
-    [Header("Timing")]
-
-    // Each chord slot lasts for 4 beats.
-    [SerializeField] private int beatsPerSlot = 4;
-
     [Header("Playhead")]
+    [SerializeField]
+    private RectTransform playhead;
 
-    // The white line that moves across the chord slots.
-    [SerializeField] private RectTransform playhead;
+    [SerializeField]
+    private RectTransform playheadContainer;
 
-    // The panel containing the playhead and chord slots.
-    // It is used to calculate the playhead position.
-    [SerializeField] private RectTransform playheadContainer;
-
-
-    // Stores the playback coroutine so it can be stopped.
     private Coroutine playbackCoroutine;
-
-    // Stores the FMOD chord that is currently playing.
     private EventInstance currentChordInstance;
 
+    private bool isPaused;
 
     private void Start()
     {
-        // Hide the playhead until Play is pressed.
+        isPaused = false;
+
         HidePlayhead();
+        PreloadChordEvents();
     }
 
+    // Connect this to the Play button.
     public void PlayComposition()
     {
-        StopComposition();
-
-        if (chordSlots == null || chordSlots.Count == 0)
+        // Resume from the paused position.
+        if (isPaused && currentChordInstance.isValid())
         {
-            Debug.LogWarning("No chord slots are assigned.");
+            FMOD.RESULT resumeResult =
+                currentChordInstance.setPaused(false);
+
+            if (resumeResult != FMOD.RESULT.OK)
+            {
+                Debug.LogError(
+                    "Could not resume composition: " +
+                    resumeResult
+                );
+
+                return;
+            }
+
+            isPaused = false;
+
+            Debug.Log("Composition resumed.");
             return;
         }
 
-        // Make sure the UI layout finishes updating
-        // before calculating the playhead positions.
+        // Do not restart if it is already playing.
+        if (playbackCoroutine != null)
+        {
+            Debug.Log("Composition is already playing.");
+            return;
+        }
+
+        if (chordSlots == null || chordSlots.Count == 0)
+        {
+            Debug.LogWarning(
+                "No chord slots are assigned."
+            );
+
+            return;
+        }
+
+        if (playhead == null ||
+            playheadContainer == null)
+        {
+            Debug.LogError(
+                "Playhead or Playhead Container is not assigned."
+            );
+
+            return;
+        }
+
+        isPaused = false;
+
         Canvas.ForceUpdateCanvases();
 
-        if (playheadContainer != null)
-        {
-            LayoutRebuilder.ForceRebuildLayoutImmediate(
-                playheadContainer
-            );
-        }
+        LayoutRebuilder.ForceRebuildLayoutImmediate(
+            playheadContainer
+        );
 
         playbackCoroutine =
             StartCoroutine(PlayChordSequence());
     }
 
-    private IEnumerator PlayChordSequence()
+    // Connect this to the Pause button.
+    public void PauseComposition()
     {
-        // Convert 98 BPM into the duration of each slot.
-        float secondsPerBeat = 60f / BPM;
-        float secondsPerSlot =
-            secondsPerBeat * beatsPerSlot;
-
-        bool foundChord = false;
-
-        ChordSlot firstSlot = GetFirstValidSlot();
-
-        if (firstSlot == null)
+        if (!currentChordInstance.isValid())
         {
             Debug.LogWarning(
-                "The chord slot list contains no valid slots."
+                "There is no composition currently playing."
             );
 
-            playbackCoroutine = null;
-            yield break;
+            return;
         }
 
-        // Place the playhead at the start of slot 1.
-        MovePlayheadImmediately(firstSlot);
-
-        // Play each slot from left to right.
-        for (int i = 0; i < chordSlots.Count; i++)
+        if (isPaused)
         {
-            ChordSlot currentSlot = chordSlots[i];
+            Debug.Log("Composition is already paused.");
+            return;
+        }
 
-            // Skip missing slot references.
-            if (currentSlot == null)
+        FMOD.RESULT pauseResult =
+            currentChordInstance.setPaused(true);
+
+        if (pauseResult != FMOD.RESULT.OK)
+        {
+            Debug.LogError(
+                "Could not pause composition: " +
+                pauseResult
+            );
+
+            return;
+        }
+
+        isPaused = true;
+
+        Debug.Log("Composition paused.");
+    }
+
+    private IEnumerator PlayChordSequence()
+    {
+        List<ChordSlot> playableSlots =
+            new List<ChordSlot>();
+
+        foreach (ChordSlot slot in chordSlots)
+        {
+            if (slot == null)
             {
                 continue;
             }
 
-            ChordData chord = currentSlot.AssignedChord;
+            ChordData chord = slot.AssignedChord;
 
             if (chord == null)
             {
-                // An empty slot works as a rest.
-                Debug.Log($"Slot {i + 1} is empty.");
-
-                StopCurrentChord();
+                continue;
             }
-            else if (chord.chordEvent.IsNull)
+
+            if (chord.chordEvent.IsNull)
             {
                 Debug.LogError(
                     $"{chord.chordName} has no FMOD event assigned."
                 );
 
-                StopCurrentChord();
-            }
-            else
-            {
-                foundChord = true;
-
-                // Keep the previous chord temporarily.
-                EventInstance previousChord =
-                    currentChordInstance;
-
-                // Create the new chord.
-                currentChordInstance =
-                    RuntimeManager.CreateInstance(
-                        chord.chordEvent
-                    );
-
-                // Start the new chord first.
-                // This helps the chords change without a gap.
-                currentChordInstance.start();
-
-                // Stop the previous chord after the new one starts.
-                if (previousChord.isValid())
-                {
-                    previousChord.stop(
-                        FMOD.Studio.STOP_MODE.IMMEDIATE
-                    );
-
-                    previousChord.release();
-                    previousChord.clearHandle();
-                }
-
-                Debug.Log(
-                    $"Playing {chord.chordName} from slot {i + 1}."
-                );
+                continue;
             }
 
-            ChordSlot nextSlot =
-                GetNextValidSlot(i + 1);
-
-            if (nextSlot != null)
-            {
-                // Move to the next slot while the chord plays.
-                yield return StartCoroutine(
-                    SlidePlayheadToSlot(
-                        nextSlot,
-                        secondsPerSlot
-                    )
-                );
-            }
-            else
-            {
-                // Move from the beginning to the end
-                // of the final chord slot.
-                float finalX = GetSlotEndX(currentSlot);
-
-                yield return StartCoroutine(
-                    SlidePlayheadToX(
-                        finalX,
-                        secondsPerSlot
-                    )
-                );
-            }
+            playableSlots.Add(slot);
         }
 
-        if (!foundChord)
+        if (playableSlots.Count == 0)
         {
             Debug.LogWarning(
-                "No chords have been placed into the composition."
+                "No chords have been placed in the composition."
             );
+
+            HidePlayhead();
+
+            playbackCoroutine = null;
+            yield break;
         }
 
-        StopCurrentChord();
+        for (int i = 0; i < playableSlots.Count; i++)
+        {
+            ChordSlot slot = playableSlots[i];
+            ChordData chord = slot.AssignedChord;
+
+            float startX = GetSlotStartX(slot);
+            float endX = GetSlotEndX(slot);
+
+            SetPlayheadX(startX);
+
+            currentChordInstance =
+                RuntimeManager.CreateInstance(
+                    chord.chordEvent
+                );
+
+            FMOD.RESULT descriptionResult =
+                currentChordInstance.getDescription(
+                    out EventDescription eventDescription
+                );
+
+            if (descriptionResult != FMOD.RESULT.OK)
+            {
+                Debug.LogError(
+                    $"Could not get description for " +
+                    $"{chord.chordName}: {descriptionResult}"
+                );
+
+                ReleaseCurrentChord();
+                continue;
+            }
+
+            FMOD.RESULT lengthResult =
+                eventDescription.getLength(
+                    out int eventLengthMilliseconds
+                );
+
+            if (lengthResult != FMOD.RESULT.OK ||
+                eventLengthMilliseconds <= 0)
+            {
+                Debug.LogError(
+                    $"{chord.chordName} has no valid timeline length."
+                );
+
+                ReleaseCurrentChord();
+                continue;
+            }
+
+            FMOD.RESULT startResult =
+                currentChordInstance.start();
+
+            if (startResult != FMOD.RESULT.OK)
+            {
+                Debug.LogError(
+                    $"Could not play {chord.chordName}: " +
+                    startResult
+                );
+
+                ReleaseCurrentChord();
+                continue;
+            }
+
+            isPaused = false;
+
+            Debug.Log(
+                $"Playing {chord.chordName} " +
+                $"from slot {i + 1}."
+            );
+
+            while (currentChordInstance.isValid())
+            {
+                FMOD.RESULT positionResult =
+                    currentChordInstance.getTimelinePosition(
+                        out int timelineMilliseconds
+                    );
+
+                if (positionResult != FMOD.RESULT.OK)
+                {
+                    Debug.LogError(
+                        $"Could not get timeline position for " +
+                        $"{chord.chordName}: {positionResult}"
+                    );
+
+                    break;
+                }
+
+                float progress =
+                    Mathf.Clamp01(
+                        (float)timelineMilliseconds /
+                        eventLengthMilliseconds
+                    );
+
+                float playheadX =
+                    Mathf.Lerp(
+                        startX,
+                        endX,
+                        progress
+                    );
+
+                SetPlayheadX(playheadX);
+
+                if (timelineMilliseconds >=
+                    eventLengthMilliseconds - 20)
+                {
+                    break;
+                }
+
+                FMOD.RESULT stateResult =
+                    currentChordInstance.getPlaybackState(
+                        out PLAYBACK_STATE playbackState
+                    );
+
+                if (stateResult != FMOD.RESULT.OK)
+                {
+                    Debug.LogError(
+                        $"Could not read playback state for " +
+                        $"{chord.chordName}: {stateResult}"
+                    );
+
+                    break;
+                }
+
+                if (playbackState ==
+                    PLAYBACK_STATE.STOPPED)
+                {
+                    break;
+                }
+
+                yield return null;
+            }
+
+            SetPlayheadX(endX);
+
+            ReleaseCurrentChord();
+            isPaused = false;
+        }
+
         HidePlayhead();
+
+        isPaused = false;
         playbackCoroutine = null;
     }
 
-    private ChordSlot GetFirstValidSlot()
+    private void PreloadChordEvents()
     {
-        // Find the first slot that is assigned.
-        for (int i = 0; i < chordSlots.Count; i++)
+        foreach (ChordSlot slot in chordSlots)
         {
-            if (chordSlots[i] != null)
+            if (slot == null ||
+                slot.AssignedChord == null)
             {
-                return chordSlots[i];
+                continue;
+            }
+
+            ChordData chord = slot.AssignedChord;
+
+            if (chord.chordEvent.IsNull)
+            {
+                continue;
+            }
+
+            EventDescription eventDescription =
+                RuntimeManager.GetEventDescription(
+                    chord.chordEvent
+                );
+
+            if (eventDescription.isValid())
+            {
+                eventDescription.loadSampleData();
             }
         }
-
-        return null;
-    }
-
-    private ChordSlot GetNextValidSlot(int startIndex)
-    {
-        // Find the next slot after the current one.
-        for (int i = startIndex;
-             i < chordSlots.Count;
-             i++)
-        {
-            if (chordSlots[i] != null)
-            {
-                return chordSlots[i];
-            }
-        }
-
-        return null;
     }
 
     private float GetSlotStartX(ChordSlot slot)
@@ -231,14 +352,9 @@ public class CompositionPlayer : MonoBehaviour
         Vector3[] corners = new Vector3[4];
         slotRect.GetWorldCorners(corners);
 
-        // Corner 0 is the bottom-left of the slot.
-        // This makes the line touch the start of the box.
-        Vector3 leftSide = corners[0];
-
-        // Convert the position into the playhead panel.
         Vector3 localPosition =
             playheadContainer.InverseTransformPoint(
-                leftSide
+                corners[0]
             );
 
         return localPosition.x;
@@ -252,91 +368,32 @@ public class CompositionPlayer : MonoBehaviour
         Vector3[] corners = new Vector3[4];
         slotRect.GetWorldCorners(corners);
 
-        // Corner 3 is the top-right corner.
-        Vector3 rightSide = corners[3];
-
         Vector3 localPosition =
             playheadContainer.InverseTransformPoint(
-                rightSide
+                corners[3]
             );
 
         return localPosition.x;
     }
 
-    private void MovePlayheadImmediately(ChordSlot slot)
+    private void SetPlayheadX(float targetX)
     {
-        if (playhead == null ||
-            playheadContainer == null ||
-            slot == null)
+        if (playhead == null)
         {
             return;
         }
 
-        float targetX = GetSlotStartX(slot);
+        Vector3 position =
+            playhead.localPosition;
 
-        Vector3 position = playhead.localPosition;
         position.x = targetX;
+
         playhead.localPosition = position;
-
         playhead.gameObject.SetActive(true);
     }
 
-    private IEnumerator SlidePlayheadToSlot(
-     ChordSlot slot,
-     float duration
- )
-    {
-        if (playhead == null ||
-            playheadContainer == null ||
-            slot == null)
-        {
-            yield break;
-        }
-
-        float targetX = GetSlotStartX(slot);
-
-        yield return StartCoroutine(
-            SlidePlayheadToX(targetX, duration)
-        );
-    }
-
-    private IEnumerator SlidePlayheadToX(
-    float targetX,
-    float duration
-)
-    {
-        float startX = playhead.localPosition.x;
-        float elapsed = 0f;
-
-        playhead.gameObject.SetActive(true);
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.unscaledDeltaTime;
-
-            float progress = Mathf.Clamp01(
-                elapsed / duration
-            );
-
-            Vector3 position = playhead.localPosition;
-
-            position.x = Mathf.Lerp(
-                startX,
-                targetX,
-                progress
-            );
-
-            playhead.localPosition = position;
-
-            yield return null;
-        }
-
-        Vector3 finalPosition = playhead.localPosition;
-        finalPosition.x = targetX;
-        playhead.localPosition = finalPosition;
-    }
-
-    public void StopComposition()
+    // Used internally by Clear and OnDestroy.
+    private void StopComposition()
     {
         if (playbackCoroutine != null)
         {
@@ -345,12 +402,14 @@ public class CompositionPlayer : MonoBehaviour
         }
 
         StopCurrentChord();
+
+        isPaused = false;
+
         HidePlayhead();
     }
 
     private void StopCurrentChord()
     {
-        // Do nothing if there is no chord playing.
         if (!currentChordInstance.isValid())
         {
             return;
@@ -359,6 +418,16 @@ public class CompositionPlayer : MonoBehaviour
         currentChordInstance.stop(
             FMOD.Studio.STOP_MODE.IMMEDIATE
         );
+
+        ReleaseCurrentChord();
+    }
+
+    private void ReleaseCurrentChord()
+    {
+        if (!currentChordInstance.isValid())
+        {
+            return;
+        }
 
         currentChordInstance.release();
         currentChordInstance.clearHandle();
@@ -376,7 +445,6 @@ public class CompositionPlayer : MonoBehaviour
     {
         StopComposition();
 
-        // Remove every chord from the composition.
         foreach (ChordSlot slot in chordSlots)
         {
             if (slot != null)
@@ -388,8 +456,6 @@ public class CompositionPlayer : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Stop the audio when the scene closes.
         StopComposition();
     }
-
 }
