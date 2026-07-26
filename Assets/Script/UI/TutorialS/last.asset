@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStep
   instructionText: "You\u2019ve tested the features out, time to explore even more!
     Have Fun!"
-  triggerType: 6
-  displayDuration: 3
+  triggerType: 0
+  displayDuration: 2
   delayBeforeShowing: 0
   targetButton: {fileID: 0}
   stepGlowObject: {fileID: 0}

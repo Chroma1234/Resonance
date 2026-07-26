@@ -16,5 +16,6 @@ MonoBehaviour:
   triggerType: 6
   displayDuration: 3
   delayBeforeShowing: 0
-  glowObjectName: GlowOutline
-  showArrowIndicator: 1
+  targetButton: {fileID: 0}
+  stepGlowObject: {fileID: 0}
+  showArrowIndicator: 0

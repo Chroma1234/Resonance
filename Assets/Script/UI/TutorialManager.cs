@@ -256,11 +256,7 @@ public class TutorialManager : MonoBehaviour
         {
             Debug.LogWarning("Button clicked, but the current tutorial step is NOT set to ButtonClick!");
         }
-        //if (currentStepIndex == 7)
-        //{
-        //    // Advance to the next step
-        //    NextStep();
-        //}
+      
     }
 
     public void TryAdvanceStep(TutorialTriggerType requiredType)
