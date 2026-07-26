@@ -27,8 +27,12 @@ public class FmodAudioBackend : MonoBehaviour, IAudioBackend
 
     private Dictionary<int, LandmarkInstance> _instances = new Dictionary<int, LandmarkInstance>();
 
+    private bool _initialized = false;
+
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
+    
         foreach (var config in landmarkConfigs)
         {
             if (config.musicEvent.IsNull)
@@ -75,6 +79,62 @@ public class FmodAudioBackend : MonoBehaviour, IAudioBackend
             Debug.Log($"FmodAudioBackend: Started music event for landmark {config.landmarkId}.");
             _instances[config.landmarkId] = inst;
         }
+    }
+
+    public void InitializeInstances(List<LandmarkFmodConfig> configs)
+    {
+        if (_initialized)
+            return;
+
+        _instances.Clear();
+
+        foreach (var config in configs)
+        {
+            if (config.musicEvent.IsNull)
+            {
+                Debug.LogWarning($"FmodAudioBackend: Landmark {config.landmarkId} has no musicEvent assigned.");
+                continue;
+            }
+
+            if (config.landmarkTransform == null)
+            {
+                Debug.LogWarning($"FmodAudioBackend: Landmark {config.landmarkId} has no transform assigned.");
+                continue;
+            }
+
+            var inst = new LandmarkInstance
+            {
+                instance = RuntimeManager.CreateInstance(config.musicEvent)
+            };
+
+            if (!inst.instance.isValid())
+            {
+                Debug.LogWarning($"FmodAudioBackend: Instance for landmark {config.landmarkId} is not valid.");
+                continue;
+            }
+
+            GameObject go = config.landmarkTransform.gameObject;
+            Rigidbody rb = go.GetComponent<Rigidbody>();
+
+            RuntimeManager.AttachInstanceToGameObject(inst.instance, go, rb);
+            inst.instance.setVolume(musicGain);
+
+            var startResult = inst.instance.start();
+            if (startResult != FMOD.RESULT.OK)
+            {
+                Debug.LogWarning($"FmodAudioBackend: Failed to start event for landmark {config.landmarkId}: {startResult}");
+            }
+
+            inst.instance.setParameterByName("LoopType", (float)LoopType.Normal);
+            inst.instance.setParameterByName("Presence", 1.0f);
+            inst.instance.setParameterByName("Clarity", 1.0f);
+            inst.instance.setParameterByName("ReverbSend", 0.0f);
+
+            Debug.Log($"FmodAudioBackend: Started music event for landmark {config.landmarkId}.");
+            _instances[config.landmarkId] = inst;
+        }
+
+        _initialized = true;
     }
 
     private void OnDestroy()
