@@ -21,6 +21,9 @@ public class TutorialManager : MonoBehaviour
     [Header("Tutorial Steps Sequence")]
     [SerializeField] private List<TutorialStep> tutorialSteps;
 
+    [Header("Tutorial Status")]
+    [field: SerializeField] public bool TutorialEnded { get; private set; } = false;
+
     [Header("One-Time Settings")]
     [SerializeField] private string tutorialSaveKey = "HasSeenTutorial_Scene";
 
@@ -44,7 +47,7 @@ public class TutorialManager : MonoBehaviour
         if (PlayerPrefs.GetInt(tutorialSaveKey, 0) == 1)
         {
             if (tutorialPanel != null) tutorialPanel.SetActive(false);
-           
+            TutorialEnded = true;
             enabled = false;
             return;
         }
@@ -62,7 +65,7 @@ public class TutorialManager : MonoBehaviour
 
     void Update()
     {
-        if (isWaitingForDelay || tutorialSteps == null || currentStepIndex >= tutorialSteps.Count) return;
+        if (TutorialEnded || isWaitingForDelay || tutorialSteps == null || currentStepIndex >= tutorialSteps.Count) return;
 
         TutorialStep currentStep = tutorialSteps[currentStepIndex];
 
@@ -99,7 +102,6 @@ public class TutorialManager : MonoBehaviour
                 if (CheckPlayerTriggeredDuet()) NextStep();
                 break;
 
-                // ButtonClick is handled via the OnClick event below, so we don't need code in Update for it!
         }
     }
 
@@ -239,18 +241,11 @@ public class TutorialManager : MonoBehaviour
 
     public void OnTargetButtonClicked()
     {
-        Debug.Log("Button was clicked! Current step type is: " + tutorialSteps[currentStepIndex].triggerType);
         if (isWaitingForDelay || tutorialSteps == null || currentStepIndex >= tutorialSteps.Count) return;
-
-        // Check if the current tutorial step is actually waiting for a button click
+         // Check if the current tutorial step is actually waiting for a button click
         if (tutorialSteps[currentStepIndex].triggerType == TutorialTriggerType.ButtonClick)
         {
-            Debug.Log($"[Time: {Time.time}] Button clicked! Advancing from step {currentStepIndex}");
             NextStep();
-        }
-        else
-        {
-            Debug.LogWarning("Button clicked, but the current tutorial step is NOT set to ButtonClick!");
         }
       
     }
@@ -261,13 +256,14 @@ public class TutorialManager : MonoBehaviour
 
         if (tutorialSteps[currentStepIndex].triggerType == requiredType)
         {
-            Debug.Log($"[TutorialManager] Successfully triggered step advance for: {requiredType}");
             NextStep();
         }
      }
 
     private void FinishTutorial()
     {
+        TutorialEnded = true; // Sets your tracking bool to true!
+
         PlayerPrefs.SetInt(tutorialSaveKey, 1);
         PlayerPrefs.Save();
 
