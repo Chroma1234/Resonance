@@ -5,10 +5,14 @@ public class InstrumentConfig
 {
     public string instrumentId;
 
-    public Mood style;
+    public PatternType pattern;
+    public StyleType style;
 
     public InstrumentStem stem;
 }
+
+public enum PatternType { A, B }
+public enum StyleType { A, B }
 
 [CreateAssetMenu(
     fileName = "ConfigurationProfile",

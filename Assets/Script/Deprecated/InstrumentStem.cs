@@ -7,7 +7,8 @@ public class InstrumentStem : ScriptableObject
 {
     [Header("Identity")]
     public string instrumentId;
-    public Mood style;
+    public PatternType pattern;
+    public StyleType style;
 
     [Header("FMOD Event Paths")]
     public string normalEventPath;
