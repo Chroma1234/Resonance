@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStep
   instructionText: "Go between any two instruments \n"
   triggerType: 0
-  displayDuration: 7
+  displayDuration: 5
   delayBeforeShowing: 0
   glowObjectName: StartRecord
+  showArrowIndicator: 0

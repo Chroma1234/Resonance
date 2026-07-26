@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf98c04f95792ef4da3a14a095759957, type: 3}
-  m_Name: Composing
+  m_Name: Drag&Drops
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStep
-  instructionText: 
-  triggerType: 1
-  displayDuration: 3
+  instructionText: 'Drag the chords into the slots '
+  triggerType: 2
+  displayDuration: 0
+  delayBeforeShowing: 0
+  targetButton: {fileID: 0}
+  stepGlowObject: {fileID: 0}
   showArrowIndicator: 0

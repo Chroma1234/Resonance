@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Recording
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStep
   instructionText: How do you like the tunes? Ready to lay down a track?
-  triggerType: 2
+  triggerType: 6
   displayDuration: 3
-  delayBeforeShowing: 4
+  delayBeforeShowing: 0
   glowObjectName: GlowOutline
   showArrowIndicator: 1

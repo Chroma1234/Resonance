@@ -11,10 +11,12 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject tutorialPanel;
     [SerializeField] private TMP_Text instructionLabel;
     [SerializeField] private GameObject tutorialArrow;
-    [SerializeField] private GameObject startButtonGlow; // Drag your GlowOutline object here
-    
-    ////[Header("Highlight Settings")]
-    //private GameObject currentGlowObject;
+
+    [Header("Button Glows")]
+    [SerializeField] private GameObject recordButtonGlow;
+    [SerializeField] private GameObject libraryButtonGlow;
+    [SerializeField] private GameObject saveButtonGlow;
+    [SerializeField] private GameObject composeButtonGlow;
 
     [Header("Tutorial Steps Sequence")]
     [SerializeField] private List<TutorialStep> tutorialSteps;
@@ -96,8 +98,11 @@ public class TutorialManager : MonoBehaviour
             case TutorialTriggerType.TriggerDuet:
                 if (CheckPlayerTriggeredDuet()) NextStep();
                 break;
+
+                // ButtonClick is handled via the OnClick event below, so we don't need code in Update for it!
         }
     }
+
 
     private void CacheReferences()
     {
@@ -122,7 +127,7 @@ public class TutorialManager : MonoBehaviour
             if (landmark != null && landmark.instrumentData != null)
             {
                 float distance = Vector3.Distance(player.position, landmark.Position);
-                if (distance <= landmark.InfluenceRadius * tutorialApproachRadiusMultiplier)
+                if (distance <= landmark.InfluenceRadius * tutorialApproachRadiusMultiplier * 0.5f)
                 {
                     return true;
                 }
@@ -174,7 +179,6 @@ public class TutorialManager : MonoBehaviour
             PlayerPrefs.Save();
             if (tutorialPanel != null) tutorialPanel.SetActive(false);
             if (tutorialArrow != null) tutorialArrow.SetActive(false);
-            if (startButtonGlow != null) startButtonGlow.SetActive(false);
             enabled = false;
         }
     }
@@ -189,10 +193,31 @@ public class TutorialManager : MonoBehaviour
         if (tutorialArrow != null)
             tutorialArrow.SetActive(step.showArrowIndicator);
 
-        if (startButtonGlow != null)
-            startButtonGlow.SetActive(step.showArrowIndicator);
-    }
+        // Hide all glows first
+        if (recordButtonGlow != null) recordButtonGlow.SetActive(false);
+        if (libraryButtonGlow != null) libraryButtonGlow.SetActive(false);
+        if (saveButtonGlow != null) saveButtonGlow.SetActive(false);
+        if (composeButtonGlow != null) composeButtonGlow.SetActive(false);
 
+        // Turn on the specific glow based on the current step index
+        // (Replace 3 and 5 with whatever your actual element index numbers are)
+        if (currentStepIndex == 3 && recordButtonGlow != null)
+        {
+            recordButtonGlow.SetActive(true);
+        }
+        else if (currentStepIndex == 4 && saveButtonGlow != null)
+        {
+            saveButtonGlow.SetActive(true);
+        }
+        else if (currentStepIndex == 5 && libraryButtonGlow != null)
+        {
+            libraryButtonGlow.SetActive(true);
+        }
+        else if (currentStepIndex == 6 && composeButtonGlow != null)
+        {
+            composeButtonGlow.SetActive(true);
+        }
+    }
     private IEnumerator ShowStepWithDelay(TutorialStep step)
     {
         isWaitingForDelay = true;
@@ -216,7 +241,29 @@ public class TutorialManager : MonoBehaviour
     }
 
 
-     public void TryAdvanceStep(TutorialTriggerType requiredType)
+    public void OnTargetButtonClicked()
+    {
+        Debug.Log("Button was clicked! Current step type is: " + tutorialSteps[currentStepIndex].triggerType);
+        if (isWaitingForDelay || tutorialSteps == null || currentStepIndex >= tutorialSteps.Count) return;
+
+        // Check if the current tutorial step is actually waiting for a button click
+        if (tutorialSteps[currentStepIndex].triggerType == TutorialTriggerType.ButtonClick)
+        {
+            Debug.Log($"[Time: {Time.time}] Button clicked! Advancing from step {currentStepIndex}");
+            NextStep();
+        }
+        else
+        {
+            Debug.LogWarning("Button clicked, but the current tutorial step is NOT set to ButtonClick!");
+        }
+        //if (currentStepIndex == 7)
+        //{
+        //    // Advance to the next step
+        //    NextStep();
+        //}
+    }
+
+    public void TryAdvanceStep(TutorialTriggerType requiredType)
      {
         if (isWaitingForDelay || tutorialSteps == null || currentStepIndex >= tutorialSteps.Count) return;
 
