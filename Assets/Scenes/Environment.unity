@@ -8070,6 +8070,10 @@ MonoBehaviour:
   tutorialApproachRadiusMultiplier: 0.5
   tutorialDuetRadiusMultiplier: 0.7
   player: {fileID: 1337856443}
+  recordButton: {fileID: 2506978758189889513}
+  saveButton: {fileID: 2135462431678995079}
+  libraryButton: {fileID: 1590411270}
+  composeButton: {fileID: 2100705645}
 --- !u!1 &786160364
 GameObject:
   m_ObjectHideFlags: 0
@@ -20200,14 +20204,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 761231989}
         m_TargetAssemblyTypeName: TutorialManager, Assembly-CSharp
-        m_MethodName: OnTargetButtonClicked
-        m_Mode: 1
+        m_MethodName: OnSpecificButtonClicked
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 5
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Library
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 729976753}
@@ -20700,6 +20704,7 @@ MonoBehaviour:
   compositionPlayer: {fileID: 5302033900859715952}
   playerMovement: {fileID: 1337856448}
   mouseLook: {fileID: 1337856449}
+  savedRecordingLibrary: {fileID: 0}
 --- !u!1 &1701197403
 GameObject:
   m_ObjectHideFlags: 0
@@ -27552,14 +27557,14 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 761231989}
         m_TargetAssemblyTypeName: TutorialManager, Assembly-CSharp
-        m_MethodName: OnTargetButtonClicked
-        m_Mode: 1
+        m_MethodName: OnSpecificButtonClicked
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Compose
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &2100705646
@@ -29139,14 +29144,14 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 761231989}
         m_TargetAssemblyTypeName: TutorialManager, Assembly-CSharp
-        m_MethodName: OnTargetButtonClicked
-        m_Mode: 1
+        m_MethodName: OnSpecificButtonClicked
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 4
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Save
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!222 &2163021405080249373
@@ -29306,14 +29311,14 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 761231989}
         m_TargetAssemblyTypeName: TutorialManager, Assembly-CSharp
-        m_MethodName: OnTargetButtonClicked
-        m_Mode: 1
+        m_MethodName: OnSpecificButtonClicked
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 3
           m_FloatArgument: 0
-          m_StringArgument: 3
+          m_StringArgument: Record
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 729976753}

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf98c04f95792ef4da3a14a095759957, type: 3}
   m_Name: Recording
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStep
+  requiredButton: 1
   instructionText: How do you like the tunes? Ready to lay down a track?
   triggerType: 6
   displayDuration: 3
