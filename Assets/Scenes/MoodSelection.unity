@@ -393,6 +393,66 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!1 &615321418
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 615321421}
+  - component: {fileID: 615321420}
+  - component: {fileID: 615321419}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &615321419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615321418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5046e5ccfe73ab6499f1a64fb30c5674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  _audioBackendBehaviour: {fileID: 615321420}
+--- !u!114 &615321420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615321418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24ed99145b8285419f64834bce0ee80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FmodAudioBackend
+  landmarkConfigs: []
+  musicGain: 2
+--- !u!4 &615321421
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615321418}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.54791, y: 0, z: 60.46462}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &625475037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,13 +1214,14 @@ MonoBehaviour:
   tutorialPanel: {fileID: 2070570290}
   instructionLabel: {fileID: 153763487}
   tutorialArrow: {fileID: 1407644940}
+  startButtonGlow: {fileID: 0}
   tutorialSteps:
   - {fileID: 11400000, guid: f875233c2ac15b6419a09ec9679639e9, type: 2}
   - {fileID: 11400000, guid: 55775a9465ef3dc4dbf3f310761d50bc, type: 2}
-  player: {fileID: 0}
   tutorialSaveKey: HasSeenTutorial_MoodSelection
   tutorialApproachRadiusMultiplier: 0.5
   tutorialDuetRadiusMultiplier: 0.7
+  player: {fileID: 0}
 --- !u!4 &938499880
 Transform:
   m_ObjectHideFlags: 0
@@ -2359,5 +2420,6 @@ SceneRoots:
   - {fileID: 731746522}
   - {fileID: 719119664}
   - {fileID: 921271977}
+  - {fileID: 615321421}
   - {fileID: 1765169228}
   - {fileID: 938499880}

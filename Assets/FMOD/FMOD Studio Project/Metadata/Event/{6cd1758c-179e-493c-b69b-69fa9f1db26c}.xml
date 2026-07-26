@@ -209,6 +209,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{221d53d2-d828-4982-a8cc-93d5b7d895a0}">
+		<property name="volume">
+			<value>4</value>
+		</property>
 		<property name="name">
 			<value>Happy Normal</value>
 		</property>
@@ -238,6 +241,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{53995f50-4295-4ebd-a749-9499c46adb41}">
+		<property name="volume">
+			<value>4</value>
+		</property>
 		<property name="name">
 			<value>Happy Intense</value>
 		</property>
@@ -267,6 +273,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{cb5bf876-c0cc-4cca-ada0-671257bc20ed}">
+		<property name="volume">
+			<value>4</value>
+		</property>
 		<property name="name">
 			<value>Happy Duet</value>
 		</property>
@@ -296,6 +305,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{7070ef0c-2063-48b3-9fa0-159bc5b7b831}">
+		<property name="volume">
+			<value>4</value>
+		</property>
 		<property name="name">
 			<value>Mel Normal</value>
 		</property>
@@ -325,6 +337,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{57a3bb9c-c991-40a2-95d8-fb758fab63bf}">
+		<property name="volume">
+			<value>4</value>
+		</property>
 		<property name="name">
 			<value>Mel Intense</value>
 		</property>
@@ -354,6 +369,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{ca59d043-e890-45d0-9a6b-2a70cf474299}">
+		<property name="volume">
+			<value>4</value>
+		</property>
 		<property name="name">
 			<value>Mel Duet</value>
 		</property>

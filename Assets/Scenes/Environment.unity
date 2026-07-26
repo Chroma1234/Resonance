@@ -10409,6 +10409,88 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6771876ce443871408f063e4e7485afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DetectInstruments
+--- !u!1 &1477543401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1477543403}
+  - component: {fileID: 1477543402}
+  m_Layer: 0
+  m_Name: EnvironmentAudioConfig
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1477543402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477543401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ece06892effba40b59a56903794a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnvironmentAudioInitializer
+  backend: {fileID: 2076144696}
+  landmarkConfigs:
+  - landmarkId: 0
+    musicEvent:
+      Guid:
+        Data1: -596967490
+        Data2: 1181215814
+        Data3: -1292045171
+        Data4: 1807476974
+      Path: event:/RESONANCE/PIANO
+    landmarkTransform: {fileID: 951421964}
+  - landmarkId: 1
+    musicEvent:
+      Guid:
+        Data1: -1700064473
+        Data2: 1326164539
+        Data3: 1719321005
+        Data4: 223558344
+      Path: event:/RESONANCE/BASS
+    landmarkTransform: {fileID: 79140360}
+  - landmarkId: 2
+    musicEvent:
+      Guid:
+        Data1: -1062363373
+        Data2: 1081246901
+        Data3: 129248412
+        Data4: 1444845852
+      Path: event:/RESONANCE/SAXOPHONE
+    landmarkTransform: {fileID: 38768408}
+  - landmarkId: 3
+    musicEvent:
+      Guid:
+        Data1: 1825666444
+        Data2: 1228674974
+        Data3: -93742154
+        Data4: 1823612319
+      Path: event:/RESONANCE/DRUMS
+    landmarkTransform: {fileID: 1401955176405353634}
+--- !u!4 &1477543403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477543401}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.54791, y: 0, z: 60.46462}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1499708573
 GameObject:
   m_ObjectHideFlags: 0
@@ -34081,6 +34163,7 @@ SceneRoots:
   - {fileID: 1401955176405353633}
   - {fileID: 1077286771}
   - {fileID: 219046219}
+  - {fileID: 1477543403}
   - {fileID: 2076144698}
   - {fileID: 1956191186}
   - {fileID: 820063373}
