@@ -38,8 +38,8 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
-        // REMOVE OR COMMENT OUT THIS LINE ONCE YOU BUILD YOUR .EXE:
-        PlayerPrefs.DeleteKey(tutorialSaveKey);
+        //// REMOVE OR COMMENT OUT THIS LINE ONCE YOU BUILD YOUR .EXE:
+        //PlayerPrefs.DeleteKey(tutorialSaveKey);
 
         if (PlayerPrefs.GetInt(tutorialSaveKey, 0) == 1)
         {
@@ -175,11 +175,7 @@ public class TutorialManager : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.SetInt(tutorialSaveKey, 1);
-            PlayerPrefs.Save();
-            if (tutorialPanel != null) tutorialPanel.SetActive(false);
-            if (tutorialArrow != null) tutorialArrow.SetActive(false);
-            enabled = false;
+            FinishTutorial();
         }
     }
 
@@ -269,4 +265,32 @@ public class TutorialManager : MonoBehaviour
             NextStep();
         }
      }
+
+    private void FinishTutorial()
+    {
+        PlayerPrefs.SetInt(tutorialSaveKey, 1);
+        PlayerPrefs.Save();
+
+        if (tutorialPanel != null)
+            tutorialPanel.SetActive(false);
+
+        if (tutorialArrow != null)
+            tutorialArrow.SetActive(false);
+
+        if (recordButtonGlow != null)
+            recordButtonGlow.SetActive(false);
+
+        if (libraryButtonGlow != null)
+            libraryButtonGlow.SetActive(false);
+
+        if (saveButtonGlow != null)
+            saveButtonGlow.SetActive(false);
+
+        if (composeButtonGlow != null)
+            composeButtonGlow.SetActive(false);
+
+        enabled = false;
+
+        Debug.Log("Tutorial completed!");
+    }
 }
