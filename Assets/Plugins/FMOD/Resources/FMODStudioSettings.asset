@@ -710,6 +710,7 @@ MonoBehaviour:
   Banks:
   - Composition
   - Instruments
+  - Main Menu
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
