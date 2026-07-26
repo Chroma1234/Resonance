@@ -52,6 +52,6 @@ public class MoodToggleUI : MonoBehaviour
         Debug.Log($"Selected {mood} for {instrument.instrumentName}");
 
         MoodManager.Instance.SetMood(instrument, mood);
-        SoundManager.Instance.ApplyInstrumentMood(instrument, mood);
+        //SoundManager.Instance.ApplyInstrumentMood(instrument, mood);
     }
 }

@@ -958,6 +958,7 @@ GameObject:
   - component: {fileID: 1317672306}
   - component: {fileID: 1317672305}
   - component: {fileID: 1317672304}
+  - component: {fileID: 1317672307}
   m_Layer: 0
   m_Name: Start
   m_TagString: Untagged
@@ -1029,8 +1030,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1339573135}
-        m_TargetAssemblyTypeName: SceneManagement, Assembly-CSharp
+      - m_Target: {fileID: 1317672307}
+        m_TargetAssemblyTypeName: Button, Assembly-CSharp
         m_MethodName: OpenMood
         m_Mode: 1
         m_Arguments:
@@ -1079,6 +1080,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317672302}
   m_CullTransparentMesh: 1
+--- !u!114 &1317672307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317672302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ac1ec2f8baa3684dac4d8edbfe1bd0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StartBtn
 --- !u!1 &1339573134
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,6 +1150,7 @@ GameObject:
   - component: {fileID: 1353145557}
   - component: {fileID: 1353145556}
   - component: {fileID: 1353145555}
+  - component: {fileID: 1353145558}
   m_Layer: 0
   m_Name: Quit
   m_TagString: Untagged
@@ -1208,9 +1222,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1339573135}
-        m_TargetAssemblyTypeName: SceneManagement, Assembly-CSharp
-        m_MethodName: Exit
+      - m_Target: {fileID: 1353145558}
+        m_TargetAssemblyTypeName: Button, Assembly-CSharp
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1258,6 +1272,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1353145553}
   m_CullTransparentMesh: 1
+--- !u!114 &1353145558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353145553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ac1ec2f8baa3684dac4d8edbfe1bd0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Button
 --- !u!1 &1363147147
 GameObject:
   m_ObjectHideFlags: 0

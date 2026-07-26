@@ -16,19 +16,11 @@ MonoBehaviour:
   - mood: 0
     eventReference:
       Guid:
-        Data1: 515810633
-        Data2: 1281492034
-        Data3: 645347986
-        Data4: 868627061
-      Path: event:/Happy/Drums_Happy
-  - mood: 1
-    eventReference:
-      Guid:
-        Data1: 1829044005
-        Data2: 1265215030
-        Data3: 706479793
-        Data4: -963362563
-      Path: event:/Melancholic/Drums_Melancholic
+        Data1: -1658950859
+        Data2: 1234433021
+        Data3: 286146474
+        Data4: 2034546739
+      Path: event:/RESONANCE2/Drums
   instrumentName: Drums
   maxDistance: 15
   intenseDistance: 5

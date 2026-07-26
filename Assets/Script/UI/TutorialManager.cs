@@ -126,8 +126,8 @@ public class TutorialManager : MonoBehaviour
         {
             if (landmark != null && landmark.instrumentData != null)
             {
-                float distance = Vector3.Distance(player.position, landmark.Position);
-                if (distance <= landmark.InfluenceRadius * tutorialApproachRadiusMultiplier * 0.5f)
+                float distance = Vector3.Distance(player.position, landmark.transform.position);
+                if (distance <= landmark.instrumentData.intenseDistance * tutorialApproachRadiusMultiplier * 0.5f)
                 {
                     return true;
                 }
@@ -145,8 +145,8 @@ public class TutorialManager : MonoBehaviour
         {
             if (landmark != null && landmark.instrumentData != null)
             {
-                float distance = Vector3.Distance(player.position, landmark.Position);
-                if (distance <= landmark.DuetRadius * tutorialDuetRadiusMultiplier)
+                float distance = Vector3.Distance(player.position, landmark.transform.position);
+                if (distance <= landmark.instrumentData.duetRadius * tutorialDuetRadiusMultiplier)
                 {
                     nearbyCount++;
                 }

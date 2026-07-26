@@ -16,19 +16,19 @@ MonoBehaviour:
   - mood: 0
     eventReference:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 676889133
+        Data2: 1197444719
+        Data3: -427145322
+        Data4: 1869444362
+      Path: event:/RESONANCE2/Sax_Happy
   - mood: 1
     eventReference:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1203607675
+        Data2: 1335723596
+        Data3: -1088891489
+        Data4: 1396874980
+      Path: event:/RESONANCE2/Sax_Melancholic
   instrumentName: Saxophone
   maxDistance: 15
   intenseDistance: 5
