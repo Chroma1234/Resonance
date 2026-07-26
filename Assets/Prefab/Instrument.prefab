@@ -78,3 +78,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MusicLandmark
   instrumentData: {fileID: 0}
   model: {fileID: 2294211090784234041}
+  radiusIndicatorPrefab: {fileID: 2053676382513490086, guid: 9ff65abf36f004a4c8688c9cc8cc2062, type: 3}

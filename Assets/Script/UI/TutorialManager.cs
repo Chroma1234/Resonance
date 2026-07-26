@@ -11,13 +11,18 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject tutorialPanel;
     [SerializeField] private TMP_Text instructionLabel;
     [SerializeField] private GameObject tutorialArrow;
-    [SerializeField] private GameObject startButtonGlow; // Drag your GlowOutline object here
-    
-    ////[Header("Highlight Settings")]
-    //private GameObject currentGlowObject;
+
+    [Header("Button Glows")]
+    [SerializeField] private GameObject recordButtonGlow;
+    [SerializeField] private GameObject libraryButtonGlow;
+    [SerializeField] private GameObject saveButtonGlow;
+    [SerializeField] private GameObject composeButtonGlow;
 
     [Header("Tutorial Steps Sequence")]
     [SerializeField] private List<TutorialStep> tutorialSteps;
+
+    [Header("Tutorial Status")]
+    [field: SerializeField] public bool TutorialEnded { get; private set; } = false;
 
     [Header("One-Time Settings")]
     [SerializeField] private string tutorialSaveKey = "HasSeenTutorial_Scene";
@@ -36,13 +41,13 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
-        // REMOVE OR COMMENT OUT THIS LINE ONCE YOU BUILD YOUR .EXE:
-        PlayerPrefs.DeleteKey(tutorialSaveKey);
+        //// REMOVE OR COMMENT OUT THIS LINE ONCE YOU BUILD YOUR .EXE:
+        //PlayerPrefs.DeleteKey(tutorialSaveKey);
 
         if (PlayerPrefs.GetInt(tutorialSaveKey, 0) == 1)
         {
             if (tutorialPanel != null) tutorialPanel.SetActive(false);
-           
+            TutorialEnded = true;
             enabled = false;
             return;
         }
@@ -60,7 +65,7 @@ public class TutorialManager : MonoBehaviour
 
     void Update()
     {
-        if (isWaitingForDelay || tutorialSteps == null || currentStepIndex >= tutorialSteps.Count) return;
+        if (TutorialEnded || isWaitingForDelay || tutorialSteps == null || currentStepIndex >= tutorialSteps.Count) return;
 
         TutorialStep currentStep = tutorialSteps[currentStepIndex];
 
@@ -96,8 +101,10 @@ public class TutorialManager : MonoBehaviour
             case TutorialTriggerType.TriggerDuet:
                 if (CheckPlayerTriggeredDuet()) NextStep();
                 break;
+
         }
     }
+
 
     private void CacheReferences()
     {
@@ -121,8 +128,8 @@ public class TutorialManager : MonoBehaviour
         {
             if (landmark != null && landmark.instrumentData != null)
             {
-                float distance = Vector3.Distance(player.position, landmark.Position);
-                if (distance <= landmark.InfluenceRadius * tutorialApproachRadiusMultiplier)
+                float distance = Vector3.Distance(player.position, landmark.transform.position);
+                if (distance <= landmark.instrumentData.intenseDistance * tutorialApproachRadiusMultiplier * 0.5f)
                 {
                     return true;
                 }
@@ -140,8 +147,8 @@ public class TutorialManager : MonoBehaviour
         {
             if (landmark != null && landmark.instrumentData != null)
             {
-                float distance = Vector3.Distance(player.position, landmark.Position);
-                if (distance <= landmark.DuetRadius * tutorialDuetRadiusMultiplier)
+                float distance = Vector3.Distance(player.position, landmark.transform.position);
+                if (distance <= landmark.instrumentData.duetRadius * tutorialDuetRadiusMultiplier)
                 {
                     nearbyCount++;
                 }
@@ -170,12 +177,7 @@ public class TutorialManager : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.SetInt(tutorialSaveKey, 1);
-            PlayerPrefs.Save();
-            if (tutorialPanel != null) tutorialPanel.SetActive(false);
-            if (tutorialArrow != null) tutorialArrow.SetActive(false);
-            if (startButtonGlow != null) startButtonGlow.SetActive(false);
-            enabled = false;
+            FinishTutorial();
         }
     }
 
@@ -189,10 +191,31 @@ public class TutorialManager : MonoBehaviour
         if (tutorialArrow != null)
             tutorialArrow.SetActive(step.showArrowIndicator);
 
-        if (startButtonGlow != null)
-            startButtonGlow.SetActive(step.showArrowIndicator);
-    }
+        // Hide all glows first
+        if (recordButtonGlow != null) recordButtonGlow.SetActive(false);
+        if (libraryButtonGlow != null) libraryButtonGlow.SetActive(false);
+        if (saveButtonGlow != null) saveButtonGlow.SetActive(false);
+        if (composeButtonGlow != null) composeButtonGlow.SetActive(false);
 
+        // Turn on the specific glow based on the current step index
+        // (Replace 3 and 5 with whatever your actual element index numbers are)
+        if (currentStepIndex == 3 && recordButtonGlow != null)
+        {
+            recordButtonGlow.SetActive(true);
+        }
+        else if (currentStepIndex == 4 && saveButtonGlow != null)
+        {
+            saveButtonGlow.SetActive(true);
+        }
+        else if (currentStepIndex == 5 && libraryButtonGlow != null)
+        {
+            libraryButtonGlow.SetActive(true);
+        }
+        else if (currentStepIndex == 6 && composeButtonGlow != null)
+        {
+            composeButtonGlow.SetActive(true);
+        }
+    }
     private IEnumerator ShowStepWithDelay(TutorialStep step)
     {
         isWaitingForDelay = true;
@@ -216,14 +239,54 @@ public class TutorialManager : MonoBehaviour
     }
 
 
-     public void TryAdvanceStep(TutorialTriggerType requiredType)
+    public void OnTargetButtonClicked()
+    {
+        if (isWaitingForDelay || tutorialSteps == null || currentStepIndex >= tutorialSteps.Count) return;
+         // Check if the current tutorial step is actually waiting for a button click
+        if (tutorialSteps[currentStepIndex].triggerType == TutorialTriggerType.ButtonClick)
+        {
+            NextStep();
+        }
+      
+    }
+
+    public void TryAdvanceStep(TutorialTriggerType requiredType)
      {
         if (isWaitingForDelay || tutorialSteps == null || currentStepIndex >= tutorialSteps.Count) return;
 
         if (tutorialSteps[currentStepIndex].triggerType == requiredType)
         {
-            Debug.Log($"[TutorialManager] Successfully triggered step advance for: {requiredType}");
             NextStep();
         }
      }
+
+    private void FinishTutorial()
+    {
+        TutorialEnded = true; // Sets your tracking bool to true!
+
+        PlayerPrefs.SetInt(tutorialSaveKey, 1);
+        PlayerPrefs.Save();
+
+        if (tutorialPanel != null)
+            tutorialPanel.SetActive(false);
+
+        if (tutorialArrow != null)
+            tutorialArrow.SetActive(false);
+
+        if (recordButtonGlow != null)
+            recordButtonGlow.SetActive(false);
+
+        if (libraryButtonGlow != null)
+            libraryButtonGlow.SetActive(false);
+
+        if (saveButtonGlow != null)
+            saveButtonGlow.SetActive(false);
+
+        if (composeButtonGlow != null)
+            composeButtonGlow.SetActive(false);
+
+        enabled = false;
+
+        Debug.Log("Tutorial completed!");
+    }
 }

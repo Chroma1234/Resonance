@@ -20,7 +20,7 @@ public class SavedRecordingLibrary : MonoBehaviour
     private Transform recordingListContent;
 
     [SerializeField]
-    private Button recordingButtonPrefab;
+    private UnityEngine.UI.Button recordingButtonPrefab;
 
     [Header("Selection Highlight")]
     [SerializeField]
@@ -44,7 +44,7 @@ public class SavedRecordingLibrary : MonoBehaviour
     private string selectedRecordingPath;
 
     // Stores the selected button so it can be highlighted.
-    private Button selectedRecordingButton;
+    private UnityEngine.UI.Button selectedRecordingButton;
 
     private void Start()
     {
@@ -122,7 +122,7 @@ public class SavedRecordingLibrary : MonoBehaviour
         string filePath
     )
     {
-        Button newButton =
+        UnityEngine.UI.Button newButton =
             Instantiate(
                 recordingButtonPrefab,
                 recordingListContent
@@ -158,7 +158,7 @@ public class SavedRecordingLibrary : MonoBehaviour
         );
 
         string selectedFilePath = filePath;
-        Button selectedButton = newButton;
+        UnityEngine.UI.Button selectedButton = newButton;
 
         /*
          * Removes listeners added through code.
@@ -190,7 +190,7 @@ public class SavedRecordingLibrary : MonoBehaviour
 
     public void SelectRecording(
         string filePath,
-        Button clickedButton
+        UnityEngine.UI.Button clickedButton
     )
     {
         // Return the previous button to its normal colour.
@@ -221,7 +221,7 @@ public class SavedRecordingLibrary : MonoBehaviour
     }
 
     private void SetButtonColor(
-        Button button,
+        UnityEngine.UI.Button button,
         Color colour
     )
     {

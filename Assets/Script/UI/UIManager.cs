@@ -78,7 +78,7 @@ public class UIManager : MonoBehaviour
     //private void HandleStateChange(UIState newState)
     //{
     //    ChangeState(newState);
-    //}
+    //
 
     public void ChangeState(UIState newState)
     {

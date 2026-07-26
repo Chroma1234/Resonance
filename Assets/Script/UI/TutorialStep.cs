@@ -6,8 +6,9 @@ public enum TutorialTriggerType
     Spacebar,
     MouseClick,
     AnyKey,
-    ApproachLandmark, // New trigger for step 1
-    TriggerDuet       // New trigger for step 2
+    ApproachLandmark,
+    TriggerDuet,
+    ButtonClick
 }
 
 [CreateAssetMenu(fileName = "NewTutorialStep", menuName = "Tutorial/Tutorial Step")]
@@ -24,13 +25,13 @@ public class TutorialStep : ScriptableObject
     public float displayDuration = 3f;
 
     [Header("Timing")]
-    public float delayBeforeShowing = 0f; // <--- set a delay per step!
+    public float delayBeforeShowing = 0f;
 
-    [Header("Highlight Settings")]
-    public string glowObjectName = "GlowOuline"; // Type your target object's name here
+    [Header("Specific Step Target Settings")]
+    public GameObject targetButton;
+    public GameObject stepGlowObject;
 
     [Header("Visual Aids")]
     [Tooltip("Check if this step should show a directional arrow and button glow")]
     public bool showArrowIndicator = false;
-
 }

@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf98c04f95792ef4da3a14a095759957, type: 3}
   m_Name: CallToactionDuet
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStep
-  instructionText: 'How is the experience ? '
+  instructionText: 'Did that sound reach you?
+
+'
   triggerType: 0
   displayDuration: 3
+  delayBeforeShowing: 0
+  glowObjectName: GlowOuline
   showArrowIndicator: 0
