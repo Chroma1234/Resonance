@@ -12,6 +12,9 @@ public class MusicLandmark : MonoBehaviour
     private float currentIntensity;
     private float currentDuet;
 
+    private float targetVolume = 1f;
+    private float currentVolume = 1f;
+
     private bool duetEnabled;
 
     public float DistanceToPlayer { get; private set; }
@@ -59,6 +62,10 @@ public class MusicLandmark : MonoBehaviour
 
         instance.setParameterByName("Intensity", currentIntensity);
         instance.setParameterByName("Duet", currentDuet);
+
+        currentVolume = Mathf.Lerp(currentVolume, targetVolume, Time.deltaTime * instrumentData.smoothing);
+
+        instance.setVolume(currentVolume);
     }
 
     public void SetModel()
@@ -81,6 +88,11 @@ public class MusicLandmark : MonoBehaviour
     public void SetDuet(bool enabled)
     {
         duetEnabled = enabled;
+    }
+
+    public void SetVolumeMultiplier(float multiplier)
+    {
+        targetVolume = multiplier;
     }
 
     private void OnDestroy()

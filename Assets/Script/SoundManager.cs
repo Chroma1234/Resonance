@@ -62,10 +62,30 @@ public class SoundManager : MonoBehaviour
             }
         }
 
-        if (nearby.Count == 2)
+        bool duetActive = nearby.Count == 2;
+
+        foreach (var landmark in landmarks)
         {
-            nearby[0].SetDuet(true);
-            nearby[1].SetDuet(true);
+            bool isDuetMember = duetActive && (landmark == nearby[0] || landmark == nearby[1]);
+
+            landmark.SetDuet(isDuetMember);
+
+            if (!duetActive)
+            {
+                landmark.SetVolumeMultiplier(1f);
+            }
+            else if (landmark.instrumentData.instrumentName == "Drums")
+            {
+                landmark.SetVolumeMultiplier(1f);
+            }
+            else if (isDuetMember)
+            {
+                landmark.SetVolumeMultiplier(1f);
+            }
+            else
+            {
+                landmark.SetVolumeMultiplier(0.25f);
+            }
         }
     }
 }
