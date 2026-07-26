@@ -44,9 +44,9 @@ public class MusicLandmark : MonoBehaviour
 
         if (instrumentData.mixable)
         {
-            CreateRadiusIndicator("Intensity Radius", instrumentData.intenseDistance, new Color(1, 0, 0, 0.05f));
-            CreateRadiusIndicator("Max Radius", instrumentData.maxDistance, new Color(1, 1, 0, 0.01f));
-            CreateRadiusIndicator("Duet Radius", instrumentData.duetRadius, new Color(0, 1, 1, 0.1f));
+            CreateRadiusIndicator("Intensity Radius", instrumentData.intenseDistance, new Color(1f, 1f, 0.3f, 0.08f)); //yellow
+            CreateRadiusIndicator("Max Radius", instrumentData.maxDistance, new Color(0f, 1f, 1f, 0.05f)); //pink
+            CreateRadiusIndicator("Duet Radius", instrumentData.duetRadius,new Color(1f, 0.2f, 0.8f, 0.15f));//cyan
         }
     }
 
@@ -106,10 +106,10 @@ public class MusicLandmark : MonoBehaviour
         if (instrumentData == null)
             return;
 
-        Gizmos.color = Color.deepPink;
+        Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, instrumentData.intenseDistance);
 
-        Gizmos.color = Color.yellow;
+        Gizmos.color = Color.pink;
         Gizmos.DrawWireSphere(transform.position, instrumentData.maxDistance);
 
         Gizmos.color = Color.cyan;
