@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf98c04f95792ef4da3a14a095759957, type: 3}
   m_Name: Approach instrument
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStep
-  instructionText: Approach the nearest instrument and enjoy the audio.
+  requiredButton: 0
+  instructionText: Approach the nearest instrument using WASD and right-click to
+    move the camera.
   triggerType: 4
   displayDuration: 3
+  delayBeforeShowing: 0
+  targetButton: {fileID: 0}
+  stepGlowObject: {fileID: 0}
   showArrowIndicator: 0
