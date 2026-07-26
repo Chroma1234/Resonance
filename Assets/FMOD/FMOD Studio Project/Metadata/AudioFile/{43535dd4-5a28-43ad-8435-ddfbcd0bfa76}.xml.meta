@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/FMOD/FMOD Studio Project/Metadata/Event/{6d04ff25-a636-4b69-b106-1c2afd4094c6}.xml.meta
+guid: d19b87354bfe39f46a8c7d85b46349d7
+========
 guid: c6ff71f4d1211fd47ba332c84297da46
+>>>>>>>> main:Assets/FMOD/FMOD Studio Project/Metadata/AudioFile/{43535dd4-5a28-43ad-8435-ddfbcd0bfa76}.xml.meta
 TextScriptImporter:
   externalObjects: {}
   userData: 
