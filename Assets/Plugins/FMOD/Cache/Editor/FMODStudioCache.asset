@@ -24,33 +24,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-8314430535622675513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Composition/Chords/A Dminished
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Composition/Chords/A Dminished
-  Guid:
-    Data1: 1189618025
-    Data2: 1131473562
-    Data3: 1173661570
-    Data4: 1534478519
-  Banks:
-  - {fileID: -7369935850972996189}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &-8247851864162144661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,13 +44,13 @@ MonoBehaviour:
     Data4: 1671239434
   Banks:
   - {fileID: -7369935850972996189}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 11320
 --- !u!114 &-8079718894764878741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +138,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Composition.bank
   Name: Composition
   StudioPath: bank:/Composition
-  lastModified: 639206052459397440
+  lastModified: 639206671208235852
   FileSizes: []
   Exists: 1
 --- !u!114 &-7355949047113629371
@@ -249,33 +222,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 39242
---- !u!114 &-7005451272844619807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Composition/Chords/G Minor
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Composition/Chords/G Minor
-  Guid:
-    Data1: 605843166
-    Data2: 1263207894
-    Data3: 16489112
-    Data4: -1327942805
-  Banks:
-  - {fileID: -7369935850972996189}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &-6496102387006392893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,7 +439,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Instruments.bank
   Name: Instruments
   StudioPath: bank:/Instruments
-  lastModified: 639206278120666330
+  lastModified: 639206604628425174
   FileSizes: []
   Exists: 1
 --- !u!114 &-5165840453294665837
@@ -939,7 +885,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 5960
 --- !u!114 &-1861696988881228671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1082,7 +1028,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 6760
 --- !u!114 &-955918448132309002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1199,11 +1145,9 @@ MonoBehaviour:
   EditorEvents:
   - {fileID: -8247851864162144661}
   - {fileID: -1199568881888347459}
-  - {fileID: -8314430535622675513}
   - {fileID: 3613000055656994999}
   - {fileID: 7451274423497821520}
   - {fileID: -2152242109430083091}
-  - {fileID: -7005451272844619807}
   - {fileID: -4851036123002482126}
   - {fileID: -6354906982182169918}
   - {fileID: 5894242851225389984}
@@ -1221,42 +1165,38 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 3250549758733988562}
   cacheVersion: 131860
-  cacheTime: 639206278120977667
+  cacheTime: 639206671208450874
   SerializableEventsDict:
   - key: event:/Composition/Chords/Eb Major
     index: 0
   - key: event:/Composition/Chords/Bb Major
     index: 1
-  - key: event:/Composition/Chords/A Dminished
-    index: 2
   - key: event:/Composition/Chords/F Major
-    index: 3
+    index: 2
   - key: event:/Composition/Chords/C Minor
-    index: 4
+    index: 3
   - key: event:/Composition/Chords/D Minor
-    index: 5
-  - key: event:/Composition/Chords/G Minor
-    index: 6
+    index: 4
   - key: event:/NEW MELANCHOLIC/MELANCHOLIC PIANO
-    index: 7
+    index: 5
   - key: event:/NEW MELANCHOLIC/MELANCHOLIC BASS
-    index: 8
+    index: 6
   - key: event:/NEW MELANCHOLIC/MELANCHOLIC SAX
-    index: 9
+    index: 7
   - key: event:/NEW MELANCHOLIC/MELANCHOLIC DRUMS
-    index: 10
+    index: 8
   - key: event:/NEW MELANCHOLIC/MELANCHOLIC MASTER
-    index: 11
+    index: 9
   - key: event:/RESONANCE/SAXOPHONE
-    index: 12
+    index: 10
   - key: event:/RESONANCE/BASS
-    index: 13
+    index: 11
   - key: event:/RESONANCE/DRUMS
-    index: 14
+    index: 12
   - key: event:/RESONANCE/PIANO
-    index: 15
+    index: 13
   - key: event:/RESONANCE/MASTER
-    index: 16
+    index: 14
 --- !u!114 &24488620135746183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1522,10 +1462,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639206278120977667
+  lastModified: 639206671208450874
   FileSizes:
   - Name: 
-    Value: 1892
+    Value: 1860
   Exists: 1
 --- !u!114 &3401486763377838323
 MonoBehaviour:
@@ -1619,13 +1559,13 @@ MonoBehaviour:
     Data4: 1019291196
   Banks:
   - {fileID: -7369935850972996189}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 10880
 --- !u!114 &4039063202753309308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1867,7 +1807,7 @@ MonoBehaviour:
   Path: Assets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639206278120967725
+  lastModified: 639206671208440873
   FileSizes: []
   Exists: 1
 --- !u!114 &6847614124341133836
@@ -1944,7 +1884,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 8400
 --- !u!114 &7523331490581092384
 MonoBehaviour:
   m_ObjectHideFlags: 0
