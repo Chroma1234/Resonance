@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: ebf8efa10ab1fac43a5d0eedcb6f49bd
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - saveManager: {fileID: 1797807341516894331, guid: da67892d65a3d0d4b89824ed3fc80dc1, type: 3}
+  - nameInput: {instanceID: 0}
+  - feedbackText: {instanceID: 0}
+  - listContent: {instanceID: 0}
+  - listButtonPrefab: {instanceID: 0}
+  - mainMenuPanel: {instanceID: 0}
+  - savePanel: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
