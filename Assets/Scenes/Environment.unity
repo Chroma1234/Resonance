@@ -275,7 +275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &121224872
 RectTransform:
   m_ObjectHideFlags: 0
@@ -355,10 +355,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1701197403}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 729976753}
+        m_TargetAssemblyTypeName: RecordingMenu, Assembly-CSharp
+        m_MethodName: ToggleRecording
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10551,7 +10551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1038603876
 Transform:
   m_ObjectHideFlags: 0
@@ -23354,7 +23354,7 @@ MonoBehaviour:
   compositionPlayer: {fileID: 5302033900859715952}
   playerMovement: {fileID: 1337856448}
   mouseLook: {fileID: 1337856449}
-  savedRecordingLibrary: {fileID: 0}
+  savedRecordingLibrary: {fileID: 1383094493}
 --- !u!1 &1701197403
 GameObject:
   m_ObjectHideFlags: 0
@@ -31626,7 +31626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -33722,8 +33722,8 @@ RectTransform:
   - {fileID: 2356447190016001692}
   - {fileID: 439889134427960906}
   - {fileID: 7806486871226003178}
-  - {fileID: 8205101121659286730}
   - {fileID: 5811213811781448748}
+  - {fileID: 8205101121659286730}
   m_Father: {fileID: 3167027362003481411}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -35517,36 +35517,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &6513233742702721881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6545885094900656047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ScrollRect
-  m_Content: {fileID: 8205101121659286730}
-  m_Horizontal: 1
-  m_Vertical: 1
-  m_MovementType: 1
-  m_Elasticity: 0.1
-  m_Inertia: 1
-  m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
-  m_Viewport: {fileID: 0}
-  m_HorizontalScrollbar: {fileID: 0}
-  m_VerticalScrollbar: {fileID: 0}
-  m_HorizontalScrollbarVisibility: 0
-  m_VerticalScrollbarVisibility: 0
-  m_HorizontalScrollbarSpacing: 0
-  m_VerticalScrollbarSpacing: 0
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &6545885094900656047
 GameObject:
   m_ObjectHideFlags: 0
@@ -35556,7 +35526,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8205101121659286730}
-  - component: {fileID: 6513233742702721881}
   - component: {fileID: 5513538468199420553}
   - component: {fileID: 4622566847676763409}
   - component: {fileID: 5573602506193740411}

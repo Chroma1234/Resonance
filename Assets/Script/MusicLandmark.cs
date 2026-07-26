@@ -106,7 +106,7 @@ public class MusicLandmark : MonoBehaviour
         if (instrumentData == null)
             return;
 
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.deepPink;
         Gizmos.DrawWireSphere(transform.position, instrumentData.intenseDistance);
 
         Gizmos.color = Color.yellow;
