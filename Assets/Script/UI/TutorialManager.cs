@@ -73,11 +73,13 @@ public class TutorialManager : MonoBehaviour
     }
 
     void Update()
-    {
+    {   //check if tutorial is ended, waiting for delay, or if there are no steps left to process
         if (TutorialEnded || isWaitingForDelay || tutorialSteps == null || currentStepIndex >= tutorialSteps.Count) return;
 
+        //Fetch the current step to check its trigger type
         TutorialStep currentStep = tutorialSteps[currentStepIndex];
 
+        // For steps that require player proximity to landmarks or duet triggers, ensure we have the necessary references
         if (currentStep.triggerType == TutorialTriggerType.ApproachLandmark ||
             currentStep.triggerType == TutorialTriggerType.TriggerDuet)
         {
@@ -87,7 +89,7 @@ public class TutorialManager : MonoBehaviour
                 if (player == null) return;
             }
         }
-
+        // Handle the different trigger types for advancing the tutorial
         switch (currentStep.triggerType)
         {
             case TutorialTriggerType.Timer:
@@ -110,7 +112,6 @@ public class TutorialManager : MonoBehaviour
             case TutorialTriggerType.TriggerDuet:
                 if (CheckPlayerTriggeredDuet()) NextStep();
                 break;
-
         }
     }
     private void CacheReferences()
@@ -187,9 +188,11 @@ public class TutorialManager : MonoBehaviour
             FinishTutorial();
         }
     }
-
+   
+    // Helper method to display the UI for the current tutorial step
     private void DisplayStepUI(TutorialStep step)
     {
+        // Show the tutorial panel and update the instruction text
         if (tutorialPanel != null) tutorialPanel.SetActive(true);
 
         if (instructionLabel != null)
@@ -198,18 +201,19 @@ public class TutorialManager : MonoBehaviour
         if (tutorialArrow != null)
             tutorialArrow.SetActive(step.showArrowIndicator);
 
-        // 1. Hide all glows first
+        // Reset all button glows to ensure only the required button glows
         if (recordButtonGlow != null) recordButtonGlow.SetActive(false);
         if (libraryButtonGlow != null) libraryButtonGlow.SetActive(false);
         if (saveButtonGlow != null) saveButtonGlow.SetActive(false);
         if (composeButtonGlow != null) composeButtonGlow.SetActive(false);
 
-        // 2. Control button interactivity and glows based on the current step's required button
+        // Enable/disable buttons based on the required button for this step
         SetButtonInteractive(recordButton, recordButtonGlow, step.requiredButton == TutorialButtonType.Record);
         SetButtonInteractive(saveButton, saveButtonGlow, step.requiredButton == TutorialButtonType.Save);
         SetButtonInteractive(libraryButton, libraryButtonGlow, step.requiredButton == TutorialButtonType.Library);
         SetButtonInteractive(composeButton, composeButtonGlow, step.requiredButton == TutorialButtonType.Compose);
     }
+    
     // Helper method to handle enabling/disabling cleanly
     private void SetButtonInteractive(UnityEngine.UI.Button btn, GameObject glow, bool isEnabled)
     {
@@ -249,19 +253,21 @@ public class TutorialManager : MonoBehaviour
     }
 
     private bool isProcessingClick = false;
-   // Universal button click method that works for ANY button!
     // Just pass a string or enum from your UI button: "Record", "Save", "Library", "Compose"
     public void OnSpecificButtonClicked(string buttonName)
     {
+        // Prevent rapid multiple clicks from causing issues
         if (isProcessingClick) return;
         isProcessingClick = true;
 
+        // Safety check: If we're waiting for a delay or if the tutorial is finished, ignore clicks
         if (isWaitingForDelay || tutorialSteps == null || currentStepIndex >= tutorialSteps.Count)
         {
             isProcessingClick = false;
             return;
         }
 
+        // Fetch the current tutorial step to check its requirements
         TutorialStep currentStep = tutorialSteps[currentStepIndex];
       
         // SAFETY CHECK: If this step requires a button, block any other button immediately!
@@ -276,7 +282,6 @@ public class TutorialManager : MonoBehaviour
         }
 
         Debug.Log($"Button '{buttonName}' clicked. Current step expects: {currentStep.requiredButton}");
-       
         // Check if the current step requires a button click and matches this button
         if (currentStep.triggerType == TutorialTriggerType.ButtonClick)
         {
@@ -292,6 +297,7 @@ public class TutorialManager : MonoBehaviour
             }
            
         }
+        // If the current step doesn't require a button click, we can still allow progression if needed
         StartCoroutine(ResetClickLock());
     }
 
