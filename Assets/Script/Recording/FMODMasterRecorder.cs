@@ -12,42 +12,91 @@ using System.Collections;
 using Debug = UnityEngine.Debug;
 using Thread = System.Threading.Thread;
 
+
+// This script records the FMOD Master Bus
+// and exports it as a WAV file.
+//
+// Responsibilities:
+// - Capture audio from FMOD.
+// - Convert the audio into stereo.
+// - Save the recording as a WAV file.
+// - Display recording status in the UI.
+// - Clean up resources when recording ends.
+
 public class FMODMasterRecorder : MonoBehaviour
 {
     [Header("Recording File")]
+
+    // Base name of the exported recording file.
+    // A timestamp is added automatically
+    // to prevent duplicate filenames.
     [SerializeField]
     private string fileName = "Resonance";
 
     [Header("Recording Buffer")]
+
+    // Controls the size of the temporary
+    // audio buffer used while recording.
+    //
+    // A larger buffer reduces the chance
+    // of losing audio samples.
     [SerializeField]
     [Range(2, 30)]
     private int ringBufferSeconds = 10;
 
-    // The exported WAV is always stereo.
+    // The exported WAV file always uses
+    // stereo audio with 16-bit PCM.
     private const int RecordingChannels = 2;
     private const short BitsPerSample = 16;
 
+    // The FMOD Master Bus that all game audio passes through.
     private ChannelGroup masterChannelGroup;
+
+    // The custom DSP used to capture audio.
     private DSP recordingDSP;
+
+    // Callback that FMOD calls every time
+    // new audio is generated.
     private DSP_READ_CALLBACK recordingCallback;
 
+    // Stores the currently active recorder.
+    //
+    // The FMOD callback is static,
+    // so it needs a reference back
+    // to this recorder instance.
     private static FMODMasterRecorder activeRecorder;
 
+    // True while recording is in progress.
     private volatile bool isRecording;
+
+    // True once the recorder has
+    // been successfully initialized.
     private bool isReady;
 
+    // Stores FMOD's sample rate.
+    // Default is 48 kHz.
     private int sampleRate = 48000;
 
-    // Temporary stereo ring buffer.
+    // Temporary buffer that stores
+    // stereo audio samples before
+    // they are written to the WAV file.
     private float[] ringBuffer;
+
+    // Current write position.
     private int writePosition;
+
+    // Current read position.
     private int readPosition;
 
     /*
-     * FMOD audio callback buffers.
+     * Temporary audio buffers used
+     * inside the FMOD callback.
      *
-     * callbackInputBuffer stores the original FMOD channels.
-     * callbackStereoBuffer stores the converted stereo audio.
+     * callbackInputBuffer stores
+     * the original FMOD audio.
+     *
+     * callbackStereoBuffer stores
+     * the converted stereo audio.
      */
     private readonly float[] callbackInputBuffer =
         new float[65536];
@@ -55,31 +104,63 @@ public class FMODMasterRecorder : MonoBehaviour
     private readonly float[] callbackStereoBuffer =
         new float[65536];
 
+
+    // Separate thread that writes
+    // recorded audio into the WAV file.
+    //
+    // Using another thread prevents
+    // file writing from freezing the game.
     private Thread writerThread;
+
+    // Controls whether the writer thread
+    // should continue running.
     private volatile bool writerShouldRun;
 
+    // File used to save the recording.
     private FileStream outputStream;
+
+    // Writes binary WAV data.
     private BinaryWriter outputWriter;
 
+    // Total number of audio bytes written.
     private long writtenDataBytes;
+
+    // Full path of the saved recording.
     private string currentFilePath;
+
+    // Stores any errors from the writer thread.
     private string writerError;
 
+    // Counts audio samples that
+    // could not fit inside the ring buffer.
     private int droppedSamples;
 
 
     [Header("UI Feedback")]
-    [SerializeField] private TMP_Text recordingStatusText;
 
+    // Text that displays the
+    // current recording status.
+    [SerializeField]
+    private TMP_Text recordingStatusText;
+
+
+    // Messages shown in the UI.
     [SerializeField] private string readyMessage = "Ready to record";
     [SerializeField] private string recordingMessage = "? Recording...";
     [SerializeField] private string savedMessage = "Recording saved!";
 
+
+    // How long the "Recording saved"
+    // message stays on screen.
     [SerializeField] private float savedMessageDuration = 2f;
 
+
+    // Reference to the UI coroutine.
     private Coroutine statusCoroutine;
 
-
+    // Read-only property that allows
+    // other scripts to check whether
+    // recording is currently active.
     public bool IsRecording
     {
         get { return isRecording; }
@@ -87,18 +168,30 @@ public class FMODMasterRecorder : MonoBehaviour
 
     private void Start()
     {
+        // Prepare the recorder when
+        // the scene starts.
         SetupRecorder();
+
+        // Display the default UI message.
         UpdateStatusText(readyMessage);
     }
 
+    // Initializes the FMOD recorder.
+    //
+    // This method only runs once
+    // before recording starts.
     private void SetupRecorder()
     {
+        // Prevent initializing twice.
         if (isReady)
         {
             return;
         }
 
         activeRecorder = this;
+
+        // Store this recorder so the
+        // static FMOD callback can access it.
         recordingCallback = CaptureAudio;
 
         RESULT result =
@@ -213,13 +306,23 @@ public class FMODMasterRecorder : MonoBehaviour
     }
 
     // Connect this to the Record button.
+    //
+    // Starts recording by:
+    // 1. Checking that the recorder is ready.
+    // 2. Creating a new WAV file.
+    // 3. Writing an empty WAV header.
+    // 4. Starting the writer thread.
     public void StartRecording()
     {
+        // If the recorder has not been initialized,
+        // set it up before recording.
         if (!isReady)
         {
             SetupRecorder();
         }
 
+        // Stop if the recorder
+        // still could not be initialized.
         if (!isReady)
         {
             Debug.LogError(
@@ -229,6 +332,8 @@ public class FMODMasterRecorder : MonoBehaviour
             return;
         }
 
+        // Prevent multiple recordings
+        // from running at the same time.
         if (isRecording)
         {
             Debug.LogWarning(
@@ -238,13 +343,19 @@ public class FMODMasterRecorder : MonoBehaviour
             return;
         }
 
+        // Reset all recording variables
+        // before starting a new recording.
         ResetRecordingState();
 
+        // Create a unique filename by
+        // appending the current date and time.
         string finalFileName =
             fileName + "_" +
             DateTime.Now.ToString("yyyyMMdd_HHmmss") +
             ".wav";
 
+        // Save the recording inside
+        // Unity's persistent data folder.
         currentFilePath =
             Path.Combine(
                 Application.persistentDataPath,
@@ -253,6 +364,7 @@ public class FMODMasterRecorder : MonoBehaviour
 
         try
         {
+            // Create the WAV file.
             outputStream =
                 new FileStream(
                     currentFilePath,
@@ -261,24 +373,41 @@ public class FMODMasterRecorder : MonoBehaviour
                     FileShare.Read
                 );
 
+            // BinaryWriter is used to
+            // write binary audio data.
             outputWriter =
                 new BinaryWriter(outputStream);
 
+            // Write an empty WAV header first.
+            // The header will be updated
+            // after recording finishes.
             WriteEmptyWavHeader();
 
+            // Allow the writer thread
+            // to begin writing audio.
             writerShouldRun = true;
 
+            // Create the background thread
+            // that writes audio to disk.
             writerThread =
                 new Thread(WriterThreadLoop);
 
+            // Give the thread a readable name.
             writerThread.Name =
                 "FMOD WAV Writer";
 
+            // Run the thread in the background.
             writerThread.IsBackground = true;
+            // Start the background thread.
+            // It continuously writes
+            // recorded audio into the WAV file.
             writerThread.Start();
 
+            // Recording has now started.
             isRecording = true;
 
+            // Update the UI so the user knows
+            // recording is currently active.
             UpdateStatusText(recordingMessage);
 
             Debug.Log(
@@ -287,6 +416,8 @@ public class FMODMasterRecorder : MonoBehaviour
         }
         catch (Exception exception)
         {
+            // Close the file if something
+            // went wrong during setup.
             CloseOutputFile();
 
             Debug.LogError(
@@ -297,8 +428,14 @@ public class FMODMasterRecorder : MonoBehaviour
     }
 
     // Connect this to the Stop Recording button.
+    //
+    // Stops recording, waits for the writer thread
+    // to finish, updates the WAV header,
+    // and saves the completed recording.
     public void StopRecordingAndSave()
     {
+        // Make sure a recording is
+        // currently in progress.
         if (!isRecording)
         {
             Debug.LogWarning(
@@ -308,22 +445,28 @@ public class FMODMasterRecorder : MonoBehaviour
             return;
         }
 
-        // Stop accepting new samples.
+        // Stop accepting new audio samples.
         isRecording = false;
 
-        // Allow the writer thread to finish queued samples.
+        // Tell the writer thread to
+        // finish writing any remaining audio.
         writerShouldRun = false;
 
+        // Wait until the writer thread
+        // finishes before closing the file.
         if (writerThread != null &&
             writerThread.IsAlive)
         {
             writerThread.Join();
         }
 
+        // Remove the thread reference.
         writerThread = null;
 
         try
         {
+            // Update the WAV header with the
+            // correct file size and data size.
             if (outputWriter != null &&
                 outputStream != null)
             {
@@ -339,9 +482,13 @@ public class FMODMasterRecorder : MonoBehaviour
         }
         finally
         {
+            // Always close the file,
+            // even if an error occurs.
             CloseOutputFile();
         }
 
+        // Check whether the writer thread
+        // encountered any errors.
         if (!string.IsNullOrEmpty(writerError))
         {
             Debug.LogError(
@@ -352,6 +499,8 @@ public class FMODMasterRecorder : MonoBehaviour
             return;
         }
 
+        // If no audio data was written,
+        // notify the user.
         if (writtenDataBytes == 0)
         {
             Debug.LogWarning(
@@ -364,13 +513,19 @@ public class FMODMasterRecorder : MonoBehaviour
             return;
         }
 
+        // Recording completed successfully.
         Debug.Log(
             "Stereo recording saved successfully:\n" +
             currentFilePath
         );
 
+        // Display a success message
+        // in the UI.
         ShowSavedFeedback();
 
+        // Warn if the recording buffer
+        // became full and audio samples
+        // had to be dropped.
         if (droppedSamples > 0)
         {
             Debug.LogWarning(
@@ -382,23 +537,30 @@ public class FMODMasterRecorder : MonoBehaviour
         }
     }
 
+    // Reset all recording variables
+    // before starting a new recording.
     private void ResetRecordingState()
     {
+        // Reset the ring buffer positions.
         writePosition = 0;
         readPosition = 0;
 
+        // Reset recording statistics.
         writtenDataBytes = 0;
         droppedSamples = 0;
 
+        // Clear previous errors and file path.
         writerError = null;
         currentFilePath = null;
     }
 
     /*
-     * FMOD calls this method on its mixer thread.
+     * FMOD automatically calls this method
+     * every time new audio is generated.
      *
-     * The original FMOD output is passed through unchanged.
-     * A separate stereo copy is created for the WAV.
+     * The original audio continues playing
+     * normally, while a stereo copy is made
+     * for the WAV recording.
      */
     [AOT.MonoPInvokeCallback(
         typeof(DSP_READ_CALLBACK)
@@ -412,9 +574,12 @@ public class FMODMasterRecorder : MonoBehaviour
         ref int outputChannels
     )
     {
+        // Get the active recorder instance.
         FMODMasterRecorder recorder =
             activeRecorder;
 
+        // Make sure everything is valid
+        // before processing audio.
         if (recorder == null ||
             inputBuffer == IntPtr.Zero ||
             outputBuffer == IntPtr.Zero ||
@@ -424,18 +589,25 @@ public class FMODMasterRecorder : MonoBehaviour
             return RESULT.OK;
         }
 
+        // Keep the original number of
+        // output channels unchanged.
         outputChannels = inputChannels;
 
+        // Total number of audio frames
+        // received from FMOD.
         int totalFrames =
             (int)length;
 
         int processedFrames = 0;
 
+        // Process the audio in smaller chunks.
+        // This prevents the callback buffers
+        // from overflowing.
         while (processedFrames < totalFrames)
         {
             /*
-             * Work out how many complete audio frames fit
-             * inside both reusable callback arrays.
+             * Calculate how many audio frames
+             * can safely fit inside the reusable buffers.
              */
             int maximumInputFrames =
                 recorder.callbackInputBuffer.Length /
@@ -454,15 +626,20 @@ public class FMODMasterRecorder : MonoBehaviour
                     )
                 );
 
+            // Stop if something went wrong.
             if (framesInChunk <= 0)
             {
                 return RESULT.ERR_INTERNAL;
             }
 
+            // Number of audio samples
+            // inside this chunk.
             int inputSampleCount =
                 framesInChunk *
                 inputChannels;
 
+            // Calculate the current position
+            // inside FMOD's audio buffer.
             int inputByteOffset =
                 processedFrames *
                 inputChannels *
@@ -480,6 +657,8 @@ public class FMODMasterRecorder : MonoBehaviour
                     inputByteOffset
                 );
 
+            // Copy FMOD's audio into
+            // a temporary buffer.
             Marshal.Copy(
                 inputPosition,
                 recorder.callbackInputBuffer,
@@ -488,8 +667,9 @@ public class FMODMasterRecorder : MonoBehaviour
             );
 
             /*
-             * Pass the original FMOD audio to the DSP output,
-             * so adding the recorder does not mute the game.
+             * Copy the original audio back
+             * to FMOD so the game audio
+             * continues playing normally.
              */
             Marshal.Copy(
                 recorder.callbackInputBuffer,
@@ -498,8 +678,11 @@ public class FMODMasterRecorder : MonoBehaviour
                 inputSampleCount
             );
 
+            // Only save audio while recording.
             if (recorder.isRecording)
             {
+                // Convert the FMOD audio
+                // into stereo.
                 recorder.ConvertToStereo(
                     recorder.callbackInputBuffer,
                     recorder.callbackStereoBuffer,
@@ -507,6 +690,8 @@ public class FMODMasterRecorder : MonoBehaviour
                     inputChannels
                 );
 
+                // Store the stereo samples
+                // inside the ring buffer.
                 recorder.WriteToRingBuffer(
                     recorder.callbackStereoBuffer,
                     framesInChunk *
@@ -514,13 +699,19 @@ public class FMODMasterRecorder : MonoBehaviour
                 );
             }
 
+            // Continue processing
+            // the remaining audio frames.
             processedFrames +=
                 framesInChunk;
         }
 
+        // Tell FMOD the callback
+        // completed successfully.
         return RESULT.OK;
     }
-
+    // Converts FMOD's audio into
+    // a stereo (left and right) format
+    // before saving it to the WAV file.
     private void ConvertToStereo(
         float[] inputSamples,
         float[] stereoSamples,
@@ -528,24 +719,29 @@ public class FMODMasterRecorder : MonoBehaviour
         int inputChannels
     )
     {
+        // Process every audio frame.
         for (
             int frame = 0;
             frame < frameCount;
             frame++
         )
         {
+            // Position of this frame
+            // inside the original audio.
             int inputPosition =
                 frame * inputChannels;
 
+            // Position inside the stereo buffer.
             int stereoPosition =
                 frame * RecordingChannels;
 
             float left;
             float right;
 
+            // Mono audio is copied
+            // into both left and right channels.
             if (inputChannels == 1)
             {
-                // Mono becomes stereo.
                 left =
                     inputSamples[inputPosition];
 
@@ -553,7 +749,8 @@ public class FMODMasterRecorder : MonoBehaviour
             }
             else
             {
-                // FMOD's first two channels become left and right.
+                // Use FMOD's first two channels
+                // as the stereo output.
                 left =
                     inputSamples[inputPosition];
 
@@ -561,8 +758,9 @@ public class FMODMasterRecorder : MonoBehaviour
                     inputSamples[inputPosition + 1];
 
                 /*
-                 * Quietly mix any additional surround channels
-                 * into the stereo output.
+                 * If surround sound channels exist,
+                 * gently mix them into the stereo output
+                 * so no audio is lost.
                  */
                 if (inputChannels > 2)
                 {
@@ -592,6 +790,9 @@ public class FMODMasterRecorder : MonoBehaviour
                 }
             }
 
+            // Clamp the audio values
+            // so they stay within
+            // the valid audio range.
             stereoSamples[stereoPosition] =
                 Mathf.Clamp(
                     left,
@@ -608,19 +809,29 @@ public class FMODMasterRecorder : MonoBehaviour
         }
     }
 
+    // Writes stereo audio samples
+    // into the ring buffer.
+    //
+    // The writer thread will later
+    // read these samples and save them
+    // into the WAV file.
     private void WriteToRingBuffer(
         float[] source,
         int sampleCount
     )
     {
+        // Current write position.
         int currentWrite =
             writePosition;
 
+        // Current read position.
         int currentRead =
             Volatile.Read(ref readPosition);
 
         int freeSpace;
 
+        // Calculate the available space
+        // remaining inside the ring buffer.
         if (currentWrite >= currentRead)
         {
             freeSpace =
@@ -636,21 +847,23 @@ public class FMODMasterRecorder : MonoBehaviour
                 1;
         }
 
+        // Only write as many samples
+        // as the buffer can hold.
         int samplesToWrite =
             Math.Min(
                 sampleCount,
                 freeSpace
             );
 
-        /*
-         * Keep stereo sample pairs together.
-         */
+        // Keep stereo samples together.
         samplesToWrite -=
             samplesToWrite %
             RecordingChannels;
 
+        // Buffer is full.
         if (samplesToWrite <= 0)
         {
+            // Count the dropped samples.
             Interlocked.Add(
                 ref droppedSamples,
                 sampleCount
@@ -659,16 +872,15 @@ public class FMODMasterRecorder : MonoBehaviour
             return;
         }
 
+        // Write the first section.
         int firstPart =
             Math.Min(
                 samplesToWrite,
                 ringBuffer.Length - currentWrite
             );
 
-        /*
-         * Prevent the first section from splitting
-         * a stereo sample pair.
-         */
+        // Prevent splitting
+        // a stereo sample pair.
         firstPart -=
             firstPart %
             RecordingChannels;
@@ -681,6 +893,9 @@ public class FMODMasterRecorder : MonoBehaviour
             firstPart
         );
 
+        // If necessary,
+        // wrap around to
+        // the beginning of the buffer.
         int secondPart =
             samplesToWrite - firstPart;
 
@@ -695,6 +910,7 @@ public class FMODMasterRecorder : MonoBehaviour
             );
         }
 
+        // Update the write position.
         int newWritePosition =
             (currentWrite + samplesToWrite) %
             ringBuffer.Length;
@@ -704,6 +920,8 @@ public class FMODMasterRecorder : MonoBehaviour
             newWritePosition
         );
 
+        // Count any samples
+        // that could not fit.
         if (samplesToWrite < sampleCount)
         {
             Interlocked.Add(
@@ -713,34 +931,54 @@ public class FMODMasterRecorder : MonoBehaviour
         }
     }
 
+    // Runs on a separate background thread.
+    //
+    // Continuously reads audio from the ring buffer
+    // and writes it into the WAV file.
+    //
+    // Using another thread prevents file writing
+    // from slowing down or freezing the game.
     private void WriterThreadLoop()
     {
-        // Keep the block size divisible by two.
+        // Temporary buffer for floating-point audio samples.
+        // The block size is kept divisible by two
+        // because stereo audio uses left and right channels.
         float[] floatBlock =
             new float[8192];
 
+        // Temporary buffer for 16-bit PCM data
+        // before writing it to the WAV file.
         byte[] byteBlock =
             new byte[floatBlock.Length * 2];
 
         try
         {
+            // Continue writing while recording
+            // is active or there are still
+            // samples waiting inside the ring buffer.
             while (
                 writerShouldRun ||
                 HasSamplesWaiting()
             )
             {
+                // Read the next block of samples
+                // from the ring buffer.
                 int samplesRead =
                     ReadFromRingBuffer(
                         floatBlock,
                         floatBlock.Length
                     );
 
+                // No audio available yet.
+                // Wait briefly before checking again.
                 if (samplesRead == 0)
                 {
                     Thread.Sleep(1);
                     continue;
                 }
 
+                // Convert floating-point audio
+                // into 16-bit PCM format.
                 int byteCount =
                     ConvertFloatToPcm16(
                         floatBlock,
@@ -748,25 +986,36 @@ public class FMODMasterRecorder : MonoBehaviour
                         byteBlock
                     );
 
+                // Write the converted audio
+                // into the WAV file.
                 outputStream.Write(
                     byteBlock,
                     0,
                     byteCount
                 );
 
+                // Keep track of the total
+                // number of bytes written.
                 writtenDataBytes +=
                     byteCount;
             }
 
+            // Ensure all remaining data
+            // is written to disk.
             outputStream.Flush();
         }
         catch (Exception exception)
         {
+            // Store the error so it can be
+            // reported after recording stops.
             writerError =
                 exception.Message;
         }
     }
 
+    // Returns true if there are still
+    // audio samples waiting inside
+    // the ring buffer.
     private bool HasSamplesWaiting()
     {
         return
@@ -774,19 +1023,25 @@ public class FMODMasterRecorder : MonoBehaviour
             Volatile.Read(ref writePosition);
     }
 
+    // Reads audio samples from
+    // the ring buffer.
     private int ReadFromRingBuffer(
         float[] destination,
         int maximumSamples
     )
     {
+        // Current read position.
         int currentRead =
             readPosition;
 
+        // Current write position.
         int currentWrite =
             Volatile.Read(ref writePosition);
 
         int availableSamples;
 
+        // Calculate how many samples
+        // are currently available.
         if (currentWrite >= currentRead)
         {
             availableSamples =
@@ -801,13 +1056,14 @@ public class FMODMasterRecorder : MonoBehaviour
                 currentWrite;
         }
 
+        // Read only the available samples.
         int samplesToRead =
             Math.Min(
                 maximumSamples,
                 availableSamples
             );
 
-        // Keep stereo sample pairs together.
+        // Keep stereo samples together.
         samplesToRead -=
             samplesToRead %
             RecordingChannels;
@@ -817,6 +1073,7 @@ public class FMODMasterRecorder : MonoBehaviour
             return 0;
         }
 
+        // Read the first section.
         int firstPart =
             Math.Min(
                 samplesToRead,
@@ -835,6 +1092,9 @@ public class FMODMasterRecorder : MonoBehaviour
             firstPart
         );
 
+        // If necessary,
+        // continue reading from
+        // the beginning of the buffer.
         int secondPart =
             samplesToRead -
             firstPart;
@@ -850,6 +1110,7 @@ public class FMODMasterRecorder : MonoBehaviour
             );
         }
 
+        // Update the read position.
         int newReadPosition =
             (currentRead + samplesToRead) %
             ringBuffer.Length;
@@ -862,6 +1123,9 @@ public class FMODMasterRecorder : MonoBehaviour
         return samplesToRead;
     }
 
+    // Converts floating-point audio
+    // into 16-bit PCM format,
+    // which is required by WAV files.
     private int ConvertFloatToPcm16(
         float[] floatSamples,
         int sampleCount,
@@ -876,6 +1140,8 @@ public class FMODMasterRecorder : MonoBehaviour
             sampleIndex++
         )
         {
+            // Limit the audio value
+            // to the valid range.
             float limitedSample =
                 Math.Max(
                     -1f,
@@ -885,12 +1151,16 @@ public class FMODMasterRecorder : MonoBehaviour
                     )
                 );
 
+            // Convert the floating-point
+            // sample into a 16-bit integer.
             short pcmSample =
                 (short)(
                     limitedSample *
                     short.MaxValue
                 );
 
+            // Store the sample as
+            // two bytes (little-endian).
             byteDestination[bytePosition++] =
                 (byte)(
                     pcmSample & 0xFF
@@ -902,41 +1172,55 @@ public class FMODMasterRecorder : MonoBehaviour
                 );
         }
 
+        // Return the total number
+        // of bytes generated.
         return bytePosition;
     }
 
+    // Writes an empty WAV header.
+    //
+    // The correct file size and audio length
+    // are unknown at the beginning of recording,
+    // so placeholder values are written first.
     private void WriteEmptyWavHeader()
     {
+        // Number of bytes per audio sample.
         int bytesPerSample =
             BitsPerSample / 8;
 
+        // WAV file starts with the RIFF identifier.
         outputWriter.Write(
             Encoding.ASCII.GetBytes("RIFF")
         );
 
-        // Placeholder RIFF size.
+        // Placeholder for the final RIFF size.
         outputWriter.Write(0);
 
+        // Specify this as a WAV file.
         outputWriter.Write(
             Encoding.ASCII.GetBytes("WAVE")
         );
 
+        // Write the audio format section.
         outputWriter.Write(
             Encoding.ASCII.GetBytes("fmt ")
         );
 
-        // PCM format section size.
+        // PCM format chunk size.
         outputWriter.Write(16);
 
         // PCM audio format.
         outputWriter.Write((short)1);
 
+        // Number of audio channels.
         outputWriter.Write(
             (short)RecordingChannels
         );
 
+        // Audio sample rate.
         outputWriter.Write(sampleRate);
 
+        // Calculate bytes per second.
         int byteRate =
             sampleRate *
             RecordingChannels *
@@ -944,6 +1228,7 @@ public class FMODMasterRecorder : MonoBehaviour
 
         outputWriter.Write(byteRate);
 
+        // Size of one audio frame.
         short blockAlignment =
             (short)(
                 RecordingChannels *
@@ -954,26 +1239,33 @@ public class FMODMasterRecorder : MonoBehaviour
             blockAlignment
         );
 
+        // Bits used for each sample.
         outputWriter.Write(
             BitsPerSample
         );
 
+        // Beginning of the audio data section.
         outputWriter.Write(
             Encoding.ASCII.GetBytes("data")
         );
 
-        // Placeholder audio-data size.
+        // Placeholder for the final data size.
         outputWriter.Write(0);
     }
 
+    // Updates the placeholder values
+    // inside the WAV header after
+    // recording has finished.
     private void CorrectWavHeader()
     {
         int bytesPerSample =
             BitsPerSample / 8;
 
+        // Make sure all data
+        // has been written first.
         outputWriter.Flush();
 
-        // RIFF chunk size.
+        // Update the RIFF chunk size.
         outputStream.Seek(
             4,
             SeekOrigin.Begin
@@ -986,7 +1278,7 @@ public class FMODMasterRecorder : MonoBehaviour
             )
         );
 
-        // Number of channels.
+        // Update the number of channels.
         outputStream.Seek(
             22,
             SeekOrigin.Begin
@@ -996,7 +1288,7 @@ public class FMODMasterRecorder : MonoBehaviour
             (short)RecordingChannels
         );
 
-        // Byte rate.
+        // Update the byte rate.
         outputStream.Seek(
             28,
             SeekOrigin.Begin
@@ -1008,7 +1300,7 @@ public class FMODMasterRecorder : MonoBehaviour
             bytesPerSample
         );
 
-        // Block alignment.
+        // Update the block alignment.
         outputStream.Seek(
             32,
             SeekOrigin.Begin
@@ -1021,7 +1313,7 @@ public class FMODMasterRecorder : MonoBehaviour
             )
         );
 
-        // Audio-data size.
+        // Update the final audio data size.
         outputStream.Seek(
             40,
             SeekOrigin.Begin
@@ -1034,10 +1326,13 @@ public class FMODMasterRecorder : MonoBehaviour
         outputWriter.Flush();
     }
 
+    // Closes the recording file
+    // and releases file resources.
     private void CloseOutputFile()
     {
         try
         {
+            // Close the BinaryWriter.
             if (outputWriter != null)
             {
                 outputWriter.Flush();
@@ -1045,11 +1340,7 @@ public class FMODMasterRecorder : MonoBehaviour
                 outputWriter = null;
             }
 
-            /*
-             * Disposing BinaryWriter normally also closes its
-             * FileStream, but this ensures the stream reference
-             * is cleared as well.
-             */
+            // Close the FileStream.
             if (outputStream != null)
             {
                 outputStream.Dispose();
@@ -1064,6 +1355,9 @@ public class FMODMasterRecorder : MonoBehaviour
             );
         }
     }
+
+    // Updates the recording status
+    // shown on the UI.
     private void UpdateStatusText(string message)
     {
         if (recordingStatusText != null)
@@ -1072,6 +1366,8 @@ public class FMODMasterRecorder : MonoBehaviour
         }
     }
 
+    // Displays the "Recording Saved"
+    // message using a coroutine.
     private void ShowSavedFeedback()
     {
         if (statusCoroutine != null)
@@ -1083,6 +1379,8 @@ public class FMODMasterRecorder : MonoBehaviour
             StartCoroutine(SavedFeedbackCoroutine());
     }
 
+    // Shows the saved message
+    // for a short period before hiding it.
     private IEnumerator SavedFeedbackCoroutine()
     {
         UpdateStatusText(savedMessage);
@@ -1091,18 +1389,26 @@ public class FMODMasterRecorder : MonoBehaviour
             savedMessageDuration
         );
 
-        // Hide the text after a short delay.
+        // Clear the status text.
         UpdateStatusText("");
 
         statusCoroutine = null;
     }
+
+    // Automatically called when
+    // this object is destroyed.
+    //
+    // Cleans up all recording resources.
     private void OnDestroy()
     {
+        // Stop recording if it
+        // is still running.
         if (isRecording)
         {
             StopRecordingAndSave();
         }
 
+        // Stop the writer thread.
         writerShouldRun = false;
 
         if (writerThread != null &&
@@ -1111,8 +1417,11 @@ public class FMODMasterRecorder : MonoBehaviour
             writerThread.Join();
         }
 
+        // Close the recording file.
         CloseOutputFile();
 
+        // Remove the recording DSP
+        // from FMOD's Master Bus.
         if (
             masterChannelGroup.hasHandle() &&
             recordingDSP.hasHandle()
@@ -1123,16 +1432,20 @@ public class FMODMasterRecorder : MonoBehaviour
             );
         }
 
+        // Release the DSP resource.
         if (recordingDSP.hasHandle())
         {
             recordingDSP.release();
         }
 
+        // Clear the active recorder reference.
         if (activeRecorder == this)
         {
             activeRecorder = null;
         }
 
+        // Mark the recorder
+        // as no longer initialized.
         isReady = false;
     }
 }
