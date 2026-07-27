@@ -132,56 +132,100 @@ public class CompositionPlayer : MonoBehaviour
 
     private IEnumerator PlayChordSequence()
     {
-        List<ChordSlot> playableSlots =
-            new List<ChordSlot>();
+        // Find a normal chord duration to use for empty slots.
+        float emptySlotDuration = 2f;
 
         foreach (ChordSlot slot in chordSlots)
         {
+            if (slot == null ||
+                slot.AssignedChord == null ||
+                slot.AssignedChord.chordEvent.IsNull)
+            {
+                continue;
+            }
+
+            EventDescription description =
+                RuntimeManager.GetEventDescription(
+                    slot.AssignedChord.chordEvent
+                );
+
+            if (description.isValid())
+            {
+                FMOD.RESULT lengthResult =
+                    description.getLength(
+                        out int lengthMilliseconds
+                    );
+
+                if (lengthResult == FMOD.RESULT.OK &&
+                    lengthMilliseconds > 0)
+                {
+                    emptySlotDuration =
+                        lengthMilliseconds / 1000f;
+
+                    break;
+                }
+            }
+        }
+
+        // Start from the very beginning of slot 1.
+        if (chordSlots.Count > 0 &&
+            chordSlots[0] != null)
+        {
+            SetPlayheadX(
+                GetSlotStartX(chordSlots[0])
+            );
+        }
+
+        for (int i = 0; i < chordSlots.Count; i++)
+        {
+            ChordSlot slot = chordSlots[i];
+
             if (slot == null)
             {
                 continue;
             }
 
-            ChordData chord = slot.AssignedChord;
-
-            if (chord == null)
-            {
-                continue;
-            }
-
-            if (chord.chordEvent.IsNull)
-            {
-                Debug.LogError(
-                    $"{chord.chordName} has no FMOD event assigned."
-                );
-
-                continue;
-            }
-
-            playableSlots.Add(slot);
-        }
-
-        if (playableSlots.Count == 0)
-        {
-            Debug.LogWarning(
-                "No chords have been placed in the composition."
-            );
-
-            HidePlayhead();
-
-            playbackCoroutine = null;
-            yield break;
-        }
-
-        for (int i = 0; i < playableSlots.Count; i++)
-        {
-            ChordSlot slot = playableSlots[i];
-            ChordData chord = slot.AssignedChord;
-
             float startX = GetSlotStartX(slot);
             float endX = GetSlotEndX(slot);
 
             SetPlayheadX(startX);
+
+            ChordData chord = slot.AssignedChord;
+
+            // Empty slot: move the playhead across silently.
+            if (chord == null ||
+                chord.chordEvent.IsNull)
+            {
+                float elapsedTime = 0f;
+
+                while (elapsedTime < emptySlotDuration)
+                {
+                    if (!isPaused)
+                    {
+                        elapsedTime +=
+                            Time.unscaledDeltaTime;
+                    }
+
+                    float progress =
+                        Mathf.Clamp01(
+                            elapsedTime /
+                            emptySlotDuration
+                        );
+
+                    SetPlayheadX(
+                        Mathf.Lerp(
+                            startX,
+                            endX,
+                            progress
+                        )
+                    );
+
+                    yield return null;
+                }
+
+                SetPlayheadX(endX);
+                continue;
+            }
 
             currentChordInstance =
                 RuntimeManager.CreateInstance(
@@ -197,7 +241,8 @@ public class CompositionPlayer : MonoBehaviour
             {
                 Debug.LogError(
                     $"Could not get description for " +
-                    $"{chord.chordName}: {descriptionResult}"
+                    $"{chord.chordName}: " +
+                    descriptionResult
                 );
 
                 ReleaseCurrentChord();
@@ -250,11 +295,6 @@ public class CompositionPlayer : MonoBehaviour
 
                 if (positionResult != FMOD.RESULT.OK)
                 {
-                    Debug.LogError(
-                        $"Could not get timeline position for " +
-                        $"{chord.chordName}: {positionResult}"
-                    );
-
                     break;
                 }
 
@@ -264,14 +304,13 @@ public class CompositionPlayer : MonoBehaviour
                         eventLengthMilliseconds
                     );
 
-                float playheadX =
+                SetPlayheadX(
                     Mathf.Lerp(
                         startX,
                         endX,
                         progress
-                    );
-
-                SetPlayheadX(playheadX);
+                    )
+                );
 
                 if (timelineMilliseconds >=
                     eventLengthMilliseconds - 20)
@@ -284,17 +323,8 @@ public class CompositionPlayer : MonoBehaviour
                         out PLAYBACK_STATE playbackState
                     );
 
-                if (stateResult != FMOD.RESULT.OK)
-                {
-                    Debug.LogError(
-                        $"Could not read playback state for " +
-                        $"{chord.chordName}: {stateResult}"
-                    );
-
-                    break;
-                }
-
-                if (playbackState ==
+                if (stateResult != FMOD.RESULT.OK ||
+                    playbackState ==
                     PLAYBACK_STATE.STOPPED)
                 {
                     break;
