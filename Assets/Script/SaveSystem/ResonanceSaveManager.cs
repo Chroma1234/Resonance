@@ -97,8 +97,6 @@ public class ResonanceSaveManager : MonoBehaviour
     private void Awake()
     {
 
-<<<<<<< HEAD
-=======
         // Responsibilities:
         // 1. Create Singleton
         // 2. Detach from parent if necessary
@@ -113,7 +111,6 @@ public class ResonanceSaveManager : MonoBehaviour
         // Why SetParent(null)? Because DontDestroyOnLoad() only preserves the root object.
         // If this GameObject stayed under another parent that gets destroyed, the SaveManager would also be destroyed.
 
->>>>>>> parent of f230da6 (Revert "code review notes")
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);

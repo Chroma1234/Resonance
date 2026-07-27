@@ -1,55 +1,95 @@
 ﻿using TMPro;
 using UnityEngine;
 
+// This script manages the recording menu.
+//
+// Responsibilities:
+// - Open and close the recording panel.
+// - Show recording status messages.
+// - Enable and disable player controls.
+// - Pause and resume the game while recording.
 public class RecordingMenu : MonoBehaviour
 {
     [Header("Recording Panel")]
+
+    // Main recording menu panel.
     [SerializeField] private GameObject recordingPanel;
 
     [Header("Recording Status UI")]
-    [SerializeField] private GameObject recordingIndicatorUI; // The container or text object
-    [SerializeField] private TMP_Text recordingIndicatorText; // Drag your TextMeshPro component here
+
+    // Small UI used to show
+    // recording progress or save status.
+    [SerializeField] private GameObject recordingIndicatorUI;
+
+    // Text displayed inside
+    // the recording indicator.
+    [SerializeField] private TMP_Text recordingIndicatorText;
 
     [Header("Player")]
+
+    // References used to disable
+    // player controls while
+    // the recording menu is open.
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private MouseLook mouseLook;
 
+    // Used to smoothly show and hide
+    // the recording panel.
     private CanvasGroup recordingCanvasGroup;
+
+    // Tracks whether the
+    // recording menu is open.
     private bool isOpen;
 
     private void Awake()
     {
+        // Menu starts closed.
         isOpen = false;
 
+        // Ensure the panel
+        // has been assigned.
         if (recordingPanel == null)
         {
             Debug.LogError("Recording Panel is not assigned.");
             return;
         }
 
-        // Keep the panel active so WAV playback continues.
+        // Keep the panel active so
+        // audio playback continues
+        // even when hidden.
         recordingPanel.SetActive(true);
 
-        // Find the Canvas Group on the panel.
+        // Get the CanvasGroup
+        // used to control visibility.
         recordingCanvasGroup =
             recordingPanel.GetComponent<CanvasGroup>();
 
+        // Automatically add one
+        // if it doesn't exist.
         if (recordingCanvasGroup == null)
         {
             recordingCanvasGroup =
                 recordingPanel.AddComponent<CanvasGroup>();
         }
 
+        // Hide the panel
+        // on startup.
         HidePanel();
     }
 
     private void Start()
     {
+        // Make sure player controls
+        // match the menu state.
         UpdatePlayerControls();
     }
 
+    // Opens or closes
+    // the recording menu.
     public void ToggleRecording()
     {
+        // Switch between open
+        // and closed.
         isOpen = !isOpen;
 
         if (isOpen)
@@ -61,18 +101,21 @@ public class RecordingMenu : MonoBehaviour
             HidePanel();
         }
 
+        // Update player controls.
         UpdatePlayerControls();
     }
 
-
-    /// Shows only the small recording indicator (e.g., a red dot or icon) 
-    /// without opening the full recording panel/canvas group.
+    // Shows only the recording indicator
+    // without opening the full menu.
     public void ShowRecordingIndicatorOnly()
     {
         if (recordingIndicatorText != null)
         {
-            recordingIndicatorText.text = "Recording in progress...";
-            recordingIndicatorText.gameObject.SetActive(true);
+            recordingIndicatorText.text =
+                "Recording in progress...";
+
+            recordingIndicatorText
+                .gameObject.SetActive(true);
         }
 
         if (recordingIndicatorUI != null)
@@ -81,13 +124,13 @@ public class RecordingMenu : MonoBehaviour
         }
     }
 
- 
-    /// Hides only the small recording indicator.
+    // Hides the recording indicator.
     public void HideRecordingIndicatorOnly()
     {
         if (recordingIndicatorText != null)
         {
-            recordingIndicatorText.gameObject.SetActive(false);
+            recordingIndicatorText
+                .gameObject.SetActive(false);
         }
 
         if (recordingIndicatorUI != null)
@@ -96,11 +139,10 @@ public class RecordingMenu : MonoBehaviour
         }
     }
 
-    
-    /// Changes the recording indicator text to show that the file was saved.
+    // Updates the indicator
+    // to show recording completed.
     public void ShowRecordingSaved()
     {
-        // Make sure the indicator UI and text are active
         if (recordingIndicatorUI != null)
         {
             recordingIndicatorUI.SetActive(true);
@@ -108,29 +150,37 @@ public class RecordingMenu : MonoBehaviour
 
         if (recordingIndicatorText != null)
         {
-            recordingIndicatorText.text = "Recording is Saved!";
-            recordingIndicatorText.gameObject.SetActive(true);
+            recordingIndicatorText.text =
+                "Recording is Saved!";
+
+            recordingIndicatorText
+                .gameObject.SetActive(true);
         }
     }
-    public void ShowAndHideRecordingSaved(float displayDuration = 3f)
+
+    // Shows the saved message
+    // for a short period.
+    public void ShowAndHideRecordingSaved(
+        float displayDuration = 3f)
     {
-        // Show the saved message
         ShowRecordingSaved();
 
-        // Start a coroutine to hide it after the duration
-        StartCoroutine(HideIndicatorAfterDelay(displayDuration));
+        StartCoroutine(
+            HideIndicatorAfterDelay(displayDuration)
+        );
     }
 
-    private System.Collections.IEnumerator HideIndicatorAfterDelay(float delay)
+    // Waits before hiding
+    // the saved message.
+    private System.Collections.IEnumerator
+        HideIndicatorAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
 
-        // Hide the indicator completely
         HideRecordingIndicatorOnly();
     }
 
-   
-    /// Opens the full recording panel AND shows the indicator.
+    // Shows the full recording panel.
     public void ShowFullRecordingPanel()
     {
         if (recordingCanvasGroup != null)
@@ -140,13 +190,12 @@ public class RecordingMenu : MonoBehaviour
             recordingCanvasGroup.blocksRaycasts = true;
         }
 
-        // Call the indicator method as well since the full panel is open
+        // Also display the
+        // recording indicator.
         ShowRecordingIndicatorOnly();
     }
 
-    /// <summary>
-    /// Hides the full recording panel.
-    /// </summary>
+    // Hides the full recording panel.
     public void HideFullRecordingPanel()
     {
         if (recordingCanvasGroup != null)
@@ -156,8 +205,8 @@ public class RecordingMenu : MonoBehaviour
             recordingCanvasGroup.blocksRaycasts = false;
         }
     }
-    
 
+    // Makes the recording panel visible.
     private void ShowPanel()
     {
         if (recordingCanvasGroup == null)
@@ -168,11 +217,9 @@ public class RecordingMenu : MonoBehaviour
         recordingCanvasGroup.alpha = 1f;
         recordingCanvasGroup.interactable = true;
         recordingCanvasGroup.blocksRaycasts = true;
-
-        //ShowRecordingIndicatorOnly();
-        //ShowRecordingSaved();
     }
 
+    // Hides the recording panel.
     private void HidePanel()
     {
         if (recordingCanvasGroup == null)
@@ -184,13 +231,17 @@ public class RecordingMenu : MonoBehaviour
         recordingCanvasGroup.interactable = false;
         recordingCanvasGroup.blocksRaycasts = false;
 
-        // Turn off the indicator when the panel is closed
+        // Hide the recording indicator
+        // when the menu closes.
         if (recordingIndicatorUI != null)
         {
             recordingIndicatorUI.SetActive(false);
         }
     }
 
+    // Enables or disables
+    // player controls depending
+    // on whether the menu is open.
     private void UpdatePlayerControls()
     {
         if (playerMovement != null)
@@ -203,16 +254,24 @@ public class RecordingMenu : MonoBehaviour
             mouseLook.enabled = !isOpen;
         }
 
-        Cursor.lockState = CursorLockMode.None;
+        // Unlock the cursor
+        // while using the menu.
+        Cursor.lockState =
+            CursorLockMode.None;
+
         Cursor.visible = true;
 
-        Time.timeScale = isOpen ? 0f : 1f;
+        // Pause or resume the game.
+        Time.timeScale =
+            isOpen ? 0f : 1f;
     }
 
-    // Example of how you call it when saving is complete:
+    // Called after a recording
+    // has been successfully saved.
     public void OnSaveComplete()
     {
-        // This will change the text to "Recording is Saved!" for 3 seconds, then hide it automatically
+        // Show the saved message
+        // for three seconds.
         ShowAndHideRecordingSaved(3f);
     }
 }
