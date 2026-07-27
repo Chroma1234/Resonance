@@ -44,9 +44,9 @@ public class MusicLandmark : MonoBehaviour
 
         if (instrumentData.mixable)
         {
-            CreateRadiusIndicator("Intensity Radius", instrumentData.intenseDistance, new Color(1f, 1f, 0.3f, 0.08f)); //yellow
-            CreateRadiusIndicator("Max Radius", instrumentData.maxDistance, new Color(0f, 1f, 1f, 0.05f)); //pink
-            CreateRadiusIndicator("Duet Radius", instrumentData.duetRadius,new Color(1f, 0.2f, 0.8f, 0.15f));//cyan
+            CreateRadiusIndicator("Intensity Radius", instrumentData.intenseDistance, new Color(1f, 0.2f, 0.8f, 0.08f));//pink
+            CreateRadiusIndicator("Max Radius", instrumentData.maxDistance, new Color(0f, 1f, 1f, 0.009f)); //blue
+            CreateRadiusIndicator("Duet Radius", instrumentData.duetRadius,new Color(1f, 1f, 0.3f, 0.20f));//yelow
         }
     }
 
