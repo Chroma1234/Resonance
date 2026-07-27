@@ -10,3 +10,6 @@ public class ChordData : ScriptableObject
     // FMOD event that plays this chord.
     public EventReference chordEvent;
 }
+
+/*I used a ScriptableObject so each chord’s data is stored separately 
+ * from the UI and playback code. This lets me add new chords without changing the scripts.*/

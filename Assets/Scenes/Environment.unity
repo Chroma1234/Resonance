@@ -49471,7 +49471,7 @@ GameObject:
   - component: {fileID: 1700468439}
   - component: {fileID: 1700468440}
   m_Layer: 0
-  m_Name: OpenComposition
+  m_Name: TogglingComposition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
