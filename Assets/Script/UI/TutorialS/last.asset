@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf98c04f95792ef4da3a14a095759957, type: 3}
   m_Name: last
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStep
+  requiredButton: 0
   instructionText: "You\u2019ve tested the features out, time to explore even more!
     Have Fun!"
   triggerType: 0
   displayDuration: 2
-  delayBeforeShowing: 0
+  delayBeforeShowing: 6
   targetButton: {fileID: 0}
   stepGlowObject: {fileID: 0}
   showArrowIndicator: 0

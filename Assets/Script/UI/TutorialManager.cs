@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using static TutorialStep;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -35,9 +36,17 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private Transform player;
     private MusicLandmark[] landmarks;
 
+    [Header("UI Button References")]
+    [SerializeField] private UnityEngine.UI.Button recordButton;
+    [SerializeField] private UnityEngine.UI.Button saveButton;
+    [SerializeField] private UnityEngine.UI.Button libraryButton;
+    [SerializeField] private UnityEngine.UI.Button composeButton;
+
     private int currentStepIndex = 0;
     private float timer = 0f;
     private bool isWaitingForDelay = false;
+    private float lastClickTime = 0f;
+    private float clickCooldown = 0.3f; // Prevents spam clicking within 300ms
 
     void Start()
     {
@@ -104,8 +113,6 @@ public class TutorialManager : MonoBehaviour
 
         }
     }
-
-
     private void CacheReferences()
     {
         if (player == null)
@@ -191,29 +198,32 @@ public class TutorialManager : MonoBehaviour
         if (tutorialArrow != null)
             tutorialArrow.SetActive(step.showArrowIndicator);
 
-        // Hide all glows first
+        // 1. Hide all glows first
         if (recordButtonGlow != null) recordButtonGlow.SetActive(false);
         if (libraryButtonGlow != null) libraryButtonGlow.SetActive(false);
         if (saveButtonGlow != null) saveButtonGlow.SetActive(false);
         if (composeButtonGlow != null) composeButtonGlow.SetActive(false);
 
-        // Turn on the specific glow based on the current step index
-        // (Replace 3 and 5 with whatever your actual element index numbers are)
-        if (currentStepIndex == 3 && recordButtonGlow != null)
+        // 2. Control button interactivity and glows based on the current step's required button
+        SetButtonInteractive(recordButton, recordButtonGlow, step.requiredButton == TutorialButtonType.Record);
+        SetButtonInteractive(saveButton, saveButtonGlow, step.requiredButton == TutorialButtonType.Save);
+        SetButtonInteractive(libraryButton, libraryButtonGlow, step.requiredButton == TutorialButtonType.Library);
+        SetButtonInteractive(composeButton, composeButtonGlow, step.requiredButton == TutorialButtonType.Compose);
+    }
+    // Helper method to handle enabling/disabling cleanly
+    private void SetButtonInteractive(UnityEngine.UI.Button btn, GameObject glow, bool isEnabled)
+    {
+        if (btn != null)
         {
-            recordButtonGlow.SetActive(true);
+            // If it's a button click tutorial step, lock/unlock it. 
+            // If the step doesn't require ANY buttons, you might want all buttons interactable. 
+            // Change 'true' below to '!isEnabled' if you want non-target buttons disabled during button steps.
+            btn.interactable = isEnabled;
         }
-        else if (currentStepIndex == 4 && saveButtonGlow != null)
+
+        if (glow != null)
         {
-            saveButtonGlow.SetActive(true);
-        }
-        else if (currentStepIndex == 5 && libraryButtonGlow != null)
-        {
-            libraryButtonGlow.SetActive(true);
-        }
-        else if (currentStepIndex == 6 && composeButtonGlow != null)
-        {
-            composeButtonGlow.SetActive(true);
+            glow.SetActive(isEnabled);
         }
     }
     private IEnumerator ShowStepWithDelay(TutorialStep step)
@@ -222,7 +232,7 @@ public class TutorialManager : MonoBehaviour
 
         // Disappear/hide the panel during the wait time
         if (tutorialPanel != null) tutorialPanel.SetActive(false);
-       
+
 
         yield return new WaitForSecondsRealtime(step.delayBeforeShowing);
 
@@ -238,27 +248,69 @@ public class TutorialManager : MonoBehaviour
         ShowStep(currentStepIndex + 1);
     }
 
-
-    public void OnTargetButtonClicked()
+    private bool isProcessingClick = false;
+   // Universal button click method that works for ANY button!
+    // Just pass a string or enum from your UI button: "Record", "Save", "Library", "Compose"
+    public void OnSpecificButtonClicked(string buttonName)
     {
-        if (isWaitingForDelay || tutorialSteps == null || currentStepIndex >= tutorialSteps.Count) return;
-         // Check if the current tutorial step is actually waiting for a button click
-        if (tutorialSteps[currentStepIndex].triggerType == TutorialTriggerType.ButtonClick)
+        if (isProcessingClick) return;
+        isProcessingClick = true;
+
+        if (isWaitingForDelay || tutorialSteps == null || currentStepIndex >= tutorialSteps.Count)
         {
-            NextStep();
+            isProcessingClick = false;
+            return;
         }
+
+        TutorialStep currentStep = tutorialSteps[currentStepIndex];
       
+        // SAFETY CHECK: If this step requires a button, block any other button immediately!
+        if (currentStep.triggerType == TutorialTriggerType.ButtonClick)
+        {
+            if (currentStep.requiredButton.ToString() != buttonName)
+            {
+                Debug.LogWarning($"Blocked! You clicked '{buttonName}', but this tutorial step only allows '{currentStep.requiredButton}'.");
+                isProcessingClick = false;
+                return; // Stop right here, do not advance!
+            }
+        }
+
+        Debug.Log($"Button '{buttonName}' clicked. Current step expects: {currentStep.requiredButton}");
+       
+        // Check if the current step requires a button click and matches this button
+        if (currentStep.triggerType == TutorialTriggerType.ButtonClick)
+        {
+            // Match the button name/enum to the step's required button
+            if (currentStep.requiredButton.ToString() == buttonName)
+            {
+                Debug.Log("Success! Correct button clicked.");
+                NextStep();
+            }
+            else
+            {
+                Debug.LogWarning($"Wrong button! You clicked {buttonName}, but the tutorial expects {currentStep.requiredButton}.");
+            }
+           
+        }
+        StartCoroutine(ResetClickLock());
     }
 
+    private System.Collections.IEnumerator ResetClickLock()
+    {
+        yield return null;
+        isProcessingClick = false;
+    }
+
+
     public void TryAdvanceStep(TutorialTriggerType requiredType)
-     {
+    {
         if (isWaitingForDelay || tutorialSteps == null || currentStepIndex >= tutorialSteps.Count) return;
 
         if (tutorialSteps[currentStepIndex].triggerType == requiredType)
         {
             NextStep();
         }
-     }
+    }
 
     private void FinishTutorial()
     {
@@ -284,9 +336,15 @@ public class TutorialManager : MonoBehaviour
 
         if (composeButtonGlow != null)
             composeButtonGlow.SetActive(false);
+        if (recordButton != null) recordButton.interactable = true;
+        if (saveButton != null) saveButton.interactable = true;
+        if (libraryButton != null) libraryButton.interactable = true;
+        if (composeButton != null) composeButton.interactable = true;
 
+        // RESUME GAME TIME 
+        Time.timeScale = 1f;
         enabled = false;
 
-        Debug.Log("Tutorial completed!");
+        Debug.Log("Tutorial completed! game resume");
     }
 }

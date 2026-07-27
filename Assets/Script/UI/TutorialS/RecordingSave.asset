@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf98c04f95792ef4da3a14a095759957, type: 3}
   m_Name: RecordingSave
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStep
-  instructionText: 'Click ''Save'' to keep your '
+  requiredButton: 2
+  instructionText: "Click 'Save' to keep your melody when you are ready\n "
   triggerType: 6
   displayDuration: 0
   delayBeforeShowing: 0
-  glowObjectName: GlowOuline
+  targetButton: {fileID: 0}
+  stepGlowObject: {fileID: 0}
   showArrowIndicator: 0

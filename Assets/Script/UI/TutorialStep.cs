@@ -14,6 +14,10 @@ public enum TutorialTriggerType
 [CreateAssetMenu(fileName = "NewTutorialStep", menuName = "Tutorial/Tutorial Step")]
 public class TutorialStep : ScriptableObject
 {
+    public enum TutorialButtonType { None, Record, Save, Library, Compose }
+    [Header("Button Step Settings")]
+    public TutorialButtonType requiredButton;
+
     [TextArea(3, 5)]
     [Header("Instruction Display")]
     public string instructionText;

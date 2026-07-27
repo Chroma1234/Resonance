@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,7 @@ public class ResonanceSaveManager : MonoBehaviour
 
     private void Awake()
     {
+
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);

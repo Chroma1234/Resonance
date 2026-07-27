@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.IO;
 using FMOD;
@@ -29,6 +29,10 @@ public class SavedRecordingLibrary : MonoBehaviour
     [SerializeField]
     private Color selectedButtonColor = Color.green;
 
+    [Header("Folder Path")]
+    [SerializeField]
+    private TMP_Text folderPathText;
+
     // The FMOD Studio Master Bus.
     private StudioBus studioMasterBus;
 
@@ -48,7 +52,6 @@ public class SavedRecordingLibrary : MonoBehaviour
 
     private void Start()
     {
-        // This is the FMOD Studio Master Bus.
         studioMasterBus =
             RuntimeManager.GetBus("bus:/");
 
@@ -79,6 +82,22 @@ public class SavedRecordingLibrary : MonoBehaviour
 
         string folderPath =
             Application.persistentDataPath;
+
+        // Display the complete recording folder location.
+        if (folderPathText != null)
+        {
+            folderPathText.text =
+                "Save Location:\n" +
+                folderPath;
+
+            folderPathText.gameObject.SetActive(true);
+        }
+        else
+        {
+            Debug.LogWarning(
+                "Folder Path Text is not assigned."
+            );
+        }
 
         if (!Directory.Exists(folderPath))
         {
@@ -114,7 +133,9 @@ public class SavedRecordingLibrary : MonoBehaviour
 
         Debug.Log(
             recordingFiles.Length +
-            " saved recording(s) found."
+            " saved recording(s) found.\n" +
+            "Folder location:\n" +
+            folderPath
         );
     }
 
@@ -151,7 +172,6 @@ public class SavedRecordingLibrary : MonoBehaviour
             }
         }
 
-        // Set the normal button colour.
         SetButtonColor(
             newButton,
             normalButtonColor
@@ -160,10 +180,6 @@ public class SavedRecordingLibrary : MonoBehaviour
         string selectedFilePath = filePath;
         UnityEngine.UI.Button selectedButton = newButton;
 
-        /*
-         * Removes listeners added through code.
-         * Keep the prefab's Inspector OnClick list empty.
-         */
         newButton.onClick.RemoveAllListeners();
 
         newButton.onClick.AddListener(
@@ -193,7 +209,6 @@ public class SavedRecordingLibrary : MonoBehaviour
         UnityEngine.UI.Button clickedButton
     )
     {
-        // Return the previous button to its normal colour.
         if (selectedRecordingButton != null)
         {
             SetButtonColor(
@@ -202,11 +217,9 @@ public class SavedRecordingLibrary : MonoBehaviour
             );
         }
 
-        // Remember the newly selected recording.
         selectedRecordingPath = filePath;
         selectedRecordingButton = clickedButton;
 
-        // Highlight the selected recording button.
         SetButtonColor(
             selectedRecordingButton,
             selectedButtonColor
@@ -238,7 +251,6 @@ public class SavedRecordingLibrary : MonoBehaviour
 
         button.colors = colours;
 
-        // Immediately update the visible button colour.
         if (button.targetGraphic != null)
         {
             button.targetGraphic.color = colour;
@@ -260,7 +272,6 @@ public class SavedRecordingLibrary : MonoBehaviour
             yield break;
         }
 
-        // Wait briefly if the recorder is still closing the WAV.
         float waitTime = 0f;
 
         while (IsFileLocked(filePath))
@@ -281,12 +292,6 @@ public class SavedRecordingLibrary : MonoBehaviour
             yield return new WaitForSecondsRealtime(0.1f);
         }
 
-        /*
-         * Load the saved WAV through FMOD Core.
-         *
-         * CREATESTREAM is suitable for playback directly
-         * from a saved audio file.
-         */
         RESULT result =
             RuntimeManager.CoreSystem.createSound(
                 filePath,
@@ -310,12 +315,6 @@ public class SavedRecordingLibrary : MonoBehaviour
             yield break;
         }
 
-        /*
-         * Pause FMOD Studio events.
-         *
-         * The external WAV is played through FMOD Core,
-         * not as an FMOD Studio Event.
-         */
         if (studioMasterBus.isValid())
         {
             studioMasterBus.setPaused(true);
@@ -432,7 +431,6 @@ public class SavedRecordingLibrary : MonoBehaviour
             return;
         }
 
-        // Stop playback before deleting the WAV.
         StopSelectedRecording();
 
         if (File.Exists(selectedRecordingPath))

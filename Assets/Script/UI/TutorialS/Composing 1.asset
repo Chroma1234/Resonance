@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf98c04f95792ef4da3a14a095759957, type: 3}
   m_Name: Composing 1
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStep
+  requiredButton: 4
   instructionText: Discover what's next. Click 'Compose' to dive in.
-  triggerType: 2
+  triggerType: 6
   displayDuration: 0
-  delayBeforeShowing: 4
+  delayBeforeShowing: 0
   targetButton: {fileID: 0}
   stepGlowObject: {fileID: 0}
   showArrowIndicator: 0

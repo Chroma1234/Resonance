@@ -1,6 +1,10 @@
+//using NUnit.Framework;
+//using System.Collections.Generic;
+//using UnityEditor.IMGUI.Controls;
+//using UnityEngine; remove cause build error
+
 using NUnit.Framework;
 using System.Collections.Generic;
-using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
 public class InstrumentSpawner : MonoBehaviour

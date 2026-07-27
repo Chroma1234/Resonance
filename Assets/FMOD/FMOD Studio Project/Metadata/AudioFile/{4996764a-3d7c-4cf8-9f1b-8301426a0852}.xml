@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{4996764a-3d7c-4cf8-9f1b-8301426a0852}">
+		<property name="assetPath">
+			<value>Cartoon, Musical, Heavenly Glissando Choir SND15613.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>16.337843750000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e24508e3-46a4-41a7-903b-dfb4c6534fd0}</destination>
+		</relationship>
+	</object>
+</objects>
