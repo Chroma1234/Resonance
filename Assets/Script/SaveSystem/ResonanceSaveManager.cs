@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 using System;
 using System.IO;
-=======
-﻿using System;
->>>>>>> parent of f230da6 (Revert "code review notes")
 using System.Collections.Generic;
 using UnityEngine;
 
