@@ -114,6 +114,7 @@ public class TutorialManager : MonoBehaviour
                 break;
         }
     }
+    // Cache player and landmark references to avoid repeated searches
     private void CacheReferences()
     {
         if (player == null)
@@ -127,7 +128,7 @@ public class TutorialManager : MonoBehaviour
 
         landmarks = FindObjectsByType<MusicLandmark>(FindObjectsSortMode.None);
     }
-
+    // Check if the player is within the approach radius of any landmark
     private bool CheckPlayerApproachedLandmark()
     {
         if (player == null || landmarks == null) return false;
@@ -145,7 +146,7 @@ public class TutorialManager : MonoBehaviour
         }
         return false;
     }
-
+    // Check if the player is within duet radius of at least two landmarks
     private bool CheckPlayerTriggeredDuet()
     {
         if (player == null || landmarks == null) return false;
@@ -164,7 +165,7 @@ public class TutorialManager : MonoBehaviour
         }
         return nearbyCount >= 2;
     }
-
+    // Display the current tutorial step, handling any delay before showing it
     private void ShowStep(int index)
     {
         currentStepIndex = index;
@@ -230,6 +231,7 @@ public class TutorialManager : MonoBehaviour
             glow.SetActive(isEnabled);
         }
     }
+    // Coroutine to handle the delay before showing a tutorial step
     private IEnumerator ShowStepWithDelay(TutorialStep step)
     {
         isWaitingForDelay = true;
@@ -245,7 +247,7 @@ public class TutorialManager : MonoBehaviour
     }
 
 
-
+    // Move to the next tutorial step, canceling any pending delays
     public void NextStep()
     {
         StopAllCoroutines();// Cancel any pending delayed steps if we move forward manually
